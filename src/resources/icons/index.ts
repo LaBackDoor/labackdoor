@@ -1,5 +1,7 @@
 import { FaArrowRightLong, FaArrowLeftLong, FaGithubAlt, FaLinkedin, FaFileLines } from "react-icons/fa6";
 import { BsSubstack } from "react-icons/bs";
+import { IoMenu } from "react-icons/io5";
+import {IoMdClose} from "react-icons/io"
 
 // Fa6 Icons
 export const ResumeIcon = FaFileLines;
@@ -10,3 +12,7 @@ export const ForthIcon = FaArrowRightLong;
 export const GithubIcon = FaGithubAlt;
 export const SubstackIcon = BsSubstack;
 export const LinkedInIcon = FaLinkedin;
+
+// Menu Icons
+export const MenuIcon = IoMenu;
+export const CloseIcon = IoMdClose;
