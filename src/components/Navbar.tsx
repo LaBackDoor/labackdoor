@@ -13,20 +13,20 @@ function Navbar() {
 
     return (
         <nav className="nav ">
-            <a href="/">
+            <a href="/" className="nav-logo">
                 <img src="/icons/backdoor.png" height={50} width={50} alt="logo" />
             </a>
             <ul>
-                <li>
+                <li className="active">
                     <a href="/About">About</a>
                 </li>
-                <li>
+                <li className="active">
                     <a href="Contact">Contact</a>
                 </li>
-                <li>
+                <li className="active">
                     <a href="Group">Group</a>
                 </li>
-                <li>
+                <li className="active">
                     <a href="Projects">Projects</a>
                 </li>
 
