@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 function Navbar() {
 
@@ -26,8 +26,8 @@ interface ICustomLinkProps {
 
 
 function CustomLink({ to, children, ...props }: ICustomLinkProps) {
-    const location = useLocation();
-    const isActive = location.pathname === to;
+    const resolvedPath = useResolvedPath(to);
+    const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
     return (
         <li className={isActive ? "active" : ""}>
