@@ -3,6 +3,11 @@ export default {
   content: [],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Neue Montreal', 'Roboto', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+        neuemontreal: ['Neue Montreal', 'sans-serif'],
+      },
       backgroundColor: {
         primary: {
           main: "#0a192f",
@@ -44,4 +49,3 @@ export default {
   },
   plugins: [],
 }
-

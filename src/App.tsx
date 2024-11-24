@@ -1,3 +1,5 @@
+import { Route, Routes } from 'react-router-dom';
+
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 import Navbar from './components/Navbar';
@@ -7,32 +9,20 @@ import { Home } from './pages/Home';
 
 
 function App() {
-  let component;
-  switch (window.location.pathname) {
-    case "/":
-      component = <Home />;
-      break
-    case "/About":
-      component = <About />;
-      break
-    case "/Contact":
-      component = <Contact />;
-      break
-    case "/Group":
-      component = <Group />;
-      break
-    case "/Projects":
-      component = <Projects />;
-      break
-    default:
-      component = <div>404: Page Not Found</div>;
-      break;
-  }
 
   return (
     <>
       <Navbar />
-      {component}
+      <div className='container'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/About' element={<About />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Group' element={<Group />} />
+          <Route path='/Projects' element={<Projects />} />
+        </Routes>
+
+      </div>
     </>
   )
 }

@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');  
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
+    font-family: 'Roboto', Geneva, Verdana, sans-serif;
+
+}
+
+.container {
+    margin: 1rem;
+    text-align: center;
 }
 
 .nav {
@@ -35,12 +44,34 @@ body {
     display: flex;
     align-items: center;
     padding: .25rem;
+    transition: all 0.3s ease-in-out;
+    font-family: 'NeueMontreal', 'NeueMontreal-Regular', 'Lucida Grande', 'NeueMontrealUnicode', Geneva, Verdana, sans-serif;
   }
 
 .nav li.active {
-    background-color: #c4b5fd;
+    border-radius: 2px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav li.active a {
+    /* background-color: #221C87; */
+    color: #1d4ed8;
+}
+
+.nav li a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.25rem;
+    border-radius: 2px;
 }
 
 .nav li:hover {
-    background-color: #581c87;
+    border-radius: 2px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav li:hover a{
+    color: #1e40af;
 }

@@ -1,34 +1,18 @@
-
+import { Link } from "react-router-dom";
 
 function Navbar() {
-    // const [isOpen, setIsOpen] = useState(false);
-
-    // const toggleNavbar = () => {
-    //     setIsOpen(!isOpen)
-    // }
-
-    // useEffect(() => {
-    //     setIsOpen(false);
-    // }, []);
 
     return (
-        <nav className="nav ">
-            <a href="/" className="nav-logo">
+        <nav className="nav active">
+            <Link to="/" className="nav-logo">
                 <img src="/icons/backdoor.png" height={50} width={50} alt="logo" />
-            </a>
+            </Link>
             <ul>
-                <li className="active">
-                    <a href="/About">About</a>
-                </li>
-                <li className="active">
-                    <a href="Contact">Contact</a>
-                </li>
-                <li className="active">
-                    <a href="Group">Group</a>
-                </li>
-                <li className="active">
-                    <a href="Projects">Projects</a>
-                </li>
+                <CustomLink to="/About">About</CustomLink>
+                <CustomLink to="/Group">Group</CustomLink>
+                <CustomLink to="/Projects">Projects</CustomLink>
+                <CustomLink to="Contact">Contact</CustomLink>
+
 
             </ul>
         </nav>
@@ -36,3 +20,19 @@ function Navbar() {
 }
 
 export default Navbar;
+
+interface ICustomLinkProps {
+    to: string;
+    children: React.ReactNode;
+}
+
+
+function CustomLink({ to, children, ...props }: ICustomLinkProps) {
+    const path = window.location.pathname;
+
+    return (
+        <li className={path === to ? "active" : ""}>
+            <Link to={to} {...props}>{children}</Link>
+        </li>
+    )
+}
