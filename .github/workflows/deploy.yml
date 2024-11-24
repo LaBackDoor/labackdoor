@@ -12,17 +12,17 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9.14.2'
+          run_install: false
+
       - name: 🔧 Set up Node.js 20.17.0
         uses: actions/setup-node@v4
         with:
           node-version: '20.17.0'
           cache: 'pnpm'
-
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: '9.14.2'
-          run_install: false
 
       - name: 🔨 Build Project
         run: |
