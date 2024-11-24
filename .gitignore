@@ -130,6 +130,7 @@ pnpm-lock.yaml
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
