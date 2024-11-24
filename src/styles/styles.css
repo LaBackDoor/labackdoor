@@ -27,17 +27,17 @@ body {
 
 .site-title {
     font-size: 2rem;
-  }
+}
   
-  .nav ul {
+.nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
     gap: 1rem;
-  }
+}
   
-  .nav a {
+.nav a {
     color: inherit;
     text-decoration: none;
     height: 100%;
@@ -45,17 +45,17 @@ body {
     align-items: center;
     padding: .25rem;
     transition: all 0.3s ease-in-out;
-    font-family: 'NeueMontreal', 'NeueMontreal-Regular', 'Lucida Grande', 'NeueMontrealUnicode', Geneva, Verdana, sans-serif;
-  }
+    font-family: 'NeueMontreal', 'NeueMontreal-Regular', 'Lucida Grande', 'NeueMontrealUnicode', Roboto, Verdana, sans-serif;
+}
 
 .nav li.active {
     border-radius: 2px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
+    color: #1d4ed8;
 }
 
 .nav li.active a {
-    /* background-color: #221C87; */
     color: #1d4ed8;
 }
 

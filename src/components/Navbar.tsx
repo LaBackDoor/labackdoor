@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
 
     return (
-        <nav className="nav active">
+        <nav className="nav">
             <Link to="/" className="nav-logo">
                 <img src="/icons/backdoor.png" height={50} width={50} alt="logo" />
             </Link>
@@ -12,8 +12,6 @@ function Navbar() {
                 <CustomLink to="/Group">Group</CustomLink>
                 <CustomLink to="/Projects">Projects</CustomLink>
                 <CustomLink to="Contact">Contact</CustomLink>
-
-
             </ul>
         </nav>
     )
@@ -28,10 +26,11 @@ interface ICustomLinkProps {
 
 
 function CustomLink({ to, children, ...props }: ICustomLinkProps) {
-    const path = window.location.pathname;
+    const location = useLocation();
+    const isActive = location.pathname === to;
 
     return (
-        <li className={path === to ? "active" : ""}>
+        <li className={isActive ? "active" : ""}>
             <Link to={to} {...props}>{children}</Link>
         </li>
     )
