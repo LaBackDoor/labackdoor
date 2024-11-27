@@ -55,11 +55,11 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
 
         switch (layout) {
             case 'primary':
-                return `${baseStyles} text-[#FFFFF0] bg-primary-main hover:bg-secondary-main focus:ring-primary-main`;
+                return `${baseStyles} text-[#FFFFF0] bg-primary-main hover:bg-[#6096BA] focus:ring-primary-main`;
             case 'secondary':
-                return `${baseStyles} text-[#6096BA] bg-secondary-main hover:bg-tertiary-main focus:ring-primary-main`;
+                return `${baseStyles} text-[#3626A7] bg-secondary-main hover:bg-[#000017] focus:ring-primary-main`;
             case 'tertiary':
-                return `${baseStyles} text-[#D7D5D5] bg-tertiary-main hover:bg-primary-main focus:ring-primary-main`;
+                return `${baseStyles} text-[#C2A87A] bg-tertiary-main hover:bg-primary-main focus:ring-primary-main`;
             default:
                 return baseStyles;
         }
