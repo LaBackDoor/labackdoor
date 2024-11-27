@@ -1,7 +1,7 @@
 // import { Route, Routes } from 'react-router-dom';
 
 import { LayoutProvider } from './contexts/LayoutContext';
-// import { Home } from './pages/Home';
+import { Home } from './pages/Home';
 import Layout from './layouts';
 
 
@@ -9,9 +9,9 @@ function App() {
 
   return (
     <LayoutProvider>
-      <Layout children={undefined} />
-      {/* <Home /> */}
-      {/* </Layout> */}
+      <Layout>
+        <Home />
+      </Layout>
     </LayoutProvider>
   )
 }
