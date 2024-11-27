@@ -1,5 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+
+@layer base {
+    @font-face {
+        font-family: "Akzidenz Grotesk";
+        font-weight: 500;
+        src: url(/public/fonts/Akzidenz\ Grotesk/);
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: "Druk";
+        font-weight: 500;
+        src: url(/public/fonts/Druk/DrukTextWide-Bold-Trial.otf);
+    }
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-

@@ -1,8 +1,9 @@
 // import { Route, Routes } from 'react-router-dom';
 
 import { LayoutProvider } from './contexts/LayoutContext';
-import Layout from './layouts';
+// import LayoutSwitcher from './components/LayoutSwitcher';
 import { Home } from './pages/Home';
+import Layout from './layouts';
 
 
 function App() {

@@ -1,10 +1,15 @@
+import clsx from "clsx";
 import { useLayout } from "../hooks/useLayout";
 
-const LayoutSwitcher = () => {
+interface ILayoutSwitcher {
+    className?: string;
+}
+
+function LayoutSwitcher({ className }: ILayoutSwitcher) {
     const { setLayout } = useLayout();
 
     return (
-        <div className="flex gap-4 p-4">
+        <div className={clsx("flex gap-4 p-4", className)}>
             <button
                 onClick={() => setLayout("primary")}
                 className="px-4 py-2 rounded text-[#FFFFF0] bg-primary-main hover:bg-primary-button-hover"

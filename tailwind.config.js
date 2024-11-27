@@ -3,10 +3,33 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        xxs: "0.4rem",
+        sm: '0.8rem',
+        base: '1rem',
+        xl: '1.25rem',
+        '2xl': '1.563rem',
+        '3xl': '1.953rem',
+        '4xl': '2.441rem',
+        '5xl': '3.052rem',
+      },
+      fontWeight: {
+        thin: '50',
+        hairline: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        black: '900',
+      },
       fontFamily: {
-        sans: ['Neue Montreal', 'Roboto', 'sans-serif'],
+        sans: ['Druk','Akzidenz Grotesk', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        neuemontreal: ['Neue Montreal', 'sans-serif'],
+        akzidenz: ['Akzidenz Grotesk', 'sans-serif'],
+        druk: ['Druk', 'sans-serif'],
       },
       backgroundColor: {
         primary: {

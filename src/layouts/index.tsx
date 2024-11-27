@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 
-import Navbar from '../components/Navbar';
 import { useLayout } from "../hooks/useLayout";
+import Navbar from '../components/Navbar';
+import Footer from "../components/Footer";
 
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -17,6 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <div className={`${layoutClasses[layout]} min-h-screen flex flex-col`}>
             {children}
             <Navbar />
+            <Footer />
         </div>
     );
 };

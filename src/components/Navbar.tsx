@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 // import { useEffect, useRef, useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
@@ -22,7 +23,7 @@ function CustomLink({ to, children, ...props }: ICustomLinkProps) {
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
     return (
-        <li className={isActive ? "active" : ""}>
+        <li className={clsx(isActive ? "active" : "", "list-none")}>
             <Link to={to} {...props}>{children}</Link>
         </li>
     )
@@ -97,79 +98,101 @@ function Navbar() {
     */}
 
     return (
-        <nav className="flex flex-row items-center justify-between">
-            <Link to="/" className="">
-                <img src="/icons/labackdoor.svg" height={70} width={70} alt="logo" />
-            </Link>
-            <ul className="flex flex-row items-center mx-5 space-x-7">
+        <nav className="flex flex-col w-full">
+            {/* Top section with logo */}
+            <div className="flex justify-start mx-5">
+                <div className="text-left">
+                    <Link to="/">
+                        <img src="/icons/labackdoor.svg" height={200} width={200} alt="logo" className="mx-auto" />
+                    </Link>
+                </div>
+            </div>
+
+            {/* Bottom section with evenly spaced items */}
+            <div className="flex items-center justify-between mx-5 text-xs font-extralight">
+                <p className="mt-1">
+                    Research Lab of <span className="font-normal"><a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a></span> & <br /><span className="font-normal"><a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a></span>
+                </p>
+                <div className="font-hairline">
+                    <span>Waco, TX</span> <br /> <span className="font-normal">hello@labackdoor.com</span>
+                </div>
+                {/* <div className="text-xs font-hairline">
+                    Waco
+                </div> */}
+                {/* <div className="text-xs font-hairline">
+                    Waco
+                </div> */}
                 <CustomLink to="/About">About</CustomLink>
                 <CustomLink to="/Group">Group</CustomLink>
                 <CustomLink to="/Projects">Projects</CustomLink>
-                <CustomLink to="Contact">Contact</CustomLink>
-            </ul>
-
-            {/*             
-            <div className="flex-1 max-w-xl mx-4" ref={searchRef}>
-                <form onSubmit={handleSearch} className="relative">
-                    <div className="relative">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            onFocus={() => setIsSearchFocused(true)}
-                            placeholder="Search..."
-                            className="w-full px-4 py-2 pl-10 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                        <SearchIcon
-                            className="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2"
-                            size={18}
-                        />
-                        {searchQuery && (
-                            <button
-                                type="button"
-                                onClick={clearSearch}
-                                className="absolute text-gray-400 transform -translate-y-1/2 right-3 top-1/2 hover:text-gray-600"
-                            >
-                                <CloseIcon size={18} />
-                            </button>
-                        )}
-                    </div>
-                    
-                    {isSearchFocused && searchQuery && searchResults.length > 0 && (
-                        <div className="absolute z-50 w-full mt-2 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg max-h-96">
-                            {searchResults.map((result) => (
-                                <button
-                                    key={result.id}
-                                    onClick={() => handleResultClick(result.link)}
-                                    className="flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50 group"
-                                >
-                                    <div>
-                                        <div className="font-medium text-gray-800 group-hover:text-blue-600">
-                                            {result.title}
-                                        </div>
-                                        <div className="text-sm text-gray-500">
-                                            {result.category}
-                                        </div>
-                                    </div>
-                                    <span className="text-gray-400 group-hover:text-blue-600">
-                                        <SearchIcon size={16} />
-                                    </span>
-                                </button>
-                            ))}
-                        </div>
-                    )}
-
-                    {isSearchFocused && searchQuery && searchResults.length === 0 && (
-                        <div className="absolute z-50 w-full p-4 mt-2 text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-lg">
-                            No results found for "{searchQuery}"
-                        </div>
-                    )}
-        </form>
-            </div >
-                    */}
-
+                {/* <CustomLink to="/Contact">Contact</CustomLink> */}
+            </div>
         </nav>
     )
 }
 
 export default Navbar;
+
+
+
+
+
+{/*             
+<div className="flex-1 max-w-xl mx-4" ref={searchRef}>
+    <form onSubmit={handleSearch} className="relative">
+        <div className="relative">
+            <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                placeholder="Search..."
+                className="w-full px-4 py-2 pl-10 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <SearchIcon
+                className="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2"
+                size={18}
+            />
+            {searchQuery && (
+                <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="absolute text-gray-400 transform -translate-y-1/2 right-3 top-1/2 hover:text-gray-600"
+                >
+                    <CloseIcon size={18} />
+                </button>
+            )}
+        </div>
+        
+        {isSearchFocused && searchQuery && searchResults.length > 0 && (
+            <div className="absolute z-50 w-full mt-2 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg max-h-96">
+                {searchResults.map((result) => (
+                    <button
+                        key={result.id}
+                        onClick={() => handleResultClick(result.link)}
+                        className="flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50 group"
+                    >
+                        <div>
+                            <div className="font-medium text-gray-800 group-hover:text-blue-600">
+                                {result.title}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                                {result.category}
+                            </div>
+                        </div>
+                        <span className="text-gray-400 group-hover:text-blue-600">
+                            <SearchIcon size={16} />
+                        </span>
+                    </button>
+                ))}
+            </div>
+        )}
+
+        {isSearchFocused && searchQuery && searchResults.length === 0 && (
+            <div className="absolute z-50 w-full p-4 mt-2 text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-lg">
+                No results found for "{searchQuery}"
+            </div>
+        )}
+</form>
+</div >
+        */}
