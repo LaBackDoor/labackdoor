@@ -1,7 +1,6 @@
 // import { Route, Routes } from 'react-router-dom';
 
 import { LayoutProvider } from './contexts/LayoutContext';
-// import LayoutSwitcher from './components/LayoutSwitcher';
 import { Home } from './pages/Home';
 import Layout from './layouts';
 

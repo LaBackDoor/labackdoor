@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { useLayout } from "../hooks/useLayout";
 import Navbar from '../components/Navbar';
 import Footer from "../components/Footer";
+import ColorSwitch from "../components/ColorSwitcher";
 
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -16,7 +17,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
     return (
         <div className={`${layoutClasses[layout]} min-h-screen flex flex-col`}>
-            {children}
+            <main className="flex-grow">
+                {children}
+            </main>
+            <div className="fixed bottom-4 right-4">
+                <ColorSwitch />
+            </div>
             <Navbar />
             <Footer />
         </div>

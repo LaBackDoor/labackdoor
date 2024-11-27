@@ -2,8 +2,12 @@ import { clsx } from "clsx";
 // import { useEffect, useRef, useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
+import { useLayout } from "../hooks/useLayout";
+
+
 {/*
 // import { SearchIcon, CloseIcon } from "../resources/icons";
+import ColorSwitch from './ColorSwitcher';
 
 // interface ISearchItem {
 //     id: number;
@@ -30,6 +34,22 @@ function CustomLink({ to, children, ...props }: ICustomLinkProps) {
 }
 
 function Navbar() {
+
+    const { layout } = useLayout();
+
+    const getLogoSrc = () => {
+        switch (layout) {
+            case 'primary':
+                return '/icons/lbd_olive.svg';
+            case 'secondary':
+                return '/icons/lbd_snow.svg';
+            case 'tertiary':
+                return '/icons/lbd_gun.svg';
+            default:
+                return '/icons/lbd_olive.svg';
+        }
+    };
+
 
     {/*
     const [searchQuery, setSearchQuery] = useState("");
@@ -103,7 +123,13 @@ function Navbar() {
             <div className="flex justify-start mx-5">
                 <div className="text-left">
                     <Link to="/">
-                        <img src="/icons/labackdoor.svg" height={200} width={200} alt="logo" className="mx-auto" />
+                        <img
+                            src={getLogoSrc()}
+                            height={200}
+                            width={200}
+                            alt="LABACKDOOR logo"
+                            className="mx-auto transition-all duration-300"
+                        />
                     </Link>
                 </div>
             </div>
@@ -114,7 +140,7 @@ function Navbar() {
                     Research Lab of <span className="font-normal"><a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a></span> & <br /><span className="font-normal"><a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a></span>
                 </p>
                 <div className="font-hairline">
-                    <span>Waco, TX</span> <br /> <span className="font-normal">hello@labackdoor.com</span>
+                    <span>Waco, TX</span> <br /> <span className="font-normal"><a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a></span>
                 </div>
                 {/* <div className="text-xs font-hairline">
                     Waco
@@ -123,8 +149,8 @@ function Navbar() {
                     Waco
                 </div> */}
                 <CustomLink to="/About">About</CustomLink>
-                <CustomLink to="/Group">Group</CustomLink>
-                <CustomLink to="/Projects">Projects</CustomLink>
+                {/* <CustomLink to="/Group">Group</CustomLink> */}
+                {/* <CustomLink to="/Projects">Projects</CustomLink> */}
                 {/* <CustomLink to="/Contact">Contact</CustomLink> */}
             </div>
         </nav>
