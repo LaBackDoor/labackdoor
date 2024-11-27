@@ -1,26 +1,25 @@
 import { FaArrowRightLong, FaArrowLeftLong, FaGithubAlt, FaLinkedin, FaFileLines } from "react-icons/fa6";
-import { BsSubstack } from "react-icons/bs";
-import { IoMenu } from "react-icons/io5";
+import { GiOlive, GiRayGun, GiSnowman, GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose, IoIosSearch } from "react-icons/io"
-import { GiOlive, GiRayGun, GiSnowman } from "react-icons/gi";
+import { BsSubstack } from "react-icons/bs";
 
 
 // Fa6 Icons
-export const ResumeIcon = FaFileLines;
-export const BackIcon = FaArrowLeftLong;
 export const ForthIcon = FaArrowRightLong;
+export const BackIcon = FaArrowLeftLong;
+export const ResumeIcon = FaFileLines;
 
 // Social Icons
-export const GithubIcon = FaGithubAlt;
 export const SubstackIcon = BsSubstack;
 export const LinkedInIcon = FaLinkedin;
+export const GithubIcon = FaGithubAlt;
 
 // Menu Icons
-export const MenuIcon = IoMenu;
-export const CloseIcon = IoMdClose;
+export const MenuIcon = GiHamburgerMenu;
 export const SearchIcon = IoIosSearch;
+export const CloseIcon = IoMdClose;
 
 // Layout Icons
+export const Snow = GiSnowman;
 export const Olive = GiOlive;
 export const Gun = GiRayGun;
-export const Snow = GiSnowman;

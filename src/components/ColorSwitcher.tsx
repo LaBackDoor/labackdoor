@@ -55,11 +55,11 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
 
         switch (layout) {
             case 'primary':
-                return `${baseStyles} text-[#FFFFF0] bg-primary-main hover:bg-primary-button-hover focus:ring-primary-main`;
+                return `${baseStyles} text-[#FFFFF0] bg-primary-main hover:bg-secondary-main focus:ring-primary-main`;
             case 'secondary':
-                return `${baseStyles} text-[#6096BA] bg-secondary-main hover:bg-secondary-button-hover focus:ring-secondary-main`;
+                return `${baseStyles} text-[#6096BA] bg-secondary-main hover:bg-tertiary-main focus:ring-primary-main`;
             case 'tertiary':
-                return `${baseStyles} text-[#D7D5D5] bg-tertiary-main hover:bg-tertiary-button-hover focus:ring-tertiary-main`;
+                return `${baseStyles} text-[#D7D5D5] bg-tertiary-main hover:bg-primary-main focus:ring-primary-main`;
             default:
                 return baseStyles;
         }
@@ -76,28 +76,14 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
         }
     };
 
-    // const getNextModeName = () => {
-    //     switch (mode) {
-    //         case 'light':
-    //             return 'Night';
-    //         case 'night':
-    //             return 'Ultra';
-    //         case 'ultra':
-    //             return 'Light';
-    //     }
-    // };
 
     return (
         <div className={`${className}`}>
             <button
                 onClick={toggleMode}
                 className={getButtonStyles()}
-            // aria-label={`Switch to ${mode === 'light' ? 'Night' : mode === 'night' ? 'Ultra' : 'Light'} Mode`}
             >
                 {getNextIcon()}
-                {/* <span className="ml-2">
-                    {mode === 'light' ? 'Night' : mode === 'night' ? 'Ultra' : 'Light'}
-                </span> */}
             </button>
         </div>
     );

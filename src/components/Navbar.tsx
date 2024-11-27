@@ -140,18 +140,9 @@ function Navbar() {
                     Research Lab of <span className="font-normal"><a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a></span> & <br /><span className="font-normal"><a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a></span>
                 </p>
                 <div className="font-hairline">
-                    <span>Waco, TX</span> <br /> <span className="font-normal"><a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a></span>
+                    <span>USA</span> <br /> <span className="font-normal"><a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a></span>
                 </div>
-                {/* <div className="text-xs font-hairline">
-                    Waco
-                </div> */}
-                {/* <div className="text-xs font-hairline">
-                    Waco
-                </div> */}
                 <CustomLink to="/About">About</CustomLink>
-                {/* <CustomLink to="/Group">Group</CustomLink> */}
-                {/* <CustomLink to="/Projects">Projects</CustomLink> */}
-                {/* <CustomLink to="/Contact">Contact</CustomLink> */}
             </div>
         </nav>
     )
@@ -162,6 +153,9 @@ export default Navbar;
 
 
 
+{/* <CustomLink to="/Group">Group</CustomLink> */ }
+{/* <CustomLink to="/Projects">Projects</CustomLink> */ }
+{/* <CustomLink to="/Contact">Contact</CustomLink> */ }
 
 {/*             
 <div className="flex-1 max-w-xl mx-4" ref={searchRef}>
