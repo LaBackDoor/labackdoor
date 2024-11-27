@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <div className={`${layoutClasses[layout]} min-h-screen flex flex-col`}>
+        <div className={`${layoutClasses[layout]} min-h-screen flex flex-col group`}>
             <main className="flex-grow">
                 {children}
             </main>
@@ -24,7 +24,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 <ColorSwitch />
             </div>
             <Navbar />
-            <Footer />
+            <div className="mt-auto">
+                <Footer />
+            </div>
         </div>
     );
 };
