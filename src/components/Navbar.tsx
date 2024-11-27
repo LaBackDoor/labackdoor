@@ -135,14 +135,27 @@ function Navbar() {
             </div>
 
             {/* Bottom section with evenly spaced items */}
-            <div className="flex items-center justify-between mx-5 text-xs font-extralight">
-                <p className="mt-1">
-                    Research Lab of <span className="font-normal"><a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a></span> & <br /><span className="font-normal"><a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a></span>
-                </p>
-                <div className="font-hairline">
-                    <span>USA</span> <br /> <span className="font-normal"><a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a></span>
+            <div className="flex items-start justify-start gap-12 mx-5 mt-2 text-sm font-extralight">
+                <div className="flex flex-col">
+                    <p>
+                        Research Lab of <span className="font-normal"><a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a></span> & <br />
+                        <span className="font-normal"><a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a></span>
+                    </p>
                 </div>
-                <CustomLink to="/About">About</CustomLink>
+
+                <div className="flex flex-col ml-2 font-hairline">
+                    <span>USA</span>
+                    <span className="font-normal">
+                        <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
+                    </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-x-16 gap-y-0.5 ml-4">
+                    <CustomLink to="/About">about</CustomLink>
+                    <CustomLink to="/Projects">projects</CustomLink>
+                    <CustomLink to="/Group">group</CustomLink>
+                    <CustomLink to="/Contact">contact</CustomLink>
+                </div>
             </div>
         </nav>
     )
@@ -150,12 +163,20 @@ function Navbar() {
 
 export default Navbar;
 
+{/* <div className="flex items-center justify-start grid-cols-2 gap-16 mx-5 text-sm font-extralight gap-y-2">
+    <p>Research Lab of <span className="font-normal"><a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a></span> &</p>
+    <p><span className="font-normal"><a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a></span></p>
+    <p className="font-hairline">USA</p>
+    <p className="font-normal"><a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a></p>
+</div> */}
 
 
 
-{/* <CustomLink to="/Group">Group</CustomLink> */ }
-{/* <CustomLink to="/Projects">Projects</CustomLink> */ }
-{/* <CustomLink to="/Contact">Contact</CustomLink> */ }
+
+
+
+
+
 
 {/*             
 <div className="flex-1 max-w-xl mx-4" ref={searchRef}>
