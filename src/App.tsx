@@ -1,30 +1,45 @@
-import { Route, Routes } from 'react-router-dom';
+// import { Route, Routes } from 'react-router-dom';
 
-import { Projects } from './pages/Projects';
-import { Contact } from './pages/Contact';
-import Navbar from './components/Navbar';
-import { About } from './pages/About';
-import { Group } from './pages/Group';
+import { LayoutProvider } from './contexts/LayoutContext';
+import Layout from './layouts';
 import { Home } from './pages/Home';
 
 
 function App() {
 
   return (
-    <>
-      <Navbar />
-      <div className='container'>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/About' element={<About />} />
-          <Route path='/Contact' element={<Contact />} />
-          <Route path='/Group' element={<Group />} />
-          <Route path='/Projects' element={<Projects />} />
-        </Routes>
-
-      </div>
-    </>
+    <LayoutProvider>
+      <Layout>
+        <Home />
+      </Layout>
+    </LayoutProvider>
   )
 }
 
 export default App;
+
+
+
+
+// PLEASE DO NOT REMOVE ANY OF THESE. THEY'RE BEING SAVED FOR LATER <3
+{/*<Routes>
+  <Route path='/' element={<Home />} />
+</Routes> */}
+
+
+{/*
+  <Route path='/About' element={<About />} />
+  <Route path='/Contact' element={<Contact />} />
+  <Route path='/Group' element={<Group />} />
+  <Route path='/Projects' element={<Projects />} />
+*/}
+
+
+{/*
+  <LayoutProvider>
+      <Layout>
+        <LayoutSwitcher />
+        <h1 className="p-4">Welcome to the Dynamic Layout App</h1>
+      </Layout>
+    </LayoutProvider>
+  */}

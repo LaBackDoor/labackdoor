@@ -1,29 +1,21 @@
+// import { useEffect, useRef, useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
-function Navbar() {
+{/*
+// import { SearchIcon, CloseIcon } from "../resources/icons";
 
-    return (
-        <nav className="nav">
-            <Link to="/" className="nav-logo">
-                <img src="/icons/backdoor.png" height={50} width={50} alt="logo" />
-            </Link>
-            <ul>
-                <CustomLink to="/About">About</CustomLink>
-                <CustomLink to="/Group">Group</CustomLink>
-                <CustomLink to="/Projects">Projects</CustomLink>
-                <CustomLink to="Contact">Contact</CustomLink>
-            </ul>
-        </nav>
-    )
-}
-
-export default Navbar;
+// interface ISearchItem {
+//     id: number;
+//     title: string;
+//     category: string;
+//     link: string;
+// }
+*/}
 
 interface ICustomLinkProps {
     to: string;
     children: React.ReactNode;
 }
-
 
 function CustomLink({ to, children, ...props }: ICustomLinkProps) {
     const resolvedPath = useResolvedPath(to);
@@ -35,3 +27,149 @@ function CustomLink({ to, children, ...props }: ICustomLinkProps) {
         </li>
     )
 }
+
+function Navbar() {
+
+    {/*
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isSearchFocused, setIsSearchFocused] = useState(false);
+    const [searchResults, setSearchResults] = useState<ISearchItem[]>([]);
+    const searchRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
+
+    // Sample data - replace with your actual data
+        const sampleData: ISearchItem[] = [
+        { id: 1, title: "React Development", category: "Projects", link: "/projects/react" },
+        { id: 2, title: "Team Members", category: "Group", link: "/group" },
+        { id: 3, title: "Contact Information", category: "Contact", link: "/contact" },
+        { id: 4, title: "About Us", category: "About", link: "/about" },
+        { id: 5, title: "Node.js Backend", category: "Projects", link: "/projects/node" },
+        { id: 6, title: "API Documentation", category: "Projects", link: "/projects/api" },
+    ];
+
+    // Handle click outside search results
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                setIsSearchFocused(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [sampleData]);
+
+    // Search functionality
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (searchResults.length > 0) {
+            navigate(searchResults[0].link);
+            setSearchQuery("");
+            setIsSearchFocused(false);
+        }
+    };
+
+    // Filter results based on search query
+    useEffect(() => {
+        if (searchQuery.trim() === "") {
+            setSearchResults([]);
+            return;
+        }
+
+        const filtered = sampleData.filter(item =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.category.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setSearchResults(filtered);
+    }, [sampleData, searchQuery]);
+
+    const clearSearch = () => {
+        setSearchQuery("");
+        setSearchResults([]);
+    };
+
+    // Handle result click
+    const handleResultClick = (link: string) => {
+        navigate(link);
+        setSearchQuery("");
+        setIsSearchFocused(false);
+        };
+    */}
+
+    return (
+        <nav className="flex flex-row items-center justify-between">
+            <Link to="/" className="">
+                <img src="/icons/labackdoor.svg" height={70} width={70} alt="logo" />
+            </Link>
+            <ul className="flex flex-row items-center mx-5 space-x-7">
+                <CustomLink to="/About">About</CustomLink>
+                <CustomLink to="/Group">Group</CustomLink>
+                <CustomLink to="/Projects">Projects</CustomLink>
+                <CustomLink to="Contact">Contact</CustomLink>
+            </ul>
+
+            {/*             
+            <div className="flex-1 max-w-xl mx-4" ref={searchRef}>
+                <form onSubmit={handleSearch} className="relative">
+                    <div className="relative">
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onFocus={() => setIsSearchFocused(true)}
+                            placeholder="Search..."
+                            className="w-full px-4 py-2 pl-10 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        />
+                        <SearchIcon
+                            className="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2"
+                            size={18}
+                        />
+                        {searchQuery && (
+                            <button
+                                type="button"
+                                onClick={clearSearch}
+                                className="absolute text-gray-400 transform -translate-y-1/2 right-3 top-1/2 hover:text-gray-600"
+                            >
+                                <CloseIcon size={18} />
+                            </button>
+                        )}
+                    </div>
+                    
+                    {isSearchFocused && searchQuery && searchResults.length > 0 && (
+                        <div className="absolute z-50 w-full mt-2 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg max-h-96">
+                            {searchResults.map((result) => (
+                                <button
+                                    key={result.id}
+                                    onClick={() => handleResultClick(result.link)}
+                                    className="flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50 group"
+                                >
+                                    <div>
+                                        <div className="font-medium text-gray-800 group-hover:text-blue-600">
+                                            {result.title}
+                                        </div>
+                                        <div className="text-sm text-gray-500">
+                                            {result.category}
+                                        </div>
+                                    </div>
+                                    <span className="text-gray-400 group-hover:text-blue-600">
+                                        <SearchIcon size={16} />
+                                    </span>
+                                </button>
+                            ))}
+                        </div>
+                    )}
+
+                    {isSearchFocused && searchQuery && searchResults.length === 0 && (
+                        <div className="absolute z-50 w-full p-4 mt-2 text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-lg">
+                            No results found for "{searchQuery}"
+                        </div>
+                    )}
+        </form>
+            </div >
+                    */}
+
+        </nav>
+    )
+}
+
+export default Navbar;
