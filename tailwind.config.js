@@ -3,6 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      textShadow: {
+        outline: `-1px -1px 0 #000, 1px -1px 0 #000,
+         -1px 1px 0 #000, 1px 1px 0 #000`,
+      },
       fontSize: {
         xxs: "0.4rem",
         sm: '0.8rem',
@@ -95,5 +99,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+          '.text-outline': {
+          textShadow: `-1px -1px 0 #000, 1px -1px 0 #000,
+              -1px 1px 0 #000, 1px 1px 0 #000`,
+          },
+      };
+      addUtilities(newUtilities, ['hover']);
+  },
+  ],
 }

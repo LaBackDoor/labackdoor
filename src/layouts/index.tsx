@@ -16,17 +16,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <div className={`${layoutClasses[layout]} min-h-screen flex flex-col group`}>
-            <main className="flex-grow">
+        <div className={`${layoutClasses[layout]} min-h-screen flex flex-col overflow-hidden group`}>
+            <main className="relative flex-1 pb-48">
                 {children}
             </main>
-            <div className="fixed bottom-4 right-4">
+            <div className="fixed z-50 bottom-4 right-4">
                 <ColorSwitch />
             </div>
-            <Navbar />
-            <div className="mt-auto">
-                <Footer />
-            </div>
+            <Navbar className="mb-6" />
+            <Footer />
         </div>
     );
 };
