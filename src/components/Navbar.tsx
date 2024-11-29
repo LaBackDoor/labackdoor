@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { useLayout } from "../hooks/useLayout";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
+import Footer from "../components/Footer";
 import Logo from "./Logo";
 
 
@@ -36,11 +37,11 @@ const Navbar: React.FC<INavbar> = ({
             case 'primary':
                 return "text-[#C2A87A]";
             case 'secondary':
-                return "text-[#8B8C89]";
+                return "text-[#71717A]";
             case 'tertiary':
                 return "text-[#DDCECD]";
             default:
-                return "text-[#8B8C89]";
+                return "text-[#71717A]";
         }
     };
 
@@ -56,28 +57,31 @@ const Navbar: React.FC<INavbar> = ({
                 <div className={`flex items-start justify-start gap-12 mx-5 mt-[0.5] text-sm font-extralight ${getNavTextStyles()}`}>
                     <div className="flex flex-col">
                         <p>
-                            Research Lab of <span className="font-normal">
+                            Research Lab of <span className="font-bold">
                                 <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
                             </span> & <br />
-                            <span className="font-normal">
+                            <span className="font-bold">
                                 <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
                             </span>
                         </p>
                     </div>
 
-                    <div className="flex flex-col ml-2 font-hairline">
+                    <div className="flex flex-col ml-2 font-normal">
                         <span>USA</span>
-                        <span className="font-normal">
+                        <span className="font-bold">
                             <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
                         </span>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-x-16 gap-y-0.5 ml-4">
+                    <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
                         <CustomLink to="/About">about</CustomLink>
                         <CustomLink to="/Projects">projects</CustomLink>
                         <CustomLink to="/Group">group</CustomLink>
                         <CustomLink to="/Contact">contact</CustomLink>
                     </div>
+                </div>
+                <div className="mt-5">
+                    <Footer />
                 </div>
             </div>
         </nav>
@@ -86,42 +90,3 @@ const Navbar: React.FC<INavbar> = ({
 
 export default Navbar;
 
-
-
-
-/**
- * 
- * 
- <div className={`flex items-start justify-start gap-12 mx-5 mt-[0.5] text-sm font-extralight ${getNavTextStyles()}`}>
-                    <div className="flex flex-col">
-                        <p>
-                            Research Lab of <span className="font-normal">
-                                <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
-                            </span> & <br />
-                            <span className="font-normal">
-                                <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
-                            </span>
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col ml-2 font-hairline">
-                        <span>USA</span>
-                        <span className="font-normal">
-                            <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
-                        </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-x-16 gap-y-0.5 ml-4">
-                        <CustomLink to="/About">about</CustomLink>
-                        <CustomLink to="/Projects">projects</CustomLink>
-                        <CustomLink to="/Group">group</CustomLink>
-                        <CustomLink to="/Contact">contact</CustomLink>
-                    </div>
-                </div> 
- 
- 
- 
- 
- 
- 
- */
