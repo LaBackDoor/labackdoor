@@ -31,7 +31,7 @@ const ProjectLinks = () => {
                 {projects.map((project, index) => (
                     <li
                         key={project.name}
-                        className="relative cursor-pointer w-[250%] text-right overflow-hidden"
+                        className="relative project-link cursor-pointer w-[250%] text-right overflow-hidden"
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
                     >
@@ -39,7 +39,7 @@ const ProjectLinks = () => {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`relative inline-block text-[7vw] leading-[0.9] font-extrabold uppercase tracking-wider whitespace-pre-line transition-transform duration-[1500ms] ease-out font-druk
+                            className={`relative project-link inline-block text-[7vw] leading-[0.9] font-black uppercase tracking-tighter whitespace-pre-line transition-transform duration-[1500ms] ease-out font-druk
                                 ${hoveredIndex === index ? 'translate-x-[50%]' : 'translate-x-0'}`}
                             data-info={project.year}
                         >

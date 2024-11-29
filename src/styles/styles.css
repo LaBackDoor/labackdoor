@@ -4,7 +4,7 @@
     @font-face {
         font-family: "Akzidenz Grotesk";
         font-weight: 500;
-        src: url(/public/fonts/Akzidenz\ Grotesk/);
+        src: url(/fonts/Akzidenz\ Grotesk/);
     }
 }
 
@@ -12,7 +12,15 @@
     @font-face {
         font-family: "Druk";
         font-weight: 800;
-        src: url(/public/fonts/Druk/DrukTextWide-Bold-Trial.otf);
+        src: url(/fonts/Druk/DrukWide-Heavy-Trial.otf);
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: "DrukCond-Super-Trial";
+        font-weight: 900;
+        src: url(/fonts/Druk/DrukCond-Super-Trial.otf);
     }
 }
 
@@ -20,3 +28,123 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.project-link a {
+    color: var(--default-text-color); /* Use CSS variables for text colors */
+    text-transform: uppercase;
+    font-family: "Druk", sans-serif;
+    font-weight: 800;
+    font-size: 9.6vw; /* Responsive font size */
+    letter-spacing: 0.02em;
+    line-height: 0.9em;
+    transition: all 2s ease-in-out; /* Smooth transition for color and stroke changes */
+  }
+  
+  .project-link a:hover {
+    -webkit-text-stroke: 3px var(--hover-text-stroke-color); /* Apply text stroke on hover based on theme */
+    color: transparent; /* Make the fill transparent so the stroke appears prominent */
+}
+
+.logo-link {
+    color: var(--default-text-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.logo-link img {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.logo-link img:hover {
+    -webkit-text-stroke: 3px var(--hover-text-stroke-color);
+    opacity: 0.2;
+    color: transparent;
+    fill: none;
+}
+
+.text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+}
+
+@supports not (-webkit-text-stroke: 1px currentColor) {
+    .text-stroke {
+        text-shadow: -1px -1px 0 currentColor,  
+                     1px -1px 0 currentColor,
+                     -1px 1px 0 currentColor,
+                     1px 1px 0 currentColor;
+    }
+}
+
+/* In styles.css */
+.logo-outline-primary {
+    color: transparent;
+    text-shadow: 
+        -1px -1px 0 #8B8C89,  
+         1px -1px 0 #8B8C89,
+        -1px  1px 0 #8B8C89,
+         1px  1px 0 #8B8C89,
+        -2px -2px 0 #8B8C89,  
+         2px -2px 0 #8B8C89,
+        -2px  2px 0 #8B8C89,
+         2px  2px 0 #8B8C89;
+}
+
+.logo-outline-secondary {
+    color: transparent;
+    text-shadow: 
+        -1px -1px 0 #C2A87A,  
+         1px -1px 0 #C2A87A,
+        -1px  1px 0 #C2A87A,
+         1px  1px 0 #C2A87A,
+        -2px -2px 0 #C2A87A,  
+         2px -2px 0 #C2A87A,
+        -2px  2px 0 #C2A87A,
+         2px  2px 0 #C2A87A;
+}
+
+.logo-outline-tertiary {
+    color: transparent;
+    text-shadow: 
+        -1px -1px 0 #DDCECD,  
+         1px -1px 0 #DDCECD,
+        -1px  1px 0 #DDCECD,
+         1px  1px 0 #DDCECD,
+        -2px -2px 0 #DDCECD,  
+         2px -2px 0 #DDCECD,
+        -2px  2px 0 #DDCECD,
+         2px  2px 0 #DDCECD;
+}
+
+
+  @media screen and (min-width: 768px) and (max-width: 1320px) {
+    .project-link a:hover {
+      -webkit-text-stroke-width: 2px;
+    }
+    .logo-link:hover img {
+        -webkit-text-stroke-width: 2px;
+    }
+}
+  
+  @media screen and (max-width: 767px) {
+    .project-link a:hover {
+      -webkit-text-stroke-width: 1px;
+    }
+    .logo-link:hover img {
+        -webkit-text-stroke-width: 1px;
+    }
+}
+
+  /* Define theme colors for different layouts */
+  body.light-mode {
+    --default-text-color: #6096BA;
+    --hover-text-stroke-color: #6096BA;
+  }
+  
+  body.night-mode {
+    --default-text-color: #7E78D2;
+    --hover-text-stroke-color: #7E78D2;
+}
+
+body.ultra-mode {
+    --default-text-color: #FFFFF0;
+    --hover-text-stroke-color: #FFFFF0;
+  }
