@@ -7,6 +7,9 @@ export default {
         outline: `-1px -1px 0 #000, 1px -1px 0 #000,
          -1px 1px 0 #000, 1px 1px 0 #000`,
       },
+      letterSpacing: {
+        gorilla: '-0.12em'
+      },
       fontSize: {
         xxs: "0.4rem",
         sm: '0.8rem',
@@ -16,6 +19,10 @@ export default {
         '3xl': '1.953rem',
         '4xl': '2.441rem',
         '5xl': '3.052rem',
+        '6xl': '3.815rem',
+        '7xl': '4.768rem',
+        '8xl': '5.960rem',
+        '9xl': '7.450rem',
       },
       fontWeight: {
         thin: '50',
@@ -30,10 +37,11 @@ export default {
         black: '900',
       },
       fontFamily: {
-        sans: ['Druk','Akzidenz Grotesk', 'sans-serif'],
+        sans: ['Akzidenz Grotesk', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
         akzidenz: ['Akzidenz Grotesk', 'sans-serif'],
-        druk: ['Druk', 'sans-serif'],
+        druk: ['DrukWide-Super-Trial', 'sans-serif'],
+        drukcond: ['DrukCond-Super-Trial', 'sans-serif']
       },
       backgroundColor: {
         primary: {

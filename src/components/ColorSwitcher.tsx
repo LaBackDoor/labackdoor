@@ -19,12 +19,14 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
     useEffect(() => {
         const body = document.body;
         if (body.classList.contains('night-mode')) {
-            setMode('night');
-            setLayout('tertiary');
-        } else if (body.classList.contains('ultra-mode')) {
             setMode('ultra');
             setLayout('primary');
-        } else {
+        }
+        else if (body.classList.contains('ultra-mode')) {
+            setMode('night');
+            setLayout('tertiary');
+        }
+        else {
             setMode('light');
             setLayout('secondary');
         }
