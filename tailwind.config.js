@@ -45,7 +45,7 @@ export default {
       },
       backgroundColor: {
         primary: {
-          main: "#3A4135",   // blackOlive
+          main: "#B8336A",   // raspberryRose
           button: {
             main: "#C2A87A",
             hover: "#B3A489",
@@ -53,7 +53,7 @@ export default {
             transparent: "#A5A097"
           },
           text: {
-            main: "#FFFFF0"
+            main: "#F5E9E2"
           }
         },
         secondary: {

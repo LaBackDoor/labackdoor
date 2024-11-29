@@ -27,11 +27,11 @@ const ProjectLinks = () => {
 
     return (
         <div className="flex items-center justify-end w-full h-full mt-28">
-            <ul className="flex flex-col items-end gap-12 overflow-hidden">
+            <ul className="flex flex-col items-end gap-12 overflow-visible">
                 {projects.map((project, index) => (
                     <li
                         key={project.name}
-                        className="relative project-link cursor-pointer w-[250%] text-right overflow-hidden"
+                        className="relative w-full text-right cursor-pointer project-link"
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
                     >
@@ -40,7 +40,7 @@ const ProjectLinks = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`relative project-link inline-block text-[7vw] leading-[0.9] font-black uppercase tracking-tighter whitespace-pre-line transition-transform duration-[1500ms] ease-out font-druk
-                                ${hoveredIndex === index ? 'translate-x-[50%]' : 'translate-x-0'}`}
+                                ${hoveredIndex === index ? 'translate-x-[30%]' : 'translate-x-0'}`}
                             data-info={project.year}
                         >
                             <span className="relative inline-block">

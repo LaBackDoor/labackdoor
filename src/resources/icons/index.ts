@@ -1,5 +1,5 @@
 import { FaArrowRightLong, FaArrowLeftLong, FaGithubAlt, FaLinkedin, FaFileLines } from "react-icons/fa6";
-import { GiOlive, GiRayGun, GiSnowman, GiHamburgerMenu } from "react-icons/gi";
+import { GiOlive, GiRayGun, GiSnowman, GiHamburgerMenu, GiRaspberry } from "react-icons/gi";
 import { IoMdClose, IoIosSearch } from "react-icons/io"
 import { BsSubstack } from "react-icons/bs";
 
@@ -20,6 +20,7 @@ export const SearchIcon = IoIosSearch;
 export const CloseIcon = IoMdClose;
 
 // Layout Icons
+export const Rasp = GiRaspberry;
 export const Snow = GiSnowman;
 export const Olive = GiOlive;
 export const Gun = GiRayGun;
