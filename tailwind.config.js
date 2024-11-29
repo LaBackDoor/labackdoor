@@ -46,7 +46,7 @@ export default {
       },
       backgroundColor: {
         primary: {
-          main: "#3B3C36",   // raspberryRose
+          main: "#3B3C36",
           button: {
             main: "#C2A87A",
             hover: "#B3A489",

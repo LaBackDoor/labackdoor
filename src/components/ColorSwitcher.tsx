@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { LAYOUT_VALUES, LayoutType } from '../resources/constants';
-import { Gun, Rasp, Snow } from '../resources/icons';
+import { Gun, Olive, Snow } from '../resources/icons';
 import { useLayout } from '../hooks/useLayout';
 
 
@@ -60,7 +60,7 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
             case 'secondary':
                 return `${baseStyles} text-[#000017] bg-secondary-main hover:bg-[#3626A7] focus:ring-primary-main`;
             case 'tertiary':
-                return `${baseStyles} text-[#B8336A] bg-tertiary-main hover:bg-[#F5E9E2] focus:ring-primary-main`;
+                return `${baseStyles} text-[#FFFFF0] bg-tertiary-main hover:bg-[#3B3C36] focus:ring-primary-main`;
             default:
                 return baseStyles;
         }
@@ -71,7 +71,7 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
             case 'light':
                 return <Gun className="w-4 h-4" />;
             case 'night':
-                return <Rasp className="w-4 h-4" />;
+                return <Olive className="w-4 h-4" />;
             case 'ultra':
                 return <Snow className="w-4 h-4" />;
         }
