@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import { Olive, Gun, Snow } from '../resources/icons';
+import { LAYOUT_VALUES, LayoutType } from '../resources/constants';
+import { Gun, Rasp, Snow } from '../resources/icons';
 import { useLayout } from '../hooks/useLayout';
 
 
@@ -19,16 +20,14 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
     useEffect(() => {
         const body = document.body;
         if (body.classList.contains('night-mode')) {
-            setMode('ultra');
-            setLayout('primary');
-        }
-        else if (body.classList.contains('ultra-mode')) {
             setMode('night');
-            setLayout('tertiary');
-        }
-        else {
+            setLayout(LAYOUT_VALUES.TERTIARY);
+        } else if (body.classList.contains('ultra-mode')) {
+            setMode('ultra');
+            setLayout(LAYOUT_VALUES.PRIMARY);
+        } else {
             setMode('light');
-            setLayout('secondary');
+            setLayout(LAYOUT_VALUES.SECONDARY);
         }
     }, [setLayout]);
 
@@ -36,17 +35,17 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
         const body = document.body;
         if (mode === 'light') {
             setMode('night');
-            setLayout('tertiary');
+            setLayout(LAYOUT_VALUES.TERTIARY as LayoutType);
             body.classList.remove('light-mode', 'ultra-mode');
             body.classList.add('night-mode');
         } else if (mode === 'night') {
             setMode('ultra');
-            setLayout('primary');
+            setLayout(LAYOUT_VALUES.PRIMARY as LayoutType);
             body.classList.remove('light-mode', 'night-mode');
             body.classList.add('ultra-mode');
         } else {
             setMode('light');
-            setLayout('secondary');
+            setLayout(LAYOUT_VALUES.SECONDARY as LayoutType);
             body.classList.remove('night-mode', 'ultra-mode');
             body.classList.add('light-mode');
         }
@@ -57,11 +56,11 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
 
         switch (layout) {
             case 'primary':
-                return `${baseStyles} text-[#FFFFF0] bg-primary-main hover:bg-[#6096BA] focus:ring-primary-main`;
+                return `${baseStyles} text-[#F5E9E2] bg-primary-main hover:bg-[#6096BA] focus:ring-primary-main`;
             case 'secondary':
-                return `${baseStyles} text-[#3626A7] bg-secondary-main hover:bg-[#000017] focus:ring-primary-main`;
+                return `${baseStyles} text-[#000017] bg-secondary-main hover:bg-[#3626A7] focus:ring-primary-main`;
             case 'tertiary':
-                return `${baseStyles} text-[#C2A87A] bg-tertiary-main hover:bg-primary-main focus:ring-primary-main`;
+                return `${baseStyles} text-[#B8336A] bg-tertiary-main hover:bg-[#F5E9E2] focus:ring-primary-main`;
             default:
                 return baseStyles;
         }
@@ -72,7 +71,7 @@ const ColorSwitch: React.FC<IColorSwitch> = ({
             case 'light':
                 return <Gun className="w-4 h-4" />;
             case 'night':
-                return <Olive className="w-4 h-4" />;
+                return <Rasp className="w-4 h-4" />;
             case 'ultra':
                 return <Snow className="w-4 h-4" />;
         }

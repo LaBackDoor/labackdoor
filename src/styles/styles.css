@@ -34,10 +34,12 @@
     text-transform: uppercase;
     font-family: "Druk", sans-serif;
     font-weight: 800;
-    font-size: 9.6vw; /* Responsive font size */
+    font-size: 9.6vw; /* responsive font size */
     letter-spacing: 0.02em;
     line-height: 0.9em;
-    transition: all 2s ease-in-out; /* Smooth transition for color and stroke changes */
+    transition: all 2s ease-in-out; /* smooth transition for color and stroke changes */
+    white-space: pre-wrap; /* allow line breaks within project names */
+    word-break: break-word; /* break long words to prevent overflow */
   }
   
   .project-link a:hover {
@@ -133,7 +135,7 @@
     }
 }
 
-  /* Define theme colors for different layouts */
+  /* define theme colors for different layouts */
   body.light-mode {
     --default-text-color: #6096BA;
     --hover-text-stroke-color: #6096BA;
@@ -145,6 +147,9 @@
 }
 
 body.ultra-mode {
-    --default-text-color: #FFFFF0;
-    --hover-text-stroke-color: #FFFFF0;
-  }
+    --default-text-color: #DADFF7;
+    --hover-text-stroke-color: #DADFF7;
+    
+}
+/* --hover-text-stroke-color: #F5E9E2; */
+/* --hover-text-stroke-color: #A87AC2; */
