@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     const { layout } = useLayout();
 
     const layoutClasses: Record<string, string> = {
-        [LAYOUT_VALUES.PRIMARY]: "bg-primary-main text-[#DADFF7]",
+        [LAYOUT_VALUES.PRIMARY]: "bg-primary-main text-[#FFFFF0]",
         [LAYOUT_VALUES.SECONDARY]: "bg-secondary-main text-[#6096BA]",
         [LAYOUT_VALUES.TERTIARY]: "bg-tertiary-main text-[#7E78D2]",
     };
