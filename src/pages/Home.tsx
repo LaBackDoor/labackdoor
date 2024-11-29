@@ -1,8 +1,10 @@
 import ProjectLinks from "../components/ProjectLinks";
+import AcademiaText from '../components/AcademiaText';
 
 export function Home() {
     return (
         <div className="flex items-center justify-center w-full h-full">
+            <AcademiaText />
             <ProjectLinks />
         </div>
     );

@@ -40,12 +40,13 @@ export default {
         sans: ['Akzidenz Grotesk', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
         akzidenz: ['Akzidenz Grotesk', 'sans-serif'],
+        druktext: ['DrukTextWide-Medium-Trial', 'sans-serif'],
         druk: ['DrukWide-Super-Trial', 'sans-serif'],
         drukcond: ['DrukCond-Super-Trial', 'sans-serif']
       },
       backgroundColor: {
         primary: {
-          main: "#B8336A",   // raspberryRose
+          main: "#3B3C36",   // raspberryRose
           button: {
             main: "#C2A87A",
             hover: "#B3A489",
@@ -53,7 +54,7 @@ export default {
             transparent: "#A5A097"
           },
           text: {
-            main: "#F5E9E2"
+            main: "#DADFF7"
           }
         },
         secondary: {
