@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { CONTACT_PAGE, HOME_PAGE } from './resources/paths';
+import { ABOUT_PAGE, CONTACT_PAGE, HOME_PAGE } from './resources/paths';
 import { LayoutProvider } from './contexts/LayoutContext';
 import { Contact } from './pages/Contact';
+import { About } from './pages/About';
 import { Home } from './pages/Home';
 import Layout from './layouts';
 
@@ -14,6 +15,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path={HOME_PAGE} element={<Home />} />
+          <Route path={ABOUT_PAGE} element={<About />} />
           <Route path={CONTACT_PAGE} element={<Contact />} />
         </Routes>
       </Layout>

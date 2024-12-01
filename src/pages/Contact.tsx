@@ -1,6 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 
+
+// import ddolive from '../assets/dog-door/ddolive.svg';
 import { LAYOUT_VALUES } from '../resources/constants';
+import ddolive from '../assets/dog-door/ddolive.svg';
+import ddpurple from '../assets/dog-door/ddpurple.svg';
+import ddsnow from '../assets/dog-door/ddsnow.svg';
 import { useLayout } from '../hooks/useLayout';
 
 
@@ -18,15 +23,15 @@ export function Contact() {
         const layoutContent = {
             [LAYOUT_VALUES.PRIMARY]: {
                 // image: 'ddolive.svg',
-                imagePath: '/src/assets/dog-door/ddolive.svg',
+                image: ddolive,
                 buttonClass: 'bg-[#C2A87A] text-white'
             },
             [LAYOUT_VALUES.SECONDARY]: {
-                imagePath: '/src/assets/dog-door/ddsnow.svg',
+                image: ddsnow,
                 buttonClass: 'bg-[#6096BA] text-white'
             },
             [LAYOUT_VALUES.TERTIARY]: {
-                imagePath: '/src/assets/dog-door/ddpurple.svg',
+                image: ddpurple,
                 buttonClass: 'bg-[#7E78D2] text-white'
             }
         };
@@ -65,7 +70,7 @@ export function Contact() {
         }));
     };
 
-    const { imagePath, buttonClass } = getLayoutSpecificContent();
+    const { image, buttonClass } = getLayoutSpecificContent();
 
     return (
         <div className="h-full px-4 py-12 mx-auto max-w-7xl font-akzidenz">
@@ -76,7 +81,7 @@ export function Contact() {
                 <div className="flex items-center justify-center">
                     <div className="w-[95%] max-w-md">
                         <img
-                            src={imagePath}
+                            src={image}
                             alt="La Backdoor Contact"
                             className="w-full rounded-lg"
                         />
