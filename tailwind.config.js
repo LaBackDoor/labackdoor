@@ -37,9 +37,9 @@ export default {
         black: '900',
       },
       fontFamily: {
-        sans: ['Akzidenz Grotesk', 'sans-serif'],
+        // sans: ['Akzidenz Grotesk', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        akzidenz: ['Akzidenz Grotesk', 'sans-serif'],
+        akzidenz: ['Akzidenz Grotesk Bold', 'sans-serif'],
         druktext: ['DrukTextWide-Medium-Trial', 'sans-serif'],
         druk: ['DrukWide-Super-Trial', 'sans-serif'],
         drukcond: ['DrukCond-Super-Trial', 'sans-serif']

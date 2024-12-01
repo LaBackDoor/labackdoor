@@ -7,6 +7,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { MenuIcon, BackIcon } from "../resources/icons";
 import Footer from "../components/Footer";
 import Logo from "./Logo";
+import { CONTACT_PAGE } from "../resources/paths";
 
 interface ICustomLinkProps {
     to: string;
@@ -121,7 +122,7 @@ const Navbar: React.FC<INavbar> = ({
                         <Link to="/" className="text-2xl font-medium font-drukcond">LABACKDOOR</Link>
                         <div className="flex flex-col items-start gap-6 mt-8">
                             <CustomLink to="/About">01 About</CustomLink>
-                            <CustomLink to="/Contact">02 Contact</CustomLink>
+                            <CustomLink to={CONTACT_PAGE}>02 Contact</CustomLink>
                             <CustomLink to="/Group">03 Group</CustomLink>
                         </div>
                     </div>
