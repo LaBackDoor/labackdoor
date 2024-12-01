@@ -1,6 +1,8 @@
-// import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import { CONTACT_PAGE, HOME_PAGE } from './resources/paths';
 import { LayoutProvider } from './contexts/LayoutContext';
+import { Contact } from './pages/Contact';
 import { Home } from './pages/Home';
 import Layout from './layouts';
 
@@ -10,7 +12,10 @@ function App() {
   return (
     <LayoutProvider>
       <Layout>
-        <Home />
+        <Routes>
+          <Route path={HOME_PAGE} element={<Home />} />
+          <Route path={CONTACT_PAGE} element={<Contact />} />
+        </Routes>
       </Layout>
     </LayoutProvider>
   )

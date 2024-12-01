@@ -2,9 +2,9 @@
 
 @layer base {
     @font-face {
-        font-family: "Akzidenz Grotesk";
+        font-family: "Akzidenz Grotesk Bold";
         font-weight: 500;
-        src: url(/fonts/Akzidenz\ Grotesk/);
+        src: url(/fonts/Akzidenz\ Grotesk/Akzidenz\ Grotesk\ Bold.ttf);
     }
 }
 
