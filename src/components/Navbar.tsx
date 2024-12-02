@@ -5,12 +5,15 @@ import { useLayout } from "../hooks/useLayout";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 import { MenuIcon, BackIcon } from "../resources/icons";
+import { CONTACT_PAGE } from "../resources/paths";
+import { AboutOverlay } from "../pages/About";
 import Footer from "../components/Footer";
 import Logo from "./Logo";
-import { CONTACT_PAGE } from "../resources/paths";
 
 interface ICustomLinkProps {
-    to: string;
+    to?: string;
+    className?: string;
+    onClick?: () => void;
     children: React.ReactNode;
 }
 
@@ -18,15 +21,26 @@ interface INavbar {
     className?: string;
 }
 
-function CustomLink({ to, children, ...props }: ICustomLinkProps) {
-    const resolvedPath = useResolvedPath(to);
+function CustomLink({ to, children, onClick, className }: ICustomLinkProps) {
+    // call hooks at top level, even if their values won'r be used
+    const resolvedPath = useResolvedPath(to || '/');
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
+    // handle button
+    if (!to && onClick) {
+        return (
+            <li className={clsx("list-none", className)}>
+                <button onClick={onClick}>{children}</button>
+            </li>
+        );
+    }
+
+    // handle link
     return (
-        <li className={clsx(isActive ? "active" : "", "list-none")}>
-            <Link to={to} {...props}>{children}</Link>
+        <li className={clsx(isActive ? "active" : "", "list-none", className)}>
+            <Link to={to!} onClick={onClick}>{children}</Link>
         </li>
-    )
+    );
 }
 
 const Navbar: React.FC<INavbar> = ({
@@ -65,7 +79,15 @@ const Navbar: React.FC<INavbar> = ({
         }
     };
 
-    return (
+    const [isAboutOpen, setIsAboutOpen] = useState(false);
+
+    const toggleAbout = () => {
+        setIsAboutOpen(!isAboutOpen);
+        // handle the body class for overlay effect
+        document.body.classList.toggle('overflow-hidden');
+    };
+
+    return (<>
         <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
             <div className="flex flex-col w-full">
 
@@ -95,7 +117,7 @@ const Navbar: React.FC<INavbar> = ({
                     </div>
 
                     <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
-                        <CustomLink to="/About">about</CustomLink>
+                        <CustomLink onClick={toggleAbout}>about</CustomLink>
                         <CustomLink to="/Projects">projects</CustomLink>
                         <CustomLink to="/Group">group</CustomLink>
                         <CustomLink to="/Contact">contact</CustomLink>
@@ -121,7 +143,7 @@ const Navbar: React.FC<INavbar> = ({
                     <div className={`flex flex-col items-start gap-8 px-8 py-12 text-sm font-extralight md:gap-20 md:py-32 ${getNavTextStyles()}`}>
                         <Link to="/" className="text-2xl font-medium font-drukcond">LABACKDOOR</Link>
                         <div className="flex flex-col items-start gap-6 mt-8">
-                            <CustomLink to="/About">01 About</CustomLink>
+                            <CustomLink onClick={toggleAbout}>01 About</CustomLink>
                             <CustomLink to={CONTACT_PAGE}>02 Contact</CustomLink>
                             <CustomLink to="/Group">03 Group</CustomLink>
                         </div>
@@ -132,6 +154,12 @@ const Navbar: React.FC<INavbar> = ({
                 </div>
             </div>
         </nav>
+
+        <AboutOverlay
+            isOpen={isAboutOpen}
+            onClose={() => setIsAboutOpen(false)}
+        />
+    </>
     )
 }
 
