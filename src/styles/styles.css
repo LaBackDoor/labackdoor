@@ -88,21 +88,26 @@
 }
 
 .project-link a {
-    color: var(--default-text-color); /* Use CSS variables for text colors */
+    color: var(--default-text-color);
     text-transform: uppercase;
     font-family: "Druk", sans-serif;
     font-weight: 700;
-    font-size: 7.8vw; /* responsive font size */
+    font-size: 7.8vw;
     letter-spacing: 0.02em;
     line-height: 0.9em;
-    transition: all 2s ease-in-out; /* smooth transition for color and stroke changes */
-    white-space: pre-wrap; /* allow line breaks within project names */
-    word-break: break-word; /* break long words to prevent overflow */
+    /* transition: color 2s ease-in-out, -webkit-text-stroke 2s ease-in-out; */
+    transition: all 0.9s ease-in-out;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
+
+  .min-h-screen {
+    transition: background-color 1.5s ease-in-out, color 0.3s ease-in-out;
+}
   
 .project-link a:hover {
-    -webkit-text-stroke: 3px var(--hover-text-stroke-color); /* Apply text stroke on hover based on theme */
-    color: transparent; /* Make the fill transparent so the stroke appears prominent */
+    -webkit-text-stroke: 3px var(--hover-text-stroke-color);
+    color: transparent;
 }
 
 /* Reset the styles for .project-year to prevent inheritance */
@@ -245,5 +250,9 @@ body.ultra-mode {
     --hover-text-stroke-color: #FFFFF0;
     
 }
-/* --hover-text-stroke-color: #F5E9E2; */
-/* --hover-text-stroke-color: #A87AC2; */
+
+body.light-mode,
+body.night-mode,
+body.ultra-mode {
+    transition: background-color 0.4s ease-in-out;
+}
