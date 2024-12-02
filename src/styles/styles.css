@@ -117,6 +117,24 @@
     -webkit-text-stroke: 0; /* Ensure no stroke is applied on hover */
 }
 
+.project-slash {
+    position: absolute;
+    top: 0;
+    left: -0.3em;
+    width: 2px;
+    height: 0.85em;
+    background-color: var(--default-text-color);
+    transform: rotate(25deg);
+    transition: none;
+    will-change: transform;
+}
+
+/* Ensure the slash maintains visibility during hover */
+.project-link a:hover .project-slash {
+    background-color: var(--hover-text-stroke-color);
+    opacity: 1;
+}
+
 .logo-link {
     color: var(--default-text-color);
     transition: all 0.3s ease-in-out;
@@ -194,6 +212,9 @@
     .logo-link:hover img {
         -webkit-text-stroke-width: 2px;
     }
+    .project-year {
+          left: -190px;
+    }
 }
   
   @media screen and (max-width: 767px) {
@@ -202,6 +223,9 @@
     }
     .logo-link:hover img {
         -webkit-text-stroke-width: 1px;
+    }
+    .project-year {
+          left: -170px;
     }
 }
 

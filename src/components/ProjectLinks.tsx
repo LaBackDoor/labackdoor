@@ -47,10 +47,10 @@ const ProjectLinks = () => {
                                 <span className='inline break-words whitespace-normal'>
                                     {project.name}
                                 </span>
-                                <span className="absolute project-year -left-[200px] top-[3.7em] w-[150px] text-right text-[0.7vw] font-medium opacity-75 transition-none transform-none pointer-events-none">
+                                <span className="absolute project-year -left-[220px] top-[3.7em] w-[150px] text-right text-[0.7vw] font-medium opacity-75 transition-none transform-none pointer-events-none">
                                     {`${project.year} \t`}
                                 </span>
-                                <span className="absolute top-[0em] transition-none will-change-transform border border-solid border-current left-[-0.3em] w-[2px] h-[0.85em] bg-current rotate-[25deg] group-hover:border-current group-hover:bg-current group-hover:border-solid" />
+                                <span className="project-slash" />
                             </span>
                         </a>
                     </li>
