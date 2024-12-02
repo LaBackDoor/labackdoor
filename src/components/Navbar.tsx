@@ -48,9 +48,14 @@ const Navbar: React.FC<INavbar> = ({
 }) => {
     const { layout } = useLayout();
     const [isOpen, setIsOpen] = useState(false);
+    const [isAboutOpen, setIsAboutOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+
+    const closeMenu = () => {
+        setIsOpen(false);
     };
 
     const getNavTextStyles = () => {
@@ -79,7 +84,12 @@ const Navbar: React.FC<INavbar> = ({
         }
     };
 
-    const [isAboutOpen, setIsAboutOpen] = useState(false);
+    const handleNavItemClick = (callback?: () => void) => {
+        closeMenu();
+        if (callback) {
+            callback();
+        }
+    };
 
     const toggleAbout = () => {
         setIsAboutOpen(!isAboutOpen);
@@ -117,7 +127,7 @@ const Navbar: React.FC<INavbar> = ({
                     </div>
 
                     <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
-                        <CustomLink onClick={toggleAbout}>about</CustomLink>
+                        <CustomLink onClick={() => handleNavItemClick(toggleAbout)}>about</CustomLink>
                         <CustomLink to="/Projects">projects</CustomLink>
                         <CustomLink to="/Group">group</CustomLink>
                         <CustomLink to="/Contact">contact</CustomLink>
@@ -144,7 +154,7 @@ const Navbar: React.FC<INavbar> = ({
                         <Link to="/" className="text-2xl font-medium font-drukcond">LABACKDOOR</Link>
                         <div className="flex flex-col items-start gap-6 mt-8">
                             <CustomLink onClick={toggleAbout}>01 About</CustomLink>
-                            <CustomLink to={CONTACT_PAGE}>02 Contact</CustomLink>
+                            <CustomLink to={CONTACT_PAGE} onClick={closeMenu}>02 Contact</CustomLink>
                             <CustomLink to="/Group">03 Group</CustomLink>
                         </div>
                     </div>
