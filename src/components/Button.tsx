@@ -1,13 +1,13 @@
-import React, {MouseEvent, ReactElement, ReactNode} from "react";
+import React, { MouseEvent, ReactElement, ReactNode } from "react";
 
-import { ForthIcon, BackIcon } from "../resources/icons";
+import { ForthIcon, CloseIcon, BackIcon } from "../resources/icons";
 
 interface IButtonProps {
     onClick?: (e: MouseEvent<HTMLButtonElement | HTMLDivElement>) => void;
     size?: "btn-xxs" | "btn-xs" | "btn-sm" | "btn-md" | "btn-lg";
     startIcon?: JSX.Element | ReactElement | ReactNode;
     endIcon?: JSX.Element | ReactElement | ReactNode;
-    variant?: 'forth' | 'back' | 'default';
+    variant?: 'forth' | 'back' | 'close' | 'default';
     children?: React.ReactNode;
     className?: string;
     border?: string;
@@ -25,7 +25,7 @@ const Button: React.FC<IButtonProps> = ({
 }) => {
     if (variant === 'forth') {
         return (
-            <div 
+            <div
                 onClick={onClick}
                 className={`cursor-pointer hover:opacity-75 transition-opacity duration-200 ${className}`}
                 role="button"
@@ -38,7 +38,7 @@ const Button: React.FC<IButtonProps> = ({
 
     if (variant === 'back') {
         return (
-            <div 
+            <div
                 onClick={onClick}
                 className={`cursor-pointer hover:opacity-75 transition-opacity duration-200 ${className}`}
                 role="button"
@@ -49,9 +49,22 @@ const Button: React.FC<IButtonProps> = ({
         );
     }
 
+    if (variant === 'close') {
+        return (
+            <div
+                onClick={onClick}
+                className={`cursor-pointer hover:opacity-75 transition-opacity duration-200 ${className}`}
+                role="button"
+                tabIndex={0}
+            >
+                <CloseIcon size={20} />
+            </div>
+        )
+    }
+
     // default button case (if needed)
     return (
-        <button 
+        <button
             onClick={onClick}
             className={`flex items-center justify-center px-4 rounded-md transition-opacity duration-200 hover:opacity-75 ${className}`}
         >

@@ -37,6 +37,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* about overlay animations */
+.aboutShow {
+    overflow: hidden;
+}
+
+.about-enter {
+    transform: translateY(100%);
+}
+
+.about-enter-active {
+    transform: translateY(0);
+    transition: transform 500ms ease-in-out;
+}
+
+.about-exit {
+    transform: translateY(0);
+}
+
+.about-exit-active {
+    transform: translateY(100%);
+    transition: transform 500ms ease-in-out;
+}
+
+/* Optional: Add a fade effect to the background */
+.about-overlay {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+.about-overlay-content {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.about-overlay.active {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
 .project-link a {
     color: var(--default-text-color); /* Use CSS variables for text colors */
     text-transform: uppercase;
