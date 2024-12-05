@@ -1,9 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { Route, Routes } from 'react-router-dom';
 
 import { CONTACT_PAGE, HOME_PAGE } from './resources/paths';
 import { LayoutProvider } from './contexts/LayoutContext';
 import { Contact } from './pages/Contact';
-// import { AboutOverlay } from './pages/About';
 import { Home } from './pages/Home';
 import Layout from './layouts';
 
@@ -11,15 +12,29 @@ import Layout from './layouts';
 function App() {
 
   return (
-    <LayoutProvider>
-      <Layout>
-        <Routes>
-          <Route path={HOME_PAGE} element={<Home />} />
-          {/* <Route path={ABOUT_OVERLAY} element={<AboutOverlay />} /> */}
-          <Route path={CONTACT_PAGE} element={<Contact />} />
-        </Routes>
-      </Layout>
-    </LayoutProvider>
+    <>
+      <LayoutProvider>
+        <Layout>
+          <Routes>
+            <Route path={HOME_PAGE} element={<Home />} />
+            {/* <Route path={ABOUT_OVERLAY} element={<AboutOverlay />} /> */}
+            <Route path={CONTACT_PAGE} element={<Contact />} />
+          </Routes>
+        </Layout>
+      </LayoutProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   )
 }
 
