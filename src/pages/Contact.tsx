@@ -1,4 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import { LAYOUT_VALUES } from '../resources/constants';
 import ddpurple from '../assets/dog-door/ddpurple.svg';
@@ -28,8 +30,26 @@ export function Contact() {
         message: ''
     });
 
+    const [token, setToken] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setErrors] = useState<FormErrors>({});
     const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+    useEffect(() => {
+        // fetch token at mount
+        const fetchToken = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/api/contact/token');
+                const data = await response.json();
+                if (data.success) {
+                    setToken(data.token);
+                }
+            } catch (error) {
+                console.error('Error fetching token:', error);
+            }
+        };
+        fetchToken();
+    }, []);
 
     const getLayoutSpecificContent = () => {
         const layoutContent = {
@@ -120,32 +140,36 @@ export function Contact() {
         return isValid;
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!validateForm()) return;
+        setIsSubmitting(true);
 
-        if (!validateForm()) {
-            return;
+        try {
+            const response = await fetch("http://localhost:3000/api/contact", {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json",
+                    'X-Contact-Token': token
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setFormData({ name: '', email: '', message: '' });
+                toast.success('Thank you, your message has been sent!')
+            } else {
+                toast.error(data.message || "Failed to send message. Please try again :)")
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+            toast.error("An error occurred. Please try again.");
+        } finally {
+            setIsSubmitting(false)
         }
-
-        const subject = `New Contact Form Submission from ${formData.name}`;
-        const body = `
-        Name: ${formData.name}
-        Email: ${formData.email}
-        
-        Message:
-        ${formData.message}
-        `;
-
-        const mailtoLink = `mailto:hello@labackdoor.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoLink;
-
-        setFormData({
-            name: '',
-            email: '',
-            message: ''
-        });
-        setErrors({});
-        setTouched({});
     };
 
     const { image, buttonClass } = getLayoutSpecificContent();
@@ -160,6 +184,7 @@ export function Contact() {
 
     return (
         <div className="h-full px-4 py-12 mx-auto max-w-7xl font-akzidenz">
+            <ToastContainer position="top-right" autoClose={4200} />
             <h1 className="mb-12 text-4xl font-bold text-center">Let Us Know</h1>
 
             <div className="grid items-center gap-8 md:grid-cols-2">
@@ -245,7 +270,7 @@ export function Contact() {
                             type="submit"
                             className={`flex items-center justify-center w-full gap-2 px-6 py-3 text-inherit transition-colors duration-200 rounded-md hover:bg-${buttonClass} ${buttonClass}`}
                         >
-                            Send Message
+                            {isSubmitting ? 'Sending...' : 'Send Message'}
                         </button>
                     </form>
                 </div>
