@@ -19,7 +19,7 @@ const ProjectLinks = () => {
             link: "https://itrust.sutd.edu.sg/first-international-conference-on-the-design-of-cyber-secure-water-plants-dcs-water24/programme-dcs-water24/"
         },
         {
-            name: 'Crowdsourcing',
+            name: 'Crowd\nsourcing',
             year: '2024',
             link: "https://asonam.cpsc.ucalgary.ca/2024/AcceptedPapers.php"
         },
