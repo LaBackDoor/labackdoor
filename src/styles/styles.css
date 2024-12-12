@@ -140,24 +140,19 @@
     opacity: 1;
 }
 
-.logo-link {
-    color: var(--default-text-color);
-    transition: all 0.3s ease-in-out;
-}
-
-.logo-link img {
-    transition: opacity 0.3s ease-in-out;
-}
-
-.logo-link img:hover {
-    -webkit-text-stroke: 3px var(--hover-text-stroke-color);
-    opacity: 0.2;
-    color: transparent;
-    fill: none;
-}
-
 .text-stroke {
     -webkit-text-stroke: 1px currentColor;
+}
+
+.logo-text {
+    --logo-color: currentColor;
+    /* transition: all 0.9s ease-in-out; */
+}
+  
+/* hover effect for logo */
+.logo-text:hover {
+    -webkit-text-stroke: 3px var(--logo-hover-stroke-color);
+    color: transparent;
 }
 
 @supports not (-webkit-text-stroke: 1px currentColor) {
@@ -170,7 +165,7 @@
 }
 
 /* In styles.css */
-.logo-outline-primary {
+/* .logo-outline-primary {
     color: transparent;
     text-shadow: 
         -1px -1px 0 #8B8C89,  
@@ -181,9 +176,9 @@
          2px -2px 0 #8B8C89,
         -2px  2px 0 #8B8C89,
          2px  2px 0 #8B8C89;
-}
+} */
 
-.logo-outline-secondary {
+/* .logo-outline-secondary {
     color: transparent;
     text-shadow: 
         -1px -1px 0 #C2A87A,  
@@ -194,9 +189,9 @@
          2px -2px 0 #C2A87A,
         -2px  2px 0 #C2A87A,
          2px  2px 0 #C2A87A;
-}
+} */
 
-.logo-outline-tertiary {
+/* .logo-outline-tertiary {
     color: transparent;
     text-shadow: 
         -1px -1px 0 #DDCECD,  
@@ -207,48 +202,50 @@
          2px -2px 0 #DDCECD,
         -2px  2px 0 #DDCECD,
          2px  2px 0 #DDCECD;
-}
+} */
 
 
-  @media screen and (min-width: 768px) and (max-width: 1320px) {
+@media screen and (min-width: 768px) and (max-width: 1320px) {
     .project-link a:hover {
       -webkit-text-stroke-width: 2px;
     }
-    .logo-link:hover img {
+    .logo-text:hover {
         -webkit-text-stroke-width: 2px;
     }
     .project-year {
-          left: -190px;
+        left: -190px;
     }
 }
   
-  @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
     .project-link a:hover {
       -webkit-text-stroke-width: 1px;
     }
-    .logo-link:hover img {
+    .logo-text:hover {
         -webkit-text-stroke-width: 1px;
     }
     .project-year {
-          left: -170px;
+        left: -170px;
     }
 }
 
-  /* define theme colors for different layouts */
+/* define theme colors for different layouts */
   body.light-mode {
     --default-text-color: #6096BA;
     --hover-text-stroke-color: #6096BA;
-  }
+    --logo-hover-stroke-color: #8B8C89;
+}
   
-  body.night-mode {
+body.night-mode {
     --default-text-color: #7E78D2;
     --hover-text-stroke-color: #7E78D2;
+    --logo-hover-stroke-color: #DDCECD;
 }
 
 body.ultra-mode {
     --default-text-color: #FFFFF0;
     --hover-text-stroke-color: #FFFFF0;
-    
+    --logo-hover-stroke-color: #C2A87A;
 }
 
 body.light-mode,
