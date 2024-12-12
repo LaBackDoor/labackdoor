@@ -146,7 +146,7 @@
 
 .logo-text {
     --logo-color: currentColor;
-    /* transition: all 0.9s ease-in-out; */
+    transition: all 0.9 ease-in-out;
 }
   
 /* hover effect for logo */
