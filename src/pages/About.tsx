@@ -85,6 +85,9 @@ export function AboutOverlay({ isOpen, onClose }: IAbout) {
                             <p className="text-lg">
                                 Our focus lies in translating sophisticated technical concepts into clear, engaging content that maintains academic integrity while ensuring broad accessibility.
                             </p>
+                            <p className='text-lg'>
+                                At La Backdoor, our mission is to advance the field of cybersecurity through innovative research, cutting-edge technology, and unparalleled expertise. We strive to protect and empower individuals, organizations, and societies by anticipating, identifying, and mitigating cyber threats, ensuring a secure digital future for all.
+                            </p>
                         </div>
 
                         {/* Column 2 - Availability & Services */}
