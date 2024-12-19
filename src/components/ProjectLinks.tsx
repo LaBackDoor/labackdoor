@@ -23,6 +23,16 @@ const ProjectLinks = () => {
             year: '2024',
             link: "https://asonam.cpsc.ucalgary.ca/2024/AcceptedPapers.php"
         },
+        {
+            name: 'PANACEA',
+            year: '2024',
+            link: 'https://github.com/LaBackDoor/PANACEA'
+        },
+        {
+            name: 'PSIEVE-IT',
+            year: '2025',
+            link: 'https://github.com/LaBackDoor'
+        }
     ];
 
     return (
