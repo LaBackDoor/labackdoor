@@ -1,15 +1,21 @@
 import React from 'react';
+
 import './project.css';
+import mrn1Image from '../../assets/project/mrn/mrn1.jpg';
+import mrn2Image from '../../assets/project/mrn/mrn2-1.png';
+import mrn3Image from '../../assets/project/mrn/mrn3.jpeg';
+import mrn4Image from '../../assets/project/mrn/mrn4.png';
+
 
 const MRNsPage: React.FC = () => {
     return (
         <div className="mrns-page">
-            <h1>A Brief History &amp; Introduction to Multi-Recurrent Neural Networks (MRNs)</h1>
+            <h1 className='font-black text-2xl'>A Brief History &amp; Introduction to Multi-Recurrent Neural Networks (MRNs)</h1>
 
             {/* Image Suggestion #1 */}
             <div className="image-container">
                 <img
-                    src={require('../../assets/project/mrn/mrn1.jpg').default}
+                    src={mrn1Image}
                     alt="Conceptual diagram illustrating different types of neural networks (Feedforward, Simple Recurrent, Multi-Recurrent)"
                 />
             </div>
@@ -29,11 +35,11 @@ const MRNsPage: React.FC = () => {
                 </p>
             </section>
 
-            <h2>How Do MRNs Work?</h2>
+            <h2 className='font-semibold text-xl'>How Do MRNs Work?</h2>
             {/* Image Suggestion #2 */}
             <div className="image-container">
                 <img
-                    src="../../assets/project/mrn/mrn2-1.png"
+                    src={mrn2Image}
                     alt="A simplified diagram showing the multiple memory banks (input, hidden, output) of an MRN with different feedback loops"
                 />
             </div>
@@ -70,7 +76,7 @@ const MRNsPage: React.FC = () => {
                 <p><strong>2. Crude Oil Price Predictions</strong></p>
                 <div className="image-container">
                     <img
-                        src="../../assets/project/mrn/mrn3.jpeg"
+                        src={mrn3Image}
                         alt="A line graph comparing actual vs. predicted crude oil prices by an MRN over time"
                     />
                 </div>
@@ -108,7 +114,7 @@ const MRNsPage: React.FC = () => {
                 <li><strong>Combining with CNNs:</strong> For image/time hybrid tasks, embedding an MRN into a CNN pipeline can improve performance.</li>
             </ul>
 
-            <h2>How We at Labackdoor Are Using MRNs</h2>
+            <h2 className='font-bold text-lg'>How We at Labackdoor Are Using MRNs</h2>
             <section>
                 <p>
                     At Labackdoor, we explore how MRNs can analyze digital threats by studying software vulnerabilities over time.
@@ -120,10 +126,10 @@ const MRNsPage: React.FC = () => {
                 </p>
             </section>
 
-            <h2>Conclusion</h2>
+            <h2 className='font-semibold text-lg'>Conclusion</h2>
             <div className="image-container">
                 <img
-                    src="../../assets/project/mrn/mrn4.png"
+                    src={mrn4Image}
                     alt="A conceptual takeaway graphic summarizing MRNs' position among other RNN approaches"
                 />
             </div>

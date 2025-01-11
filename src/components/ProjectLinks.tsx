@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { MRNS_PAGE } from '../resources/paths';
 import "../styles/styles.css";
 
@@ -39,20 +41,17 @@ const ProjectLinks = () => {
         {projects.map((project, index) => (
           <li
             key={project.name}
-            className="relative w-full text-right cursor-pointer project-link"
+            className="relative w-fit text-right cursor-pointer project-link"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={project.link}
               className={`relative group project-link inline-block text-[2vw] leading-[0.9] font-black uppercase tracking-tighter transition-transform duration-[1500ms] ease-out font-druk
-                                ${
-                                  hoveredIndex === index
-                                    ? "translate-x-[10%]"
-                                    : "translate-x-0"
-                                }`}
+                                ${hoveredIndex === index
+                  ? "translate-x-[10%]"
+                  : "translate-x-0"
+                }`}
               data-info={project.year}
             >
               <span className="relative">
@@ -64,7 +63,7 @@ const ProjectLinks = () => {
                 </span>
                 <span className="project-slash" />
               </span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
