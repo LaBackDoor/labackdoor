@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { MRNS_PAGE } from '../resources/paths';
 import "../styles/styles.css";
 
 const ProjectLinks = () => {
@@ -9,12 +9,12 @@ const ProjectLinks = () => {
     {
       name: "AW-TRBAC",
       year: "2024",
-      link: "https://www.nlpaics.com/accepted-papers",
+      link: "https://itrust.sutd.edu.sg/first-international-conference-on-the-design-of-cyber-secure-water-plants-dcs-water24/programme-dcs-water24/",
     },
     {
       name: "MRNNs",
       year: "2024",
-      link: "https://itrust.sutd.edu.sg/first-international-conference-on-the-design-of-cyber-secure-water-plants-dcs-water24/programme-dcs-water24/",
+      link: MRNS_PAGE,
     },
     {
       name: "Crowd\nsourcing",
