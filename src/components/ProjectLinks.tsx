@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { MRNS_PAGE } from '../resources/paths';
+// import { MRNS_PAGE } from '../resources/paths';
 import "../styles/styles.css";
 
 const ProjectLinks = () => {
@@ -9,29 +9,29 @@ const ProjectLinks = () => {
 
   const projects = [
     {
+      id: "aw-trbac",
       name: "AW-TRBAC",
       year: "2024",
-      link: "https://itrust.sutd.edu.sg/first-international-conference-on-the-design-of-cyber-secure-water-plants-dcs-water24/programme-dcs-water24/",
     },
     {
+      id: "mrnns",
       name: "MRNNs",
       year: "2024",
-      link: MRNS_PAGE,
     },
     {
-      name: "Crowd\nsourcing",
+      id: "crowdsourcing",
+      name: "Crowdsourcing",
       year: "2024",
-      link: "https://asonam.cpsc.ucalgary.ca/2024/AcceptedPapers.php",
     },
     {
+      id: "panacea",
       name: "PANACEA",
       year: "2024",
-      link: "https://github.com/LaBackDoor/PANACEA",
     },
     {
+      id: "psieve-it",
       name: "PSIEVE-IT",
       year: "2025",
-      link: "https://github.com/LaBackDoor",
     },
   ];
 
@@ -46,7 +46,7 @@ const ProjectLinks = () => {
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <Link
-              to={project.link}
+              to={`/projects/${project.id}`}
               className={`relative group project-link inline-block text-[2vw] leading-[0.9] font-black uppercase tracking-tighter transition-transform duration-[1500ms] ease-out font-druk
                                 ${hoveredIndex === index
                   ? "translate-x-[10%]"
