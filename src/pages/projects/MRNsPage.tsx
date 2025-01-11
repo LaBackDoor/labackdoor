@@ -7,6 +7,8 @@ import mrn3Image from '../../assets/project/mrn/mrn3.jpeg';
 import mrn4Image from '../../assets/project/mrn/mrn4.png';
 
 
+// ERGO, we need to make this the standard for blogs on the project. roll back branch development to see previous version of the blog on MRNs
+//idk if that makes sense. just lmk
 const MRNsPage: React.FC = () => {
     return (
         <div className="mrns-page">
