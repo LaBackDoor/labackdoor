@@ -7,4 +7,5 @@ export const CONTACT_PAGE = "/contact"
 export const BACKDOOR = "https://www.labackdoor.com/"
 
 // PROJECTS
-export const MRNS_PAGE = '/projects/mrns'
+export const PROJECTS_BASE = '/projects'
+export const MRNS_PAGE = PROJECTS_BASE + '/mrns'

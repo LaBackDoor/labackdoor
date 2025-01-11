@@ -2,11 +2,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { Route, Routes } from 'react-router-dom';
 
-import { CONTACT_PAGE, HOME_PAGE, MRNS_PAGE, PROJECTS_BASE } from './resources/paths';
-import ProjectDetailPage from './pages/projects/[projectId]';
+import { CONTACT_PAGE, HOME_PAGE, MRNS_PAGE} from './resources/paths';
 import { LayoutProvider } from './contexts/LayoutContext';
 import MRNsPage from './pages/projects/MRNsPage';
-import { Projects } from './pages/projects';
 import { Contact } from './pages/Contact';
 import { Home } from './pages/Home';
 import Layout from './layouts';
@@ -22,8 +20,6 @@ function App() {
             <Route path={HOME_PAGE} element={<Home />} />
             <Route path={MRNS_PAGE} element={<MRNsPage />} />
             <Route path={CONTACT_PAGE} element={<Contact />} />
-            <Route path={PROJECTS_BASE} element={<Projects />} />
-            <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
           </Routes>
         </Layout>
       </LayoutProvider>
