@@ -18,14 +18,14 @@ jobs:
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: '9'
+          version: "9"
           run_install: false
 
       - name: 🔧 Set up Node.js 20.17.0
         uses: actions/setup-node@v4
         with:
-          node-version: '20.17.0'
-          cache: 'pnpm'
+          node-version: "20.17.0"
+          cache: "pnpm"
 
       - name: 🔨 Build Project
         run: |
@@ -39,4 +39,4 @@ jobs:
           username: ${{ secrets.GIT_CPANEL_REACT_USER }}
           password: ${{ secrets.GIT_CPANEL_REACT_PWD }}
           protocol: ${{ secrets.GIT_CPANEL_REACT_PROTOCOL }}
-          local-dir: ./dist/
+          local-dir: ./.next/
