@@ -22,7 +22,6 @@ const Button: React.FC<IButtonProps> = ({
     variant = 'default',
     onClick,
     className = '',
-    children,
     startIcon,
     endIcon,
     title,
