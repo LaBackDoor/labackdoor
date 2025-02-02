@@ -1,14 +1,13 @@
-
 import { clsx } from "clsx";
 import { useState } from "react";
-import { useLayout } from "../hooks/useLayout";
+import { useLayout } from "../../hooks/useLayout";
 import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom";
 
-import { CONTACT_PAGE, GROUP_PAGE } from "../resources/paths";
-import { MenuIcon, BackIcon } from "../resources/icons";
-import { AboutOverlay } from "../pages/About";
-import Footer from "../components/Footer";
-import Logo from "./Logo";
+import { CONTACT_PAGE, GROUP_PAGE, HOME_PAGE, PROJECTS_PAGE } from "../../resources/paths";
+import { MenuIcon, BackIcon } from "../../resources/icons";
+import { AboutOverlay } from "../../pages/About";
+import Footer from "../Footer";
+import Logo from "../Logo";
 
 interface ICustomLinkProps {
     to?: string;
@@ -19,6 +18,7 @@ interface ICustomLinkProps {
 
 interface INavbar {
     className?: string;
+    showLogo?: boolean;
 }
 
 function CustomLink({ to, children, onClick, className }: ICustomLinkProps) {
@@ -45,12 +45,14 @@ function CustomLink({ to, children, onClick, className }: ICustomLinkProps) {
 
 const Navbar: React.FC<INavbar> = ({
     className = '',
+    showLogo = false,
 }) => {
     const { layout } = useLayout();
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const isGroupPage = location.pathname === '/group';
     const [isAboutOpen, setIsAboutOpen] = useState(false);
+    const isProjectsPage = location.pathname === '/projects';
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -98,6 +100,7 @@ const Navbar: React.FC<INavbar> = ({
         document.body.classList.toggle('overflow-hidden');
     };
 
+
     const renderGroupPageNav = () => (
         <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm ${getNavTextStyles()}`}>
             <div className="flex flex-col">
@@ -119,8 +122,36 @@ const Navbar: React.FC<INavbar> = ({
             </div>
 
             <div className="flex items-center ml-4">
-                <Link to="/projects" className="hover:opacity-80">
+                <Link to={PROJECTS_PAGE} className="hover:opacity-80">
                     projects
+                </Link>
+            </div>
+        </div>
+    );
+
+    const renderProjectPageNav = () => (
+        <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm ${getNavTextStyles()}`}>
+            <div className="flex flex-col">
+                <p className="font-extralight">
+                    Research Lab of <span className="font-bold">
+                        <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
+                    </span> & <br />
+                    <span className="font-bold">
+                        <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
+                    </span>
+                </p>
+            </div>
+
+            <div className="flex flex-col ml-2">
+                <span>USA</span>
+                <span>
+                    <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
+                </span>
+            </div>
+
+            <div className="flex items-center ml-4">
+                <Link to={GROUP_PAGE} className="hover:opacity-80">
+                    group
                 </Link>
             </div>
         </div>
@@ -128,7 +159,8 @@ const Navbar: React.FC<INavbar> = ({
 
     const renderDefaultNav = () => (
         <>
-            <div className="font-drukcond">
+            <div className={`font-drukcond transition-opacity duration-300 ${showLogo ? 'opacity-100' : 'opacity-0'
+                }`}>
                 <Logo />
             </div>
             <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
@@ -152,9 +184,9 @@ const Navbar: React.FC<INavbar> = ({
 
                 <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
                     <CustomLink onClick={() => handleNavItemClick(toggleAbout)}>about</CustomLink>
-                    <CustomLink to="/Projects">projects</CustomLink>
+                    <CustomLink to={PROJECTS_PAGE}>projects</CustomLink>
                     <CustomLink to={GROUP_PAGE}>group</CustomLink>
-                    <CustomLink to="/Contact">contact</CustomLink>
+                    <CustomLink to={CONTACT_PAGE}>contact</CustomLink>
                 </div>
             </div>
 
@@ -174,7 +206,7 @@ const Navbar: React.FC<INavbar> = ({
                     )}
                 >
                     <div className={`flex flex-col items-start gap-8 px-8 py-12 text-sm font-extralight md:gap-20 md:py-32 ${getNavTextStyles()}`}>
-                        <Link to="/" className="text-2xl font-medium font-drukcond">LABACKDOOR</Link>
+                        <Link to={HOME_PAGE} className="text-2xl font-medium font-drukcond">LABACKDOOR</Link>
                         <div className="flex flex-col items-start gap-6 mt-8">
                             <CustomLink onClick={toggleAbout}>01 About</CustomLink>
                             <CustomLink to={CONTACT_PAGE} onClick={closeMenu}>02 Contact</CustomLink>
@@ -186,11 +218,21 @@ const Navbar: React.FC<INavbar> = ({
         </>
     );
 
+    const renderNavigationContent = () => {
+        if (isGroupPage) {
+            return renderGroupPageNav();
+        }
+        if (isProjectsPage) {
+            return renderProjectPageNav();
+        }
+        return renderDefaultNav();
+    };
+
     return (
         <>
             <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
                 <div className="flex flex-col w-full">
-                    {isGroupPage ? renderGroupPageNav() : renderDefaultNav()}
+                    {renderNavigationContent()}
                 </div>
                 <div className="mt-5">
                     <Footer />

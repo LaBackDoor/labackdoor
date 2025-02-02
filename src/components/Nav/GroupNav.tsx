@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { GROUP_PAGE } from "../resources/paths";
-import { useLayout } from "../hooks/useLayout";
-import { BackIcon } from "../resources/icons";
-import { AboutOverlay } from "../pages/About";
-import Logo from "./Logo";
+import { GROUP_PAGE } from "../../resources/paths";
+import { useLayout } from "../../hooks/useLayout";
+import { BackIcon } from "../../resources/icons";
+import { AboutOverlay } from "../../pages/About";
+import Logo from "../Logo";
 
 
 interface INavbar2 {
@@ -47,11 +47,11 @@ export const Navbar2: React.FC<INavbar2> = ({
                         <div className={`grid gap-1 font-normal text-sm ${getNavTextStyles()}`}>
                             <button
                                 onClick={toggleAbout}
-                                className="hover:opacity-80 font-bold"
+                                className="hover:opacity-80 font-bold text-left"
                             >
                                 about
                             </button>
-                            <Link to={GROUP_PAGE} className="hover:opacity-80 font-bold">
+                            <Link to={GROUP_PAGE} className="hover:opacity-80 font-bold text-left">
                                 group
                             </Link>
                         </div>

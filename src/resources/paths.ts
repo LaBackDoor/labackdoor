@@ -8,4 +8,4 @@ export const BACKDOOR = "https://www.labackdoor.com/"
 
 // PROJECTS
 export const PROJECTS_BASE = '/projects'
-export const MRNS_PAGE = PROJECTS_BASE + '/mrns'
+export const MRNS_PAGE = PROJECTS_PAGE + '/mrns'

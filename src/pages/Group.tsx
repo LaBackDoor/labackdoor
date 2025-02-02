@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Navbar2 } from '../components/Navbar2';
+import UnifiedNavigation from '../components/Nav/UnifiedNavigation';
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
 import Logo from '../components/Logo';
 
 const Group = () => {
+    const [showBottomNavLogo, setShowBottomNavLogo] = useState(false);
     const [showFloatingLogo, setShowFloatingLogo] = useState(false);
     const [logoPosition, setLogoPosition] = useState(0);
     const contentRef = useRef<HTMLDivElement>(null);
+
+    // easing function for smooth animation
+    const easeInOutCubic = (x: number): number => {
+        return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,24 +23,21 @@ const Group = () => {
 
                 if (scrollPercentage > 85) {
                     setShowFloatingLogo(true);
-                    // start position at the top of the viewport
+                    // calculate logo position
                     const startPosition = 0;
                     const finalPosition = window.innerHeight - 100;
-                    // normalize progress for smoother animation
                     const progress = Math.min((scrollPercentage - 85) / 15, 1);
-                    // Use easing function for smoother animation
                     const easedProgress = easeInOutCubic(progress);
                     const currentPosition = startPosition + (finalPosition - startPosition) * easedProgress;
                     setLogoPosition(currentPosition);
+
+                    // show bottom nav logo when floating logo reaches bottom
+                    setShowBottomNavLogo(progress >= 0.9);
                 } else {
                     setShowFloatingLogo(false);
+                    setShowBottomNavLogo(false);
                 }
             }
-        };
-
-        // easing function for smooth animation
-        const easeInOutCubic = (x: number): number => {
-            return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -44,11 +46,11 @@ const Group = () => {
 
     return (
         <div ref={contentRef} className="min-h-screen relative">
-            <Navbar2 />
+            {/* <Navbar2 /> */}
+            <UnifiedNavigation navType='group'/>
 
             {/* main content */}
             <div className="pt-24 pb-48">
-                {/* add placeholder to enable scrolling */}
                 <div className="h-screen"></div>
                 <div className="h-screen"></div>
             </div>
@@ -59,7 +61,8 @@ const Group = () => {
                     className="fixed left-1/2 transform -translate-x-1/2 transition-all"
                     style={{
                         top: logoPosition,
-                        transition: 'top 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                        transition: 'top 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                        opacity: showBottomNavLogo ? 0 : 1
                     }}
                 >
                     <Logo />
@@ -68,7 +71,10 @@ const Group = () => {
 
             {/* bottom navigation */}
             <div className="fixed bottom-0 left-0 w-full">
-                <Navbar className="bottom-navbar" />
+                {/* <Navbar
+                    className="bottom-navbar"
+                    showLogo={showBottomNavLogo}
+                /> */}
                 <Footer />
             </div>
         </div>

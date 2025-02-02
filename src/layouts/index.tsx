@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { LAYOUT_VALUES } from "../resources/constants";
 import ColorSwitch from "../components/ColorSwitcher";
 import { useLayout } from "../hooks/useLayout";
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Nav/Navbar';
 
 
 const Layout = ({ children }: { children: ReactNode }) => {
