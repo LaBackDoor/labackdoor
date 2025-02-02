@@ -2,10 +2,10 @@
 import { clsx } from "clsx";
 import { useState } from "react";
 import { useLayout } from "../hooks/useLayout";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom";
 
+import { CONTACT_PAGE, GROUP_PAGE } from "../resources/paths";
 import { MenuIcon, BackIcon } from "../resources/icons";
-import { CONTACT_PAGE } from "../resources/paths";
 import { AboutOverlay } from "../pages/About";
 import Footer from "../components/Footer";
 import Logo from "./Logo";
@@ -22,7 +22,7 @@ interface INavbar {
 }
 
 function CustomLink({ to, children, onClick, className }: ICustomLinkProps) {
-    // call hooks at top level, even if their values won'r be used
+    // call hooks at top level, even if their values won't be used
     const resolvedPath = useResolvedPath(to || '/');
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
@@ -47,7 +47,9 @@ const Navbar: React.FC<INavbar> = ({
     className = '',
 }) => {
     const { layout } = useLayout();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
+    const isGroupPage = location.pathname === '/group';
     const [isAboutOpen, setIsAboutOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -93,56 +95,77 @@ const Navbar: React.FC<INavbar> = ({
 
     const toggleAbout = () => {
         setIsAboutOpen(!isAboutOpen);
-        // handle the body class for overlay effect
         document.body.classList.toggle('overflow-hidden');
     };
 
-    return (<>
-        <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
-            <div className="flex flex-col w-full">
+    const renderGroupPageNav = () => (
+        <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm ${getNavTextStyles()}`}>
+            <div className="flex flex-col">
+                <p className="font-extralight">
+                    Research Lab of <span className="font-bold">
+                        <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
+                    </span> & <br />
+                    <span className="font-bold">
+                        <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
+                    </span>
+                </p>
+            </div>
 
-                {/* Top section with logo */}
-                <div className="font-drukcond">
-                    <Logo />
-                </div>
+            <div className="flex flex-col ml-2">
+                <span>USA</span>
+                <span>
+                    <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
+                </span>
+            </div>
 
-                {/* Normal screen navbar */}
-                <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
-                    <div className="flex flex-col">
-                        <p>
-                            Research Lab of <span className="font-bold">
-                                <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
-                            </span> & <br />
-                            <span className="font-bold">
-                                <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
-                            </span>
-                        </p>
-                    </div>
+            <div className="flex items-center ml-4">
+                <Link to="/projects" className="hover:opacity-80">
+                    projects
+                </Link>
+            </div>
+        </div>
+    );
 
-                    <div className="flex flex-col ml-2 font-normal">
-                        <span>USA</span>
+    const renderDefaultNav = () => (
+        <>
+            <div className="font-drukcond">
+                <Logo />
+            </div>
+            <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
+                <div className="flex flex-col">
+                    <p>
+                        Research Lab of <span className="font-bold">
+                            <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
+                        </span> & <br />
                         <span className="font-bold">
-                            <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
+                            <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
                         </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
-                        <CustomLink onClick={() => handleNavItemClick(toggleAbout)}>about</CustomLink>
-                        <CustomLink to="/Projects">projects</CustomLink>
-                        <CustomLink to="/Group">group</CustomLink>
-                        <CustomLink to="/Contact">contact</CustomLink>
-                    </div>
+                    </p>
                 </div>
 
-                {/* Mobile overlay navbar */}
-                <div className="md:hidden">
-                    <button
-                        className="fixed z-50 p-2 text-2xl top-4 right-4 focus:outline-none"
-                        onClick={toggleMenu}
-                    >
-                        {isOpen ? <BackIcon /> : <MenuIcon />}
-                    </button>
+                <div className="flex flex-col ml-2 font-normal">
+                    <span>USA</span>
+                    <span className="font-bold">
+                        <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
+                    </span>
                 </div>
+
+                <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
+                    <CustomLink onClick={() => handleNavItemClick(toggleAbout)}>about</CustomLink>
+                    <CustomLink to="/Projects">projects</CustomLink>
+                    <CustomLink to={GROUP_PAGE}>group</CustomLink>
+                    <CustomLink to="/Contact">contact</CustomLink>
+                </div>
+            </div>
+
+            {/* Mobile overlay navbar */}
+            <div className="md:hidden">
+                <button
+                    className="fixed z-50 p-2 text-2xl top-4 right-4 focus:outline-none"
+                    onClick={toggleMenu}
+                >
+                    {isOpen ? <BackIcon /> : <MenuIcon />}
+                </button>
                 <div
                     className={clsx(
                         "fixed top-0 left-0 right-0 bottom-0 flex flex-col items-start justify-between transition-opacity duration-300 ease-in-out md:hidden",
@@ -155,22 +178,31 @@ const Navbar: React.FC<INavbar> = ({
                         <div className="flex flex-col items-start gap-6 mt-8">
                             <CustomLink onClick={toggleAbout}>01 About</CustomLink>
                             <CustomLink to={CONTACT_PAGE} onClick={closeMenu}>02 Contact</CustomLink>
-                            <CustomLink to="/Group">03 Group</CustomLink>
+                            <CustomLink to={GROUP_PAGE}>03 Group</CustomLink>
                         </div>
                     </div>
+                </div>
+            </div>
+        </>
+    );
+
+    return (
+        <>
+            <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
+                <div className="flex flex-col w-full">
+                    {isGroupPage ? renderGroupPageNav() : renderDefaultNav()}
                 </div>
                 <div className="mt-5">
                     <Footer />
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <AboutOverlay
-            isOpen={isAboutOpen}
-            onClose={() => setIsAboutOpen(false)}
-        />
-    </>
-    )
-}
+            <AboutOverlay
+                isOpen={isAboutOpen}
+                onClose={() => setIsAboutOpen(false)}
+            />
+        </>
+    );
+};
 
 export default Navbar;
