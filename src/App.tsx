@@ -6,10 +6,10 @@ import { CONTACT_PAGE, PROJECTS_PAGE, HOME_PAGE, GROUP_PAGE, MRNS_PAGE } from '.
 import { LayoutProvider } from './contexts/LayoutContext';
 import MRNsPage from './pages/projects/MRNsPage';
 import { Contact } from './pages/Contact';
+// import Projects from './pages/Projects';
+// import Group from './pages/Group';
 import { Home } from './pages/Home';
-import Group from './pages/Group';
 import Layout from './layouts';
-import Projects from './pages/Projects';
 
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
           <Routes>
             <Route path={HOME_PAGE} element={<Home />} />
             <Route path={MRNS_PAGE} element={<MRNsPage />} />
-            <Route path={GROUP_PAGE} element={<Group />} />
-            <Route path={PROJECTS_PAGE} element={<Projects />} />
+            {/* <Route path={GROUP_PAGE} element={<Group />} />
+            <Route path={PROJECTS_PAGE} element={<Projects />} /> */}
             <Route path={CONTACT_PAGE} element={<Contact />} />
           </Routes>
         </Layout>

@@ -34,12 +34,13 @@ const ProjectLinks = () => {
   ];
 
   return (
-    <div className="flex items-center justify-end w-full h-full px-6 mt-28 md:px-12">
-      <ul className="flex flex-col items-end gap-12 overflow-visible">
+    // <div className="flex items-center justify-end h-full px-6 mt-28 md:px-12">
+    <div className="flex items-center justify-end h-full px-6 mt-28 md:px-12">
+      <ul className="flex flex-col w-fit items-end gap-12 overflow-visible">
         {projects.map((project, index) => (
           <li
             key={project.name}
-            className="relative w-full text-right cursor-pointer project-link"
+            className="relative w-fit text-right cursor-pointer project-link"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -59,7 +60,7 @@ const ProjectLinks = () => {
                 <span className="inline break-words whitespace-normal">
                   {project.name}
                 </span>
-                <span className="absolute project-year -left-[220px] top-[3.7em] w-[150px] text-right text-[0.7vw] font-medium opacity-75 transition-none transform-none pointer-events-none">
+                <span className="absolute project-year -left-[190px] top-[3em] w-[150px] text-right text-[0.7vw] font-medium opacity-75 transition-none transform-none pointer-events-none">
                   {`${project.year} \t`}
                 </span>
                 <span className="project-slash" />

@@ -47,11 +47,11 @@ export const Navbar2: React.FC<INavbar2> = ({
                         <div className={`grid gap-1 font-normal text-sm ${getNavTextStyles()}`}>
                             <button
                                 onClick={toggleAbout}
-                                className="hover:opacity-80 font-bold text-left"
+                                className="hover:opacity-80 font-bold"
                             >
                                 about
                             </button>
-                            <Link to={GROUP_PAGE} className="hover:opacity-80 font-bold text-left">
+                            <Link to={GROUP_PAGE} className="hover:opacity-80 font-bold">
                                 group
                             </Link>
                         </div>
