@@ -31,6 +31,16 @@ const ProjectLinks = () => {
       year: "2025",
       link: "https://github.com/LaBackDoor",
     },
+    {
+      name: "MALWARE BEHAVIOR",
+      year: "2025",
+      link: "https://github.com/LaBackDoor",
+    },
+    {
+      name: "TRAICE",
+      year: "2025",
+      link: "https://github.com/LaBackDoor",
+    },
   ];
 
   return (

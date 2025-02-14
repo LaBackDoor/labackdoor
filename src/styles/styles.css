@@ -164,47 +164,6 @@
     }
 }
 
-/* In styles.css */
-/* .logo-outline-primary {
-    color: transparent;
-    text-shadow: 
-        -1px -1px 0 #8B8C89,  
-         1px -1px 0 #8B8C89,
-        -1px  1px 0 #8B8C89,
-         1px  1px 0 #8B8C89,
-        -2px -2px 0 #8B8C89,  
-         2px -2px 0 #8B8C89,
-        -2px  2px 0 #8B8C89,
-         2px  2px 0 #8B8C89;
-} */
-
-/* .logo-outline-secondary {
-    color: transparent;
-    text-shadow: 
-        -1px -1px 0 #C2A87A,  
-         1px -1px 0 #C2A87A,
-        -1px  1px 0 #C2A87A,
-         1px  1px 0 #C2A87A,
-        -2px -2px 0 #C2A87A,  
-         2px -2px 0 #C2A87A,
-        -2px  2px 0 #C2A87A,
-         2px  2px 0 #C2A87A;
-} */
-
-/* .logo-outline-tertiary {
-    color: transparent;
-    text-shadow: 
-        -1px -1px 0 #DDCECD,  
-         1px -1px 0 #DDCECD,
-        -1px  1px 0 #DDCECD,
-         1px  1px 0 #DDCECD,
-        -2px -2px 0 #DDCECD,  
-         2px -2px 0 #DDCECD,
-        -2px  2px 0 #DDCECD,
-         2px  2px 0 #DDCECD;
-} */
-
-
 @media screen and (min-width: 768px) and (max-width: 1320px) {
     .project-link a:hover {
       -webkit-text-stroke-width: 2px;
@@ -253,3 +212,44 @@ body.night-mode,
 body.ultra-mode {
     transition: background-color 0.4s ease-in-out;
 }
+
+
+/* In styles.css */
+/* .logo-outline-primary {
+    color: transparent;
+    text-shadow: 
+        -1px -1px 0 #8B8C89,  
+         1px -1px 0 #8B8C89,
+        -1px  1px 0 #8B8C89,
+         1px  1px 0 #8B8C89,
+        -2px -2px 0 #8B8C89,  
+         2px -2px 0 #8B8C89,
+        -2px  2px 0 #8B8C89,
+         2px  2px 0 #8B8C89;
+} */
+
+/* .logo-outline-secondary {
+    color: transparent;
+    text-shadow: 
+        -1px -1px 0 #C2A87A,  
+         1px -1px 0 #C2A87A,
+        -1px  1px 0 #C2A87A,
+         1px  1px 0 #C2A87A,
+        -2px -2px 0 #C2A87A,  
+         2px -2px 0 #C2A87A,
+        -2px  2px 0 #C2A87A,
+         2px  2px 0 #C2A87A;
+} */
+
+/* .logo-outline-tertiary {
+    color: transparent;
+    text-shadow: 
+        -1px -1px 0 #DDCECD,  
+         1px -1px 0 #DDCECD,
+        -1px  1px 0 #DDCECD,
+         1px  1px 0 #DDCECD,
+        -2px -2px 0 #DDCECD,  
+         2px -2px 0 #DDCECD,
+        -2px  2px 0 #DDCECD,
+         2px  2px 0 #DDCECD;
+} */

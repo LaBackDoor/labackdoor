@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-import { GROUP_PAGE } from "../../resources/paths";
+import { GROUP_PAGE, PROJECTS_PAGE } from "../../resources/paths";
 import { useLayout } from "../../hooks/useLayout";
 import { BackIcon } from "../../resources/icons";
 import { AboutOverlay } from "../../pages/About";
@@ -17,6 +17,7 @@ export const Navbar2: React.FC<INavbar2> = ({
 }) => {
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     const { layout } = useLayout()
+    const location = useLocation()
 
     const getNavTextStyles = () => {
         switch (layout) {
@@ -36,9 +37,27 @@ export const Navbar2: React.FC<INavbar2> = ({
         document.body.classList.toggle('overflow-hidden');
     };
 
+    const getSecondNavItem = () => {
+        const currentPath = location.pathname;
+        
+        if (currentPath === GROUP_PAGE) {
+            return (
+                <span className="hover:opacity-80 font-bold">
+                    02 &nbsp; group
+                </span>
+            );
+        }
+        
+        return (
+            <Link to={GROUP_PAGE} className="hover:opacity-80 font-bold">
+                02 &nbsp; {currentPath === PROJECTS_PAGE ? 'projects' : 'group'}
+            </Link>
+        );
+    };
+
     return (
         <>
-            <nav className={`fixed top-0 left-0 w-full bg-transparent z-50 py-4 ${className}`}>
+            <nav className={`fixed backdrop-blur-sm top-0 left-0 w-full bg-transparent z-50 py-2 ${className}`}>
                 <div className="flex justify-between items-center mx-5">
                     <div className="flex items-center gap-28">
                         <div className="font-drukcond">
@@ -49,11 +68,9 @@ export const Navbar2: React.FC<INavbar2> = ({
                                 onClick={toggleAbout}
                                 className="hover:opacity-80 font-bold"
                             >
-                                about
+                                01 &nbsp; about
                             </button>
-                            <Link to={GROUP_PAGE} className="hover:opacity-80 font-bold">
-                                group
-                            </Link>
+                            {getSecondNavItem()}
                         </div>
                     </div>
                     <div>
@@ -61,7 +78,6 @@ export const Navbar2: React.FC<INavbar2> = ({
                             <BackIcon className="w-6 h-6" />
                         </Link>
                     </div>
-
                 </div>
             </nav>
             <AboutOverlay

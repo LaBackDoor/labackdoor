@@ -131,7 +131,7 @@ const Navbar: React.FC<INavbar> = ({
             <div className="font-drukcond">
                 <Logo />
             </div>
-            <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
+            <div className={`hidden backdrop-blur-sm md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
                 <div className="flex flex-col">
                     <p>
                         Research Lab of <span className="font-bold">
@@ -188,7 +188,7 @@ const Navbar: React.FC<INavbar> = ({
 
     return (
         <>
-            <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
+            <nav className={`fixed backdrop-blur-sm font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
                 <div className="flex flex-col w-full">
                     {isGroupPage ? renderGroupPageNav() : renderDefaultNav()}
                 </div>
