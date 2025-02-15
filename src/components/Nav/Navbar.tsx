@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import { useState } from "react";
 import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom";
 
-import { CONTACT_PAGE, GROUP_PAGE } from "../../resources/paths";
+import { CONTACT_PAGE, GROUP_PAGE, PROJECTS_PAGE } from "../../resources/paths";
 import { MenuIcon, BackIcon } from "../../resources/icons";
 import { useLayout } from "../../hooks/useLayout";
 import { AboutOverlay } from "../../pages/About";
@@ -50,6 +50,7 @@ const Navbar: React.FC<INavbar> = ({
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const isGroupPage = location.pathname === '/group';
+    const isProjectsPage = location.pathname === '/projects';
     const [isAboutOpen, setIsAboutOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -98,6 +99,34 @@ const Navbar: React.FC<INavbar> = ({
         document.body.classList.toggle('overflow-hidden');
     };
 
+    const renderProjectsPageNav = () => (
+        <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm ${getNavTextStyles()}`}>
+            <div className="flex flex-col">
+                <p className="font-extralight">
+                    Research Lab of <span className="font-bold">
+                        <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
+                    </span> & <br />
+                    <span className="font-bold">
+                        <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
+                    </span>
+                </p>
+            </div>
+
+            <div className="flex flex-col ml-2">
+                <span>USA</span>
+                <span>
+                    <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
+                </span>
+            </div>
+
+            <div className="flex items-center ml-4">
+                <Link to="/group" className="hover:opacity-80">
+                    group
+                </Link>
+            </div>
+        </div>
+    )
+
     const renderGroupPageNav = () => (
         <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm ${getNavTextStyles()}`}>
             <div className="flex flex-col">
@@ -128,33 +157,43 @@ const Navbar: React.FC<INavbar> = ({
 
     const renderDefaultNav = () => (
         <>
-            <div className="font-drukcond">
+            {/* Logo section without blur */}
+            <div className="font-drukcond z-50">
                 <Logo />
             </div>
-            <div className={`hidden backdrop-blur-sm md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
-                <div className="flex flex-col">
-                    <p>
-                        Research Lab of <span className="font-bold">
-                            <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
-                        </span> & <br />
+
+            {/* Navigation and footer section with unified blur */}
+            <div className="backdrop-blur-sm">
+                <div className={`hidden md:flex items-start justify-start gap-12 mx-5 mt-0.5 text-sm font-extralight ${getNavTextStyles()}`}>
+                    <div className="flex flex-col">
+                        <p>
+                            Research Lab of <span className="font-bold">
+                                <a href="https://www.linkedin.com/in/abaniseorojo/">Abanisenioluwa Orojo</a>
+                            </span> & <br />
+                            <span className="font-bold">
+                                <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col ml-2 font-normal">
+                        <span>USA</span>
                         <span className="font-bold">
-                            <a href="https://www.linkedin.com/in/webster-elumelu/">Webster Elumelu</a>
+                            <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
                         </span>
-                    </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
+                        <CustomLink onClick={() => handleNavItemClick(toggleAbout)}>about</CustomLink>
+                        <CustomLink to={PROJECTS_PAGE}>projects</CustomLink>
+                        <CustomLink to={GROUP_PAGE}>group</CustomLink>
+                        <CustomLink to="/Contact">contact</CustomLink>
+                    </div>
                 </div>
 
-                <div className="flex flex-col ml-2 font-normal">
-                    <span>USA</span>
-                    <span className="font-bold">
-                        <a href="mailto:hello@labackdoor.com">hello@labackdoor.com</a>
-                    </span>
-                </div>
-
-                <div className="grid grid-cols-2 font-bold gap-x-16 gap-y-0.5 ml-4">
-                    <CustomLink onClick={() => handleNavItemClick(toggleAbout)}>about</CustomLink>
-                    <CustomLink to="/Projects">projects</CustomLink>
-                    <CustomLink to={GROUP_PAGE}>group</CustomLink>
-                    <CustomLink to="/Contact">contact</CustomLink>
+                {/* Footer integrated into the same blur container */}
+                <div className="mt-5">
+                    <Footer />
                 </div>
             </div>
 
@@ -186,14 +225,14 @@ const Navbar: React.FC<INavbar> = ({
         </>
     );
 
+    // Main return statement needs to be updated as well
     return (
         <>
-            <nav className={`fixed backdrop-blur-sm font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent ${className}`}>
+            <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent bg-opacity-30 ${className}`}>
                 <div className="flex flex-col w-full">
-                    {isGroupPage ? renderGroupPageNav() : renderDefaultNav()}
-                </div>
-                <div className="mt-5">
-                    <Footer />
+                    {isGroupPage ? renderGroupPageNav()
+                        : isProjectsPage ? renderProjectsPageNav()
+                            : renderDefaultNav()}
                 </div>
             </nav>
 

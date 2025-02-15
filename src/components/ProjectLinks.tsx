@@ -7,19 +7,24 @@ const ProjectLinks = () => {
 
   const projects = [
     {
-      name: "AW-TRBAC",
-      year: "2024",
-      link: "https://itrust.sutd.edu.sg/first-international-conference-on-the-design-of-cyber-secure-water-plants-dcs-water24/programme-dcs-water24/",
-    },
-    {
       name: "MRNNs",
       year: "2024",
       link: MRNS_PAGE,
     },
     {
-      name: "Crowd\nsourcing",
+      name: "BYTE TRAICE",
+      year: "2025",
+      link: "https://github.com/LaBackDoor/TrAice",
+    },
+    {
+      name: "Crowd sourcing",
       year: "2024",
       link: "https://asonam.cpsc.ucalgary.ca/2024/AcceptedPapers.php",
+    },
+    {
+      name: "AW-TRBAC",
+      year: "2024",
+      link: "https://itrust.sutd.edu.sg/first-international-conference-on-the-design-of-cyber-secure-water-plants-dcs-water24/programme-dcs-water24/",
     },
     {
       name: "PANACEA",
@@ -33,11 +38,6 @@ const ProjectLinks = () => {
     },
     {
       name: "MALWARE BEHAVIOR",
-      year: "2025",
-      link: "https://github.com/LaBackDoor",
-    },
-    {
-      name: "TRAICE",
       year: "2025",
       link: "https://github.com/LaBackDoor",
     },
@@ -59,11 +59,10 @@ const ProjectLinks = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`relative group project-link inline-block text-[2vw] leading-[0.9] font-black uppercase tracking-tighter transition-transform duration-[1500ms] ease-out font-druk
-                                ${
-                                  hoveredIndex === index
-                                    ? "translate-x-[10%]"
-                                    : "translate-x-0"
-                                }`}
+                                ${hoveredIndex === index
+                  ? "translate-x-[10%]"
+                  : "translate-x-0"
+                }`}
               data-info={project.year}
             >
               <span className="relative">

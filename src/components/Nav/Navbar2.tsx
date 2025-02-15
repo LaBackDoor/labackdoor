@@ -46,6 +46,12 @@ export const Navbar2: React.FC<INavbar2> = ({
                     02 &nbsp; group
                 </span>
             );
+        } else if (currentPath === PROJECTS_PAGE) {
+            return (
+                <span className="hover:opacity-80 font-bold">
+                    02 &nbsp; projects
+                </span>
+            )
         }
         
         return (
