@@ -228,7 +228,7 @@ const Navbar: React.FC<INavbar> = ({
     // Main return statement needs to be updated as well
     return (
         <>
-            <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full bg-transparent bg-opacity-30 ${className}`}>
+            <nav className={`fixed font-akzidenz bottom-0 left-0 z-40 w-full backdrop-blur-sm bg-opacity-30 ${className}`}>
                 <div className="flex flex-col w-full">
                     {isGroupPage ? renderGroupPageNav()
                         : isProjectsPage ? renderProjectsPageNav()
