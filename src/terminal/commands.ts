@@ -41,7 +41,88 @@ const pwd: Handler = (_args, ctx) => ({ output: [out(ctx.state.cwd)] });
 
 const clear: Handler = () => ({ clear: true });
 
-export const COMMANDS: Record<string, Handler> = { cd, clear, ls, pwd };
+const cat: Handler = (args, ctx) => {
+  if (!args[0]) return { output: [err('cat: missing operand')] };
+  const node = resolve(ctx, args[0], '.');
+  if (!node) return { output: [err(`cat: ${args[0]}: No such file or directory`)] };
+  if (node.type === 'dir') return { output: [err(`cat: ${args[0]}: Is a directory`)] };
+  return { output: node.preview.split('\n').map(out) };
+};
+
+const open: Handler = (args, ctx) => {
+  const node = resolve(ctx, args[0], '.');
+  if (!node) return { output: [err(`open: ${args[0]}: No such file or directory`)] };
+  if (!node.route) return { output: [err(`open: ${args[0] ?? '.'}: nothing to open here`)] };
+  return { effect: { type: 'navigate', route: node.route } };
+};
+
+const theme: Handler = (args) => {
+  const choice = args[0];
+  if (choice === 'light' || choice === 'dark' || choice === 'system') {
+    return { output: [out(`theme set to ${choice}`)], effect: { type: 'theme', choice } };
+  }
+  return { output: [err('usage: theme <light|dark|system>')] };
+};
+
+const whoami: Handler = () => ({
+  output: [out('Abanisenioluwa — founder, la backdoor. systems & malware, AI security, IDS.')],
+});
+
+const history: Handler = (_args, ctx) =>
+  ctx.state.history.length === 0
+    ? {}
+    : { output: ctx.state.history.map((h, i) => out(`${String(i + 1).padStart(4)}  ${h}`)) };
+
+const neofetch: Handler = () => ({
+  output: [
+    '   _       _                _      _                 ',
+    '  | | __ _| |__   __ _  ___| | ___| | ___   ___  _ __',
+    '  | |/ _` | "_ \\ / _` |/ __| |/ / _ | / _ \\ / _ \\| "__|',
+    '  | | (_| | |_) | (_| | (__|   <  __/ | (_) | (_) | |  ',
+    '  |_|\\__,_|_.__/ \\__,_|\\___|_|\\_\\___|_|\\___/ \\___/|_|  ',
+    '',
+    '  lab .......... la backdoor',
+    '  focus ........ systems & malware · AI security · IDS',
+    '  shell ........ labsh 1.0 (web)',
+    '  uptime ....... always researching',
+  ].map(out),
+});
+
+const secret: Handler = () => ({
+  output: [out('you found it. the best backdoor is a well-read README. `open blog`.')],
+});
+
+const help: Handler = () => {
+  const rows: Array<[string, string]> = [
+    ['ls [path]', 'list directory contents'],
+    ['cd [path]', 'change directory (no arg = home)'],
+    ['pwd', 'print working directory'],
+    ['cat <file>', 'show a file preview'],
+    ['open <path>', 'open the real page for a file/section'],
+    ['theme <light|dark|system>', 'switch color theme'],
+    ['whoami', 'about the author'],
+    ['history', 'show command history'],
+    ['clear', 'clear the screen'],
+    ['neofetch', 'lab banner'],
+    ['help', 'show this help'],
+  ];
+  return { output: rows.map(([c, d]) => out(`  ${c.padEnd(28)}${d}`)) };
+};
+
+export const COMMANDS: Record<string, Handler> = {
+  cat,
+  cd,
+  clear,
+  help,
+  history,
+  ls,
+  neofetch,
+  open,
+  pwd,
+  secret,
+  theme,
+  whoami,
+};
 
 export const COMMAND_NAMES: string[] = Object.keys(COMMANDS).sort();
 
