@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "serve": "bunx serve out",
     "test": "vitest run",
     "test:watch": "vitest"
   },

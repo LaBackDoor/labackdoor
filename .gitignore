@@ -11,6 +11,9 @@
 /tsbuildinfo
 *.tsbuildinfo
 
+# Next.js auto-generated type shim (regenerated on build; references dev-only paths)
+next-env.d.ts
+
 # Testing
 /coverage
 *.lcov
