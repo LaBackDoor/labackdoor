@@ -58,9 +58,11 @@ export function getTeamMember(slug: string): ContentRecord<TeamFrontmatter> | nu
 }
 
 export function getProjects(): ContentRecord<ProjectFrontmatter>[] {
-  return readDir('projects').map((f) =>
-    readRecord<ProjectFrontmatter>(path.join(CONTENT_DIR, 'projects', f), projectFrontmatterSchema),
-  );
+  return readDir('projects')
+    .map((f) =>
+      readRecord<ProjectFrontmatter>(path.join(CONTENT_DIR, 'projects', f), projectFrontmatterSchema),
+    )
+    .sort((a, b) => a.frontmatter.title.localeCompare(b.frontmatter.title));
 }
 
 export function getLab(): ContentRecord<LabFrontmatter> | null {
