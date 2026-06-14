@@ -1,0 +1,39 @@
+import Link from 'next/link';
+import { ThemeToggle } from '@/theme/ThemeToggle';
+
+const LINKS: { href: string; label: string }[] = [
+  { href: '/lab', label: 'Lab' },
+  { href: '/team', label: 'Team' },
+  { href: '/blog', label: 'Research' },
+  { href: '/contact', label: 'Contact' },
+];
+
+export function Nav() {
+  return (
+    <nav
+      aria-label="Primary"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 18,
+        padding: '10px 18px',
+        borderBottom: '1px solid var(--border)',
+        background: 'var(--bg-elev)',
+        fontFamily: 'var(--font-mono), monospace',
+        fontSize: 14,
+      }}
+    >
+      <Link href="/" style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+        la_backdoor
+      </Link>
+      <div style={{ display: 'flex', gap: 16, marginLeft: 'auto', alignItems: 'center' }}>
+        {LINKS.map((l) => (
+          <Link key={l.href} href={l.href} style={{ color: 'var(--fg-muted)', textDecoration: 'none' }}>
+            {l.label}
+          </Link>
+        ))}
+        <ThemeToggle />
+      </div>
+    </nav>
+  );
+}
