@@ -46,8 +46,7 @@ pnpm-debug.log*
 Thumbs.db
 
 # AI Agent
-docs/*
-!docs/superpowers/
+docs/
 .claude/
 
 # Brainstorming companion (local-only mockups)
