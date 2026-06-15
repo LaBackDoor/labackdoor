@@ -142,6 +142,12 @@ export function getPublications(): Publication[] {
   return merged.sort((a, b) => b.year - a.year);
 }
 
+export function publicationsByMember(name: string, pubs: Publication[]): Publication[] {
+  const surname = name.trim().split(/\s+/).pop()?.toLowerCase() ?? '';
+  if (!surname) return [];
+  return pubs.filter((p) => p.authors.some((a) => a.toLowerCase().includes(surname)));
+}
+
 export function getRecentActivity(limit = 8): ActivityItem[] {
   const items: ActivityItem[] = [];
   for (const p of getBlogPosts()) {
