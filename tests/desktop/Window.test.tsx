@@ -10,7 +10,7 @@ describe('Window', () => {
     expect(screen.getByText('x.md')).toBeInTheDocument();
     const frame = screen.getByTitle('x.md') as HTMLIFrameElement;
     expect(frame.tagName).toBe('IFRAME');
-    expect(frame.getAttribute('src')).toBe('/blog/x?window=1');
+    expect(frame.getAttribute('src')).toBe('/blog/x/?window=1');
   });
 
   it('fires the control callbacks', () => {

@@ -2,7 +2,12 @@
 
 import type { WindowState } from './types';
 
-const SEP = (route: string) => (route.includes('?') ? '&' : '?');
+// The site uses trailingSlash routes; hit the slashed URL directly so the
+// ?window=1 query survives (a redirect to add the slash would drop it).
+function embedSrc(route: string): string {
+  const base = route.endsWith('/') ? route : `${route}/`;
+  return `${base}?window=1`;
+}
 
 function TrafficButton({ bg, label, onClick }: { bg: string; label: string; onClick: () => void }) {
   return (
@@ -68,7 +73,7 @@ export function Window({
       </div>
       <iframe
         title={win.title}
-        src={`${win.route}${SEP(win.route)}window=1`}
+        src={embedSrc(win.route)}
         sandbox="allow-scripts allow-same-origin allow-forms"
         style={{ flex: 1, width: '100%', border: 'none', background: 'var(--bg)' }}
       />

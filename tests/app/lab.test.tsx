@@ -10,6 +10,6 @@ import LabPage from '@/app/lab/page';
 describe('Lab page', () => {
   it('renders the lab title', () => {
     render(LabPage());
-    expect(screen.getByRole('heading', { name: /la backdoor/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /la backdoor/i })).toBeInTheDocument();
   });
 });
