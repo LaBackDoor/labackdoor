@@ -7,6 +7,7 @@ import {
   labFrontmatterSchema,
   researchFrontmatterSchema,
   publicationFrontmatterSchema,
+  preprintFrontmatterSchema,
   newsFrontmatterSchema,
 } from './schema';
 import type {
@@ -16,6 +17,7 @@ import type {
   ContentRecord,
   ResearchFrontmatter,
   PublicationFrontmatter,
+  PreprintFrontmatter,
   NewsFrontmatter,
   Publication,
   ActivityItem,
@@ -106,6 +108,13 @@ export function getNews(): ContentRecord<NewsFrontmatter>[] {
   return readDir('news')
     .map((f) => readRecord<NewsFrontmatter>(path.join(CONTENT_DIR, 'news', f), newsFrontmatterSchema))
     .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+}
+
+// Manually-curated preprints (not on Scholar yet). Add an MDX file under content/preprints/.
+export function getPreprints(): ContentRecord<PreprintFrontmatter>[] {
+  return readDir('preprints')
+    .map((f) => readRecord<PreprintFrontmatter>(path.join(CONTENT_DIR, 'preprints', f), preprintFrontmatterSchema))
+    .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
 }
 
 function normalizeTitle(t: string): string {

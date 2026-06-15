@@ -1,0 +1,36 @@
+---
+title: Autonomous Vulnerability Remediation
+summary: Agents that fix security vulnerabilities on live systems — closing the exposure while keeping the service running — and the benchmarks and planners that make those fixes safe and verifiable.
+keywords: [remediation, sysrepair, autonomous, agentic, self-healing, neurosymbolic]
+links:
+  autopatch: https://github.com/AKOrojo/autopatch
+  sysrepair-bench: https://github.com/BaylorSecurityLab/sysrepair-bench
+  neurosymbolic-sysrepair: https://github.com/BaylorSecurityLab/neurosymbolic-sysrepair
+order: 5
+---
+
+Production infrastructure accumulates security debt continuously — a new CVE lands upstream,
+an audit flags a misconfiguration, a policy tightens an SSH default — faster than any
+responder can clear it. We study **autonomous vulnerability remediation**: agents that
+observe a running system, diagnose the exposure, synthesize and execute a fix, and verify
+the risk is gone.
+
+The hard part is not finding a fix — it is deploying one **without disturbing the workload
+around it**. Remediation is a *dual objective*: the patch must close the vulnerability **and**
+the protected service must stay available. Closing a CVE by taking the service offline is a
+failure, not a partial success — so the work sits in a gap that offensive-agent benchmarks
+(which only reward landing an exploit) and source-repair benchmarks (which test a quiescent
+codebase) both miss.
+
+Our work along this line:
+
+- **SysRepair-Bench** — 313 live, Dockerized/VM scenarios scored on *both* exploitability and
+  service availability, including a compensating-control track where direct patching is
+  forbidden.
+- **SysRepair / NeuroPlan** — a multi-architecture study and a neural-symbolic planner that
+  emits **verifiable, reviewable** remediation plans (PDDL + classical planning) instead of
+  opaque agent actions.
+- A **survey** mapping the emerging field across agentic AI, reinforcement learning,
+  benchmarks, and operational safety.
+
+See the [preprints](/publications) below and the code repositories linked above.

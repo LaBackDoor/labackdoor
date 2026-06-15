@@ -48,6 +48,15 @@ export const publicationFrontmatterSchema = z.object({
   links: z.record(z.string(), z.string()).default({}),
 });
 
+export const preprintFrontmatterSchema = z.object({
+  title: z.string().min(1),
+  authors: z.array(z.string()).default([]),
+  venue: z.string().default('Preprint'),
+  year: z.number().int().optional(),
+  links: z.record(z.string(), z.string()).default({}),
+  order: z.number().optional(),
+});
+
 export const newsFrontmatterSchema = z.object({
   title: z.string().min(1),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),

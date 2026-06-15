@@ -6,6 +6,7 @@ import type {
   projectFrontmatterSchema,
   researchFrontmatterSchema,
   publicationFrontmatterSchema,
+  preprintFrontmatterSchema,
   newsFrontmatterSchema,
 } from './schema';
 
@@ -22,6 +23,7 @@ export interface ContentRecord<T> {
 
 export type ResearchFrontmatter = z.infer<typeof researchFrontmatterSchema>;
 export type PublicationFrontmatter = z.infer<typeof publicationFrontmatterSchema>;
+export type PreprintFrontmatter = z.infer<typeof preprintFrontmatterSchema>;
 export type NewsFrontmatter = z.infer<typeof newsFrontmatterSchema>;
 
 export interface Publication {

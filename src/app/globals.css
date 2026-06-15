@@ -44,6 +44,34 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Guard against accidental horizontal scroll on small screens. */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* Mobile / small screens */
+@media (max-width: 720px) {
+  /* The nav has many links; let it wrap to a second row instead of overflowing. */
+  nav[aria-label="Primary"] {
+    flex-wrap: wrap;
+    gap: 8px 14px !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+  nav[aria-label="Primary"] > div {
+    margin-left: 0 !important;
+    flex-wrap: wrap;
+    gap: 12px !important;
+    width: 100%;
+  }
+  /* Desktop windows become full-screen on phones. */
+  [role="dialog"] {
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
 /* !important is required: the nav sets display:flex via an inline style,
    which would otherwise beat this rule. */
 body[data-embed="1"] nav[aria-label="Primary"] { display: none !important; }
