@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { THEME_STORAGE_KEY, type ResolvedTheme } from './theme-script';
+import { type ResolvedTheme } from './theme-script';
+import { applyThemeChoice } from './apply-theme';
 
 function currentTheme(): ResolvedTheme {
   const attr = document.documentElement.getAttribute('data-theme');
@@ -17,8 +18,7 @@ export function ThemeToggle() {
 
   function toggle() {
     const next: ResolvedTheme = currentTheme() === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem(THEME_STORAGE_KEY, next);
+    applyThemeChoice(next);
     setTheme(next);
   }
 
