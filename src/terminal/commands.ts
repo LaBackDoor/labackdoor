@@ -110,8 +110,8 @@ const grep: Handler = (args, ctx) => {
 };
 
 const cv: Handler = () => ({
-  output: [out('opening resume…')],
-  effect: { type: 'open-window', route: '/resume', title: 'resume' },
+  output: [out('opening profile…')],
+  effect: { type: 'open-window', route: '/team/abanisenioluwa', title: 'abanisenioluwa.md' },
 });
 
 const help: Handler = () => {

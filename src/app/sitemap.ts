@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://labackdoor.com';
-  const staticPaths = ['', '/lab', '/research', '/publications', '/blog', '/news', '/team', '/projects', '/contact', '/resume'];
+  const staticPaths = ['', '/lab', '/research', '/publications', '/blog', '/news', '/team', '/projects', '/contact'];
   const out: MetadataRoute.Sitemap = staticPaths.map((p) => ({
     url: `${base}${p}/`,
     changeFrequency: 'weekly',

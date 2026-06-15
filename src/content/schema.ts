@@ -15,6 +15,7 @@ export const teamFrontmatterSchema = z.object({
   avatar: z.string().min(1),
   links: z.record(z.string(), z.string()).default({}),
   skills: z.array(z.string()).default([]),
+  cv: z.string().optional(),
   order: z.number().optional(),
 });
 

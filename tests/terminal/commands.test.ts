@@ -146,8 +146,8 @@ describe('terminal power-ups', () => {
     expect(state.lines.some((l) => l.kind === 'output' && l.text.includes('/blog'))).toBe(true);
   });
 
-  it('cv opens the resume in a window', () => {
+  it('cv opens the founder profile in a window', () => {
     const { effect } = runCommand(root, fresh(), 'cv');
-    expect(effect).toEqual({ type: 'open-window', route: '/resume', title: 'resume' });
+    expect(effect).toEqual({ type: 'open-window', route: '/team/abanisenioluwa', title: 'abanisenioluwa.md' });
   });
 });
