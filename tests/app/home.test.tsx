@@ -12,10 +12,15 @@ describe('Home page', () => {
     expect(screen.getByText(/security research lab/i)).toBeInTheDocument();
   });
 
+  it('renders the news panel', () => {
+    render(Home());
+    expect(screen.getByRole('complementary', { name: /news and recent activity/i })).toBeInTheDocument();
+  });
+
   it('includes a no-JS fallback with section links', () => {
     const { container } = render(Home());
     const noscript = container.querySelector('noscript');
     expect(noscript).not.toBeNull();
-    expect(noscript!.textContent).toContain('/blog');
+    expect(noscript!.textContent).toContain('/research');
   });
 });
