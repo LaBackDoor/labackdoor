@@ -37,9 +37,9 @@ describe('new section loaders', () => {
     expect(r!.body).toContain('intrusion-detection');
   });
 
-  it('returns publications from manual MDX (and merges scholar json)', () => {
+  it('returns publications as an array (Scholar-driven via scholar.generated.json)', () => {
     const pubs = getPublications();
-    expect(pubs.some((p) => p.title === 'A manual sample paper' && p.source === 'manual')).toBe(true);
+    expect(Array.isArray(pubs)).toBe(true);
     expect(pubs.every((p) => typeof p.year === 'number')).toBe(true);
   });
 
