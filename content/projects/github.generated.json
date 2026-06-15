@@ -1,0 +1,106 @@
+[
+  {
+    "name": "neurosymbolic-sysrepair",
+    "org": "BaylorSecurityLab",
+    "description": "",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/neurosymbolic-sysrepair"
+  },
+  {
+    "name": "pa-xai",
+    "org": "BaylorSecurityLab",
+    "description": "",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/pa-xai"
+  },
+  {
+    "name": "panacea",
+    "org": "BaylorSecurityLab",
+    "description": "Assessing the Impact of Access Control Policies on Data Accessibility in Distributed NoSQL Environments; PANACEA (Policy Analysis and NoSQL Access Control Evaluation Approach)",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/panacea"
+  },
+  {
+    "name": "predicting-software-vulnerabilities",
+    "org": "BaylorSecurityLab",
+    "description": "This repository contains the dataset for the paper \"Predicting Software Vulnerability Trends with Multi-Recurrent Neural Networks: A Time Series Forecasting Approach\", published in the Proceedings of the 1st International Conference on NLP & AI for Cyber Security (NLPAICS 2024).",
+    "language": "",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/predicting-software-vulnerabilities"
+  },
+  {
+    "name": "secure-crowdsourcing",
+    "org": "BaylorSecurityLab",
+    "description": "This repo supports the paper \"Leveraging Secure Social Media Crowdsourcing for Gathering Firsthand Accounts in Conflict Zones.\" We collected 250,000 Telegram messages on the Russo-Ukrainian conflict and developed a framework to identify contextual groupings, revealing 477 new insights from 13 news sources.",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/secure-crowdsourcing"
+  },
+  {
+    "name": "stateaware-ics-monitoring",
+    "org": "BaylorSecurityLab",
+    "description": "",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/stateaware-ics-monitoring"
+  },
+  {
+    "name": "svae-based-dynamic-threat-detection",
+    "org": "BaylorSecurityLab",
+    "description": "This repository presents research on a novel composite framework for enhancing cyber resilience in Cyber Physical Systems (CPS). The framework integrates Dynamic Access Control, utilizing Authorizing Workflow and Task-Role-Based Access Control (AW-TRBAC), with Intrusion Detection Systems (IDSs) powered by Semantic Variational Autoencoders (SVAEs).",
+    "language": "Jupyter Notebook",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/svae-based-dynamic-threat-detection"
+  },
+  {
+    "name": "sysrepair-bench",
+    "org": "BaylorSecurityLab",
+    "description": "",
+    "language": "Shell",
+    "stars": 0,
+    "url": "https://github.com/BaylorSecurityLab/sysrepair-bench"
+  },
+  {
+    "name": "fsm-extractor",
+    "org": "LaBackDoor",
+    "description": "",
+    "language": "Rust",
+    "stars": 0,
+    "url": "https://github.com/LaBackDoor/fsm-extractor"
+  },
+  {
+    "name": "iec_st_compiler",
+    "org": "LaBackDoor",
+    "description": "A Python-based compiler that parses IEC 61131-3 Structured Text (ST) source files and outputs a corresponding Abstract Syntax Tree (AST) in XML format. It utilizes a custom recursive descent parser (pyPEG-like) for grammar matching and supports advanced features like EPAS pragmas for nested comments.",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/LaBackDoor/iec_st_compiler"
+  },
+  {
+    "name": "lab-website",
+    "org": "LaBackDoor",
+    "description": "Source code for LaBackDoor website",
+    "language": "HTML",
+    "stars": 0,
+    "url": "https://github.com/LaBackDoor/lab-website"
+  },
+  {
+    "name": "labackdoor",
+    "org": "LaBackDoor",
+    "description": "At La Backdoor, our mission is to advance the field of cybersecurity through innovative research, cutting-edge technology, and unparalleled expertise. We strive to protect and empower individuals, organizations, and societies by anticipating, identifying, and mitigating cyber threats, ensuring a secure digital future for all.",
+    "language": "TypeScript",
+    "stars": 0,
+    "url": "https://github.com/LaBackDoor/labackdoor"
+  },
+  {
+    "name": "multi-recurrent-network",
+    "org": "LaBackDoor",
+    "description": "This repository contains a Pytorch implementation of a Multi-Recurrent Network (MRN).",
+    "language": "Python",
+    "stars": 0,
+    "url": "https://github.com/LaBackDoor/multi-recurrent-network"
+  }
+]
