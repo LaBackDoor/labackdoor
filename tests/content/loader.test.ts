@@ -6,14 +6,14 @@ describe('content loader', () => {
   it('lists blog posts sorted newest-first', () => {
     const posts = getBlogPosts();
     expect(posts.length).toBeGreaterThan(0);
-    expect(posts[0].frontmatter.title).toBe('Unpacking a Rust loader');
-    expect(posts[0].slug).toBe('2026-06-10-rust-loader');
+    expect(posts[0].frontmatter.title).toBe('Welcome to la backdoor');
+    expect(posts[0].slug).toBe('2026-06-14-welcome');
   });
 
   it('loads a single post by slug with body', () => {
-    const post = getBlogPost('2026-06-10-rust-loader');
+    const post = getBlogPost('2026-06-14-welcome');
     expect(post).not.toBeNull();
-    expect(post!.body).toContain('stage-2 payload');
+    expect(post!.body).toContain('security research lab');
   });
 
   it('returns null for unknown slug', () => {
@@ -28,13 +28,13 @@ describe('content loader', () => {
 
 describe('new section loaders', () => {
   it('lists research items', () => {
-    expect(getResearch().some((r) => r.slug === 'ids-sensor')).toBe(true);
+    expect(getResearch().some((r) => r.slug === 'vulnerability-forecasting')).toBe(true);
   });
 
   it('loads a single research item with body', () => {
-    const r = getResearchItem('ids-sensor');
+    const r = getResearchItem('vulnerability-forecasting');
     expect(r).not.toBeNull();
-    expect(r!.body).toContain('intrusion-detection');
+    expect(r!.body).toContain('Multi-Recurrent');
   });
 
   it('returns publications as an array (Scholar-driven via scholar.generated.json)', () => {

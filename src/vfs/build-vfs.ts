@@ -20,7 +20,7 @@ export interface VfsInput {
   news?: ContentRecord<NewsFrontmatter>[];
 }
 
-const CONTACT_PREVIEW = ['email: b.korojo@gmail.com', 'github: github.com/LaBackDoor'].join('\n');
+const CONTACT_PREVIEW = ['email: akorojo@labackdoor.com', 'github: github.com/LaBackDoor'].join('\n');
 
 export function buildVfs(input: VfsInput): VfsDir {
   const children: VfsNode[] = [];

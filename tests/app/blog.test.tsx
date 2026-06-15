@@ -5,6 +5,6 @@ import BlogIndex from '@/app/blog/page';
 describe('Blog index', () => {
   it('renders a link to each post', () => {
     render(BlogIndex());
-    expect(screen.getByRole('link', { name: /Unpacking a Rust loader/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Welcome to la backdoor/i })).toBeInTheDocument();
   });
 });
