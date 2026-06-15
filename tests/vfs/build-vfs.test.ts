@@ -52,7 +52,7 @@ describe('buildVfs new sections', () => {
       blog: [],
       team: [],
       projects: [],
-      research: [{ slug: 'ids', body: 'r', frontmatter: { title: 'IDS', status: 'active', summary: 'sum', tags: [], started: '2026-01-01', collaborators: [], links: {} } }] as any,
+      research: [{ slug: 'threat-detection', body: 'r', frontmatter: { title: 'Threat Detection', summary: 'sum', keywords: ['vuln'], order: 1 } }] as any,
       publications: [{ title: 'Paper X', authors: ['A'], venue: 'V', year: 2025, type: 'paper', links: {}, source: 'manual' }] as any,
       news: [{ slug: '2026-06-14-launch', body: 'n', frontmatter: { title: 'Launch', date: '2026-06-14', summary: 'live' } }] as any,
     });
@@ -60,7 +60,7 @@ describe('buildVfs new sections', () => {
     expect(names).toEqual(expect.arrayContaining(['research', 'publications', 'news']));
     const research = root.children.find((c) => c.name === 'research') as any;
     expect(research.route).toBe('/research');
-    expect(research.children[0].route).toBe('/research/ids');
+    expect(research.children[0].route).toBe('/research/threat-detection');
     const pubs = root.children.find((c) => c.name === 'publications') as any;
     expect(pubs.route).toBe('/publications');
   });

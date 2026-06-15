@@ -77,7 +77,7 @@ export function buildVfs(input: VfsInput): VfsDir {
       name: `${r.slug}.md`,
       path: `/research/${r.slug}.md`,
       route: `/research/${r.slug}`,
-      preview: `${r.frontmatter.title} [${r.frontmatter.status}]\n\n${r.frontmatter.summary}`,
+      preview: `${r.frontmatter.title}\n\n${r.frontmatter.summary}`,
     }));
     children.push({ type: 'dir', name: 'research', path: '/research', route: '/research', children: researchFiles });
   }
