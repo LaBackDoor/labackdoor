@@ -3,10 +3,10 @@ import type {
   BlogFrontmatter,
   TeamFrontmatter,
   LabFrontmatter,
-  ProjectFrontmatter,
   ResearchFrontmatter,
   NewsFrontmatter,
   Publication,
+  RepoProject,
 } from '@/content/types';
 import type { VfsDir, VfsFile, VfsNode } from './types';
 
@@ -14,7 +14,7 @@ export interface VfsInput {
   lab: ContentRecord<LabFrontmatter> | null;
   blog: ContentRecord<BlogFrontmatter>[];
   team: ContentRecord<TeamFrontmatter>[];
-  projects: ContentRecord<ProjectFrontmatter>[];
+  projects: RepoProject[];
   research?: ContentRecord<ResearchFrontmatter>[];
   publications?: Publication[];
   news?: ContentRecord<NewsFrontmatter>[];
@@ -63,10 +63,10 @@ export function buildVfs(input: VfsInput): VfsDir {
 
   const projectFiles: VfsFile[] = input.projects.map((p) => ({
     type: 'file',
-    name: `${p.slug}.md`,
-    path: `/projects/${p.slug}.md`,
+    name: `${p.name}.md`,
+    path: `/projects/${p.name}.md`,
     route: '/projects',
-    preview: `${p.frontmatter.title} [${p.frontmatter.status}]\n\n${p.frontmatter.summary}`,
+    preview: `${p.org}/${p.name}\n\n${p.description || '(no description)'}`,
   }));
   children.push({ type: 'dir', name: 'projects', path: '/projects', route: '/projects', children: projectFiles });
 

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { buildVfs } from '@/vfs/build-vfs';
-import type { ContentRecord } from '@/content/types';
+import type { ContentRecord, RepoProject } from '@/content/types';
 
 const blog: ContentRecord<any>[] = [
   { slug: '2026-06-10-rust-loader', body: 'b', frontmatter: { title: 'Rust loader', date: '2026-06-10', authors: [], tags: ['re'], summary: 'A summary.', draft: false } },
@@ -8,8 +8,8 @@ const blog: ContentRecord<any>[] = [
 const team: ContentRecord<any>[] = [
   { slug: 'aba', body: 't', frontmatter: { name: 'Aba', role: 'Founder', avatar: '/a.png', links: {}, skills: ['re'], order: 1 } },
 ];
-const projects: ContentRecord<any>[] = [
-  { slug: 'ids', body: 'p', frontmatter: { title: 'IDS', status: 'active', summary: 'Sensor.', tags: [] } },
+const projects: RepoProject[] = [
+  { name: 'ids', org: 'LaBackDoor', description: 'Sensor.', language: 'Python', stars: 0, url: 'https://github.com/LaBackDoor/ids' },
 ];
 const lab: ContentRecord<any> = { slug: 'lab', body: 'l', frontmatter: { title: 'la backdoor', mission: 'Research.' } };
 

@@ -5,7 +5,6 @@ import {
   blogFrontmatterSchema,
   teamFrontmatterSchema,
   labFrontmatterSchema,
-  projectFrontmatterSchema,
   researchFrontmatterSchema,
   publicationFrontmatterSchema,
   newsFrontmatterSchema,
@@ -14,13 +13,13 @@ import type {
   BlogFrontmatter,
   TeamFrontmatter,
   LabFrontmatter,
-  ProjectFrontmatter,
   ContentRecord,
   ResearchFrontmatter,
   PublicationFrontmatter,
   NewsFrontmatter,
   Publication,
   ActivityItem,
+  RepoProject,
 } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -65,12 +64,11 @@ export function getTeamMember(slug: string): ContentRecord<TeamFrontmatter> | nu
   return getTeamMembers().find((m) => m.slug === slug) ?? null;
 }
 
-export function getProjects(): ContentRecord<ProjectFrontmatter>[] {
-  return readDir('projects')
-    .map((f) =>
-      readRecord<ProjectFrontmatter>(path.join(CONTENT_DIR, 'projects', f), projectFrontmatterSchema),
-    )
-    .sort((a, b) => a.frontmatter.title.localeCompare(b.frontmatter.title));
+export function getProjects(): RepoProject[] {
+  const file = path.join(CONTENT_DIR, 'projects', 'github.generated.json');
+  if (!fs.existsSync(file)) return [];
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8')) as RepoProject[];
+  return raw;
 }
 
 export function getLab(): ContentRecord<LabFrontmatter> | null {

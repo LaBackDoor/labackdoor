@@ -7,7 +7,7 @@ on:
   # Re-deploy after the Scholar action commits new publications. Pushes made by
   # the Actions bot don't trigger `push`, so we react to its completion instead.
   workflow_run:
-    workflows: ["Update Scholar publications"]
+    workflows: ["Update Scholar publications", "Update repos"]
     types: [completed]
 
 permissions:

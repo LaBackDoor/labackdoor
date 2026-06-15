@@ -8,7 +8,8 @@
     "serve": "bunx serve out",
     "test": "vitest run",
     "test:watch": "vitest",
-    "fetch:scholar": "bun run scripts/fetch-scholar.ts"
+    "fetch:scholar": "bun run scripts/fetch-scholar.ts",
+    "fetch:repos": "bun run scripts/fetch-repos.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

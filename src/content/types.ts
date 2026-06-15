@@ -40,3 +40,12 @@ export interface ActivityItem {
   date: string;
   route: string;
 }
+
+export interface RepoProject {
+  name: string;
+  org: string;
+  description: string;
+  language: string;
+  stars: number;
+  url: string;
+}
