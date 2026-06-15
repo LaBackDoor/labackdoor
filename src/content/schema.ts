@@ -34,6 +34,7 @@ export const researchFrontmatterSchema = z.object({
   title: z.string().min(1),
   summary: z.string().min(1),
   keywords: z.array(z.string()).default([]),
+  links: z.record(z.string(), z.string()).default({}),
   order: z.number().optional(),
 });
 

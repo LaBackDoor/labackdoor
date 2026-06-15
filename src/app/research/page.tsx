@@ -16,6 +16,13 @@ export default function ResearchIndex() {
                 {a.frontmatter.title}
               </Link>
               <p style={{ color: 'var(--fg-muted)', margin: '6px 0 10px' }}>{a.frontmatter.summary}</p>
+              {Object.keys(a.frontmatter.links).length > 0 && (
+                <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', margin: '0 0 10px', fontFamily: 'var(--font-mono), monospace', fontSize: 12 }}>
+                  {Object.entries(a.frontmatter.links).map(([k, v]) => (
+                    <a key={k} href={v} target="_blank" rel="noreferrer" style={{ color: 'var(--accent-2)' }}>{k} ↗</a>
+                  ))}
+                </div>
+              )}
               {matched.length > 0 && (
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 6 }}>
                   {matched.slice(0, 4).map((p, i) => (

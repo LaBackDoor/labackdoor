@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getResearch, getResearchItem, getPublications, publicationsForArea } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 import { Mdx } from '@/components/Mdx';
+import { Authors } from '@/components/Authors';
 
 export function generateStaticParams() {
   return getResearch().map((a) => ({ slug: a.slug }));
@@ -14,6 +15,13 @@ export default async function ResearchAreaPage({ params }: { params: Promise<{ s
   const matched = publicationsForArea(area.frontmatter.keywords, getPublications());
   return (
     <PageShell title={area.frontmatter.title} subtitle={area.frontmatter.summary}>
+      {Object.keys(area.frontmatter.links).length > 0 && (
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 16, fontFamily: 'var(--font-mono), monospace', fontSize: 13 }}>
+          {Object.entries(area.frontmatter.links).map(([k, v]) => (
+            <a key={k} href={v} target="_blank" rel="noreferrer" style={{ color: 'var(--accent-2)' }}>{k} ↗</a>
+          ))}
+        </div>
+      )}
       <div style={{ lineHeight: 1.7, color: 'var(--fg)' }}>
         <Mdx source={area.body} />
       </div>
@@ -27,7 +35,7 @@ export default async function ResearchAreaPage({ params }: { params: Promise<{ s
               <li key={i} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 10 }}>
                 <div style={{ fontWeight: 600, color: 'var(--fg)' }}>{p.title}</div>
                 <div style={{ color: 'var(--fg-muted)', fontSize: 14 }}>
-                  {p.authors.join(', ')}{p.authors.length ? ' · ' : ''}{p.venue} ({p.year})
+                  <Authors authors={p.authors} />{p.authors.length ? ' · ' : ''}{p.venue} ({p.year})
                 </div>
                 <div style={{ display: 'flex', gap: 12, marginTop: 4, fontFamily: 'var(--font-mono), monospace', fontSize: 12 }}>
                   {Object.entries(p.links).map(([k, v]) => (<a key={k} href={v} style={{ color: 'var(--accent-2)' }}>{k}</a>))}

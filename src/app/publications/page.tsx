@@ -1,5 +1,6 @@
 import { getPublications } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
+import { Authors } from '@/components/Authors';
 import type { Publication } from '@/content/types';
 
 function groupByYear(pubs: Publication[]): [number, Publication[]][] {
@@ -25,7 +26,7 @@ export default function PublicationsPage() {
               <li key={`${p.title}-${i}`} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 12 }}>
                 <div style={{ fontWeight: 600, color: 'var(--fg)' }}>{p.title}</div>
                 <div style={{ color: 'var(--fg-muted)', fontSize: 14 }}>
-                  {p.authors.join(', ')}{p.authors.length ? ' · ' : ''}{p.venue}
+                  <Authors authors={p.authors} />{p.authors.length ? ' · ' : ''}{p.venue}
                 </div>
                 <div style={{ display: 'flex', gap: 12, marginTop: 4, fontFamily: 'var(--font-mono), monospace', fontSize: 12 }}>
                   <span style={{ color: 'var(--fg-muted)' }}>{p.type}</span>
