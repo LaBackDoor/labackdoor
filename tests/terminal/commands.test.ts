@@ -92,9 +92,9 @@ describe('runCommand extra commands', () => {
     expect(state.lines.some((l) => l.kind === 'error' && l.text.includes('No such file'))).toBe(true);
   });
 
-  it('open returns a navigate effect to the node route', () => {
+  it('open returns an open-window effect with route and title', () => {
     const { effect } = runCommand(root, fresh(), 'open blog');
-    expect(effect).toEqual({ type: 'navigate', route: '/blog' });
+    expect(effect).toEqual({ type: 'open-window', route: '/blog', title: 'blog' });
   });
 
   it('open on a node without a route errors', () => {

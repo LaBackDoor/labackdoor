@@ -8,7 +8,7 @@ import { runCommand, welcomeLines, formatPrompt } from './commands';
 import { complete } from './complete';
 import { applyThemeChoice } from '@/theme/apply-theme';
 
-export function Terminal({ root }: { root: VfsDir }) {
+export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: (route: string, title: string) => void }) {
   const router = useRouter();
   const [state, setState] = useState<ShellState>(() => ({ cwd: '/', lines: welcomeLines(), history: [] }));
   const [input, setInput] = useState('');
@@ -21,8 +21,14 @@ export function Terminal({ root }: { root: VfsDir }) {
     setState(next);
     setInput('');
     setHistIndex(null);
-    if (effect.type === 'navigate') router.push(effect.route);
-    if (effect.type === 'theme') applyThemeChoice(effect.choice);
+    if (effect.type === 'open-window') {
+      if (onOpenWindow) onOpenWindow(effect.route, effect.title);
+      else router.push(effect.route);
+    } else if (effect.type === 'navigate') {
+      router.push(effect.route);
+    } else if (effect.type === 'theme') {
+      applyThemeChoice(effect.choice);
+    }
     if (typeof requestAnimationFrame !== 'undefined') {
       requestAnimationFrame(() => {
         if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;

@@ -53,7 +53,7 @@ const open: Handler = (args, ctx) => {
   const node = resolve(ctx, args[0], '.');
   if (!node) return { output: [err(`open: ${args[0]}: No such file or directory`)] };
   if (!node.route) return { output: [err(`open: ${args[0] ?? '.'}: nothing to open here`)] };
-  return { effect: { type: 'navigate', route: node.route } };
+  return { effect: { type: 'open-window', route: node.route, title: node.name || node.route } };
 };
 
 const theme: Handler = (args) => {
