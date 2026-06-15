@@ -129,7 +129,7 @@ export function getPublications(): Publication[] {
       venue: e.venue ?? '',
       year: e.year,
       type: 'paper',
-      links: e.link ? { scholar: e.link } : {},
+      links: (e.link ? { scholar: e.link } : {}) as Record<string, string>,
       source: 'scholar' as const,
     }));
   }
