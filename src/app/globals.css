@@ -46,6 +46,13 @@ body {
 
 body[data-embed="1"] nav[aria-label="Primary"] { display: none; }
 
-/* Brand mark in the nav: black art by default, inverted to white in dark mode. */
-.brand-mark { height: 26px; width: auto; display: block; }
-[data-theme="dark"] .brand-mark { filter: invert(1); }
+/* Brand mark in the nav: the door glyph masked and filled with the theme accent,
+   so it recolors instantly when the theme toggles. */
+.brand-mark {
+  display: block;
+  height: 26px;
+  aspect-ratio: 431 / 448;
+  background-color: var(--accent);
+  -webkit-mask: url(/logo-mark.png) center / contain no-repeat;
+  mask: url(/logo-mark.png) center / contain no-repeat;
+}
