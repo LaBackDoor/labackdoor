@@ -44,3 +44,31 @@ describe('buildVfs', () => {
     expect(r2.children.map((c) => c.name)).toContain('contact.md');
   });
 });
+
+describe('buildVfs new sections', () => {
+  it('adds research, publications, and news dirs when provided', () => {
+    const root = buildVfs({
+      lab: null,
+      blog: [],
+      team: [],
+      projects: [],
+      research: [{ slug: 'ids', body: 'r', frontmatter: { title: 'IDS', status: 'active', summary: 'sum', tags: [], started: '2026-01-01', collaborators: [], links: {} } }] as any,
+      publications: [{ title: 'Paper X', authors: ['A'], venue: 'V', year: 2025, type: 'paper', links: {}, source: 'manual' }] as any,
+      news: [{ slug: '2026-06-14-launch', body: 'n', frontmatter: { title: 'Launch', date: '2026-06-14', summary: 'live' } }] as any,
+    });
+    const names = root.children.map((c) => c.name);
+    expect(names).toEqual(expect.arrayContaining(['research', 'publications', 'news']));
+    const research = root.children.find((c) => c.name === 'research') as any;
+    expect(research.route).toBe('/research');
+    expect(research.children[0].route).toBe('/research/ids');
+    const pubs = root.children.find((c) => c.name === 'publications') as any;
+    expect(pubs.route).toBe('/publications');
+  });
+
+  it('omits new dirs when their inputs are empty/absent (back-compat)', () => {
+    const root = buildVfs({ lab: null, blog: [], team: [], projects: [] });
+    const names = root.children.map((c) => c.name);
+    expect(names).not.toContain('research');
+    expect(names).not.toContain('news');
+  });
+});

@@ -4,6 +4,9 @@ import type {
   TeamFrontmatter,
   LabFrontmatter,
   ProjectFrontmatter,
+  ResearchFrontmatter,
+  NewsFrontmatter,
+  Publication,
 } from '@/content/types';
 import type { VfsDir, VfsFile, VfsNode } from './types';
 
@@ -12,6 +15,9 @@ export interface VfsInput {
   blog: ContentRecord<BlogFrontmatter>[];
   team: ContentRecord<TeamFrontmatter>[];
   projects: ContentRecord<ProjectFrontmatter>[];
+  research?: ContentRecord<ResearchFrontmatter>[];
+  publications?: Publication[];
+  news?: ContentRecord<NewsFrontmatter>[];
 }
 
 const CONTACT_PREVIEW = ['email: b.korojo@gmail.com', 'github: github.com/example'].join('\n');
@@ -63,6 +69,42 @@ export function buildVfs(input: VfsInput): VfsDir {
     preview: `${p.frontmatter.title} [${p.frontmatter.status}]\n\n${p.frontmatter.summary}`,
   }));
   children.push({ type: 'dir', name: 'projects', path: '/projects', route: '/projects', children: projectFiles });
+
+  const research = input.research ?? [];
+  if (research.length > 0) {
+    const researchFiles: VfsFile[] = research.map((r) => ({
+      type: 'file',
+      name: `${r.slug}.md`,
+      path: `/research/${r.slug}.md`,
+      route: `/research/${r.slug}`,
+      preview: `${r.frontmatter.title} [${r.frontmatter.status}]\n\n${r.frontmatter.summary}`,
+    }));
+    children.push({ type: 'dir', name: 'research', path: '/research', route: '/research', children: researchFiles });
+  }
+
+  const publications = input.publications ?? [];
+  if (publications.length > 0) {
+    const pubFiles: VfsFile[] = publications.map((p, i) => ({
+      type: 'file',
+      name: `${String(i + 1).padStart(2, '0')}-${p.year}.md`,
+      path: `/publications/${String(i + 1).padStart(2, '0')}-${p.year}.md`,
+      route: '/publications',
+      preview: `${p.title}\n${p.authors.join(', ')}\n${p.venue} (${p.year})`,
+    }));
+    children.push({ type: 'dir', name: 'publications', path: '/publications', route: '/publications', children: pubFiles });
+  }
+
+  const news = input.news ?? [];
+  if (news.length > 0) {
+    const newsFiles: VfsFile[] = news.map((n) => ({
+      type: 'file',
+      name: `${n.slug}.md`,
+      path: `/news/${n.slug}.md`,
+      route: '/news',
+      preview: `${n.frontmatter.date} — ${n.frontmatter.title}\n\n${n.frontmatter.summary}`,
+    }));
+    children.push({ type: 'dir', name: 'news', path: '/news', route: '/news', children: newsFiles });
+  }
 
   return { type: 'dir', name: '', path: '/', children };
 }
