@@ -35,10 +35,11 @@ describe('teamFrontmatterSchema', () => {
 });
 
 describe('new section schemas', () => {
-  it('research accepts valid frontmatter and defaults status', () => {
-    const r = researchFrontmatterSchema.parse({ title: 'IDS sensor', summary: 's', started: '2026-01-01' });
-    expect(r.status).toBe('active');
-    expect(r.tags).toEqual([]);
+  it('research accepts valid frontmatter with keywords and order', () => {
+    const r = researchFrontmatterSchema.parse({ title: 'Threat Detection', summary: 's', keywords: ['vuln'], order: 1 });
+    expect(r.keywords).toEqual(['vuln']);
+    expect(r.order).toBe(1);
+    expect(r.title).toBe('Threat Detection');
   });
 
   it('publication requires a numeric year', () => {
