@@ -44,7 +44,9 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-body[data-embed="1"] nav[aria-label="Primary"] { display: none; }
+/* !important is required: the nav sets display:flex via an inline style,
+   which would otherwise beat this rule. */
+body[data-embed="1"] nav[aria-label="Primary"] { display: none !important; }
 
 /* Brand mark in the nav: the door glyph masked and filled with the theme accent,
    so it recolors instantly when the theme toggles. */
