@@ -20,7 +20,7 @@ export default function PublicationsPage() {
       {groups.length === 0 && <p style={{ color: 'var(--fg-muted)' }}>No publications yet.</p>}
       {groups.map(([year, pubs]) => (
         <section key={year} style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 18, color: 'var(--accent)', fontFamily: 'var(--font-mono), monospace' }}>{year}</h2>
+          <h2 style={{ fontSize: 18, color: 'var(--accent)', fontFamily: 'var(--font-mono), monospace' }}>{year === 0 ? 'Undated' : year}</h2>
           <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 14 }}>
             {pubs.map((p, i) => (
               <li key={`${p.title}-${i}`} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 12 }}>

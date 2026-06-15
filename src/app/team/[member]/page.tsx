@@ -46,7 +46,7 @@ export default async function MemberPage({ params }: { params: Promise<{ member:
             {mine.map((p, i) => (
               <li key={i} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 10 }}>
                 <div style={{ fontWeight: 600, color: 'var(--fg)' }}>{p.title}</div>
-                <div style={{ color: 'var(--fg-muted)', fontSize: 14 }}><Authors authors={p.authors} />{p.authors.length ? ' · ' : ''}{p.venue} ({p.year})</div>
+                <div style={{ color: 'var(--fg-muted)', fontSize: 14 }}><Authors authors={p.authors} />{p.authors.length ? ' · ' : ''}{p.venue} ({p.year || 'n.d.'})</div>
                 <div style={{ display: 'flex', gap: 12, marginTop: 4, fontFamily: 'var(--font-mono), monospace', fontSize: 12 }}>
                   {Object.entries(p.links).map(([k, v]) => (<a key={k} href={v} style={{ color: 'var(--accent-2)' }}>{k}</a>))}
                 </div>

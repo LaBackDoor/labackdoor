@@ -13,8 +13,10 @@ describe('parseScholarAuthor', () => {
     expect(e.link).toContain('scholar.google.com');
   });
 
-  it('skips articles without a parseable year', () => {
-    expect(entries.some((x) => x.title === 'No year article')).toBe(false);
+  it('keeps articles without a parseable year (year 0)', () => {
+    const e = entries.find((x) => x.title === 'No year article');
+    expect(e).toBeDefined();
+    expect(e!.year).toBe(0);
   });
 
   it('returns [] for malformed input', () => {

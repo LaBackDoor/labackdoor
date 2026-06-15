@@ -17,9 +17,10 @@ export function parseScholarAuthor(json: unknown): ScholarEntry[] {
   if (!Array.isArray(articles)) return [];
   const out: ScholarEntry[] = [];
   for (const a of articles) {
-    const year = Number.parseInt(String(a.year ?? ''), 10);
-    if (!Number.isFinite(year) || year < 1900) continue;
     if (!a.title) continue;
+    // Some Scholar entries have no year; keep them (year = 0 → shown as "Undated").
+    const parsed = Number.parseInt(String(a.year ?? ''), 10);
+    const year = Number.isFinite(parsed) && parsed >= 1900 ? parsed : 0;
     out.push({
       title: a.title,
       authors: (a.authors ?? '')
