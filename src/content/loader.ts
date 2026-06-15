@@ -50,6 +50,16 @@ export function getBlogPosts(): ContentRecord<BlogFrontmatter>[] {
     .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
 }
 
+export function getBlogTags(): string[] {
+  const set = new Set<string>();
+  for (const p of getBlogPosts()) for (const t of p.frontmatter.tags) set.add(t);
+  return [...set].sort();
+}
+
+export function getBlogPostsByTag(tag: string): ContentRecord<BlogFrontmatter>[] {
+  return getBlogPosts().filter((p) => p.frontmatter.tags.includes(tag));
+}
+
 export function getBlogPost(slug: string): ContentRecord<BlogFrontmatter> | null {
   return getBlogPosts().find((p) => p.slug === slug) ?? null;
 }
