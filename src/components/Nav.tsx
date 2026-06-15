@@ -25,7 +25,13 @@ export function Nav() {
         fontSize: 14,
       }}
     >
-      <Link href="/" style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+      <Link
+        href="/"
+        aria-label="la backdoor home"
+        style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo-mark.png" alt="" className="brand-mark" />
         la_backdoor
       </Link>
       <div style={{ display: 'flex', gap: 16, marginLeft: 'auto', alignItems: 'center' }}>

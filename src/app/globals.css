@@ -45,3 +45,7 @@ body {
 }
 
 body[data-embed="1"] nav[aria-label="Primary"] { display: none; }
+
+/* Brand mark in the nav: black art by default, inverted to white in dark mode. */
+.brand-mark { height: 26px; width: auto; display: block; }
+[data-theme="dark"] .brand-mark { filter: invert(1); }
