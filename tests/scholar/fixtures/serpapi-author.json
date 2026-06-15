@@ -1,0 +1,27 @@
+{
+  "articles": [
+    {
+      "title": "Detecting staged malware loaders",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=c2Ctag4AAAAJ&citation_for_view=abc",
+      "authors": "A Orojo, J Doe",
+      "publication": "Workshop on Systems Security, 2024",
+      "year": "2024",
+      "cited_by": { "value": 5 }
+    },
+    {
+      "title": "Adversarial robustness of IDS models",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=c2Ctag4AAAAJ&citation_for_view=def",
+      "authors": "A Orojo",
+      "publication": "IEEE S&P, 2023",
+      "year": "2023",
+      "cited_by": { "value": 12 }
+    },
+    {
+      "title": "No year article",
+      "link": "https://scholar.google.com/x",
+      "authors": "",
+      "publication": "",
+      "year": ""
+    }
+  ]
+}
