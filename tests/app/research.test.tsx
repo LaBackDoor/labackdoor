@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import ResearchIndex from '@/app/research/page';
 
 describe('Research index', () => {
-  it('renders a link to each research item', () => {
+  it('renders a link to each research area', () => {
     render(ResearchIndex());
-    expect(screen.getByRole('link', { name: /Software Vulnerability Forecasting/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Threat Detection/i })).toBeInTheDocument();
   });
 });

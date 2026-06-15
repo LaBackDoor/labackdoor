@@ -28,13 +28,20 @@ describe('content loader', () => {
 
 describe('new section loaders', () => {
   it('lists research items', () => {
-    expect(getResearch().some((r) => r.slug === 'vulnerability-forecasting')).toBe(true);
+    expect(getResearch().some((r) => r.slug === 'threat-detection')).toBe(true);
   });
 
   it('loads a single research item with body', () => {
-    const r = getResearchItem('vulnerability-forecasting');
+    const r = getResearchItem('threat-detection');
     expect(r).not.toBeNull();
-    expect(r!.body).toContain('Multi-Recurrent');
+    expect(r!.body).toContain('resilient');
+  });
+
+  it('publicationsForArea maps publications by keyword', () => {
+    const pubs = getPublications();
+    const matched = publicationsForArea(['byteflow'], pubs);
+    expect(matched.length).toBeGreaterThan(0);
+    expect(matched.every((p) => p.title.toLowerCase().includes('byteflow'))).toBe(true);
   });
 
   it('returns publications as an array (Scholar-driven via scholar.generated.json)', () => {
