@@ -1,29 +1,42 @@
 import { notFound } from 'next/navigation';
-import { getResearch, getResearchItem } from '@/content/loader';
+import { getResearch, getResearchItem, getPublications, publicationsForArea } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 import { Mdx } from '@/components/Mdx';
 
 export function generateStaticParams() {
-  return getResearch().map((r) => ({ slug: r.slug }));
+  return getResearch().map((a) => ({ slug: a.slug }));
 }
 
-export default async function ResearchItemPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ResearchAreaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = getResearchItem(slug);
-  if (!item) notFound();
-  const { status, started, tags, collaborators, links } = item.frontmatter;
+  const area = getResearchItem(slug);
+  if (!area) notFound();
+  const matched = publicationsForArea(area.frontmatter.keywords, getPublications());
   return (
-    <PageShell title={item.frontmatter.title} subtitle={`${status} · since ${started}`}>
-      <section style={{ marginBottom: 20, fontFamily: 'var(--font-mono), monospace', fontSize: 13, color: 'var(--fg-muted)' }}>
-        <div>tags: {tags.join(', ') || '—'}</div>
-        <div>collaborators: {collaborators.join(', ') || '—'}</div>
-        <div style={{ display: 'flex', gap: 14, marginTop: 8 }}>
-          {Object.entries(links).map(([k, v]) => (
-            <a key={k} href={v} style={{ color: 'var(--accent-2)' }}>{k}</a>
-          ))}
-        </div>
+    <PageShell title={area.frontmatter.title} subtitle={area.frontmatter.summary}>
+      <div style={{ lineHeight: 1.7, color: 'var(--fg)' }}>
+        <Mdx source={area.body} />
+      </div>
+      <section style={{ marginTop: 28 }}>
+        <h2 style={{ fontSize: 16, color: 'var(--accent)', fontFamily: 'var(--font-mono), monospace' }}>Related publications</h2>
+        {matched.length === 0 ? (
+          <p style={{ color: 'var(--fg-muted)' }}>No publications mapped to this area yet.</p>
+        ) : (
+          <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 12 }}>
+            {matched.map((p, i) => (
+              <li key={i} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 10 }}>
+                <div style={{ fontWeight: 600, color: 'var(--fg)' }}>{p.title}</div>
+                <div style={{ color: 'var(--fg-muted)', fontSize: 14 }}>
+                  {p.authors.join(', ')}{p.authors.length ? ' · ' : ''}{p.venue} ({p.year})
+                </div>
+                <div style={{ display: 'flex', gap: 12, marginTop: 4, fontFamily: 'var(--font-mono), monospace', fontSize: 12 }}>
+                  {Object.entries(p.links).map(([k, v]) => (<a key={k} href={v} style={{ color: 'var(--accent-2)' }}>{k}</a>))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
-      <Mdx source={item.body} />
     </PageShell>
   );
 }
