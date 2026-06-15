@@ -8,10 +8,10 @@ describe('Publications page', () => {
     expect(screen.getByRole('heading', { name: /publications/i })).toBeInTheDocument();
   });
 
-  it('shows an empty state when there are no publications (Scholar-driven, none yet)', () => {
+  it('renders publications from scholar.generated.json', () => {
     // Publications come solely from the Google Scholar automation
-    // (content/publications/scholar.generated.json); with none synced it is empty.
+    // (content/publications/scholar.generated.json)
     render(PublicationsPage());
-    expect(screen.getByText(/no publications yet/i)).toBeInTheDocument();
+    expect(screen.getByText(/ByteFlow/i)).toBeInTheDocument();
   });
 });
