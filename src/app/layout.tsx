@@ -9,8 +9,23 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' });
 
 export const metadata = {
-  title: 'la backdoor',
-  description: 'Security research lab — systems & malware, AI security, IDS.',
+  metadataBase: new URL('https://labackdoor.com'),
+  title: { default: 'la backdoor', template: '%s · la backdoor' },
+  description: 'Security research lab — data-driven threat detection, AI security, and network intelligence.',
+  openGraph: {
+    title: 'la backdoor',
+    description: 'Security research lab — data-driven threat detection, AI security, and network intelligence.',
+    url: 'https://labackdoor.com',
+    siteName: 'la backdoor',
+    images: ['/og.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'la backdoor',
+    description: 'Security research lab — threat detection, AI security, network intelligence.',
+    images: ['/og.png'],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -10,6 +10,12 @@ export function generateStaticParams() {
   return getTeamMembers().map((m) => ({ member: m.slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ member: string }> }) {
+  const { member } = await params;
+  const record = getTeamMember(member);
+  return { title: record?.frontmatter.name ?? 'Member', description: record?.frontmatter.role };
+}
+
 export default async function MemberPage({ params }: { params: Promise<{ member: string }> }) {
   const { member } = await params;
   const record = getTeamMember(member);

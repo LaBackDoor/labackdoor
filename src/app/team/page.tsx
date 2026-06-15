@@ -3,6 +3,8 @@ import { getTeamMembers } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 import { Avatar } from '@/components/Avatar';
 
+export const metadata = { title: 'Team' };
+
 export default function TeamIndex() {
   const members = getTeamMembers();
   return (

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getBlogPosts } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 
+export const metadata = { title: 'Blog' };
+
 export default function BlogIndex() {
   const posts = getBlogPosts();
   return (

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getResearch, getPublications, publicationsForArea } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 
+export const metadata = { title: 'Research' };
+
 export default function ResearchIndex() {
   const areas = getResearch();
   const pubs = getPublications();

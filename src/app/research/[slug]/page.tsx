@@ -8,6 +8,12 @@ export function generateStaticParams() {
   return getResearch().map((a) => ({ slug: a.slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const area = getResearchItem(slug);
+  return { title: area?.frontmatter.title ?? 'Research', description: area?.frontmatter.summary };
+}
+
 export default async function ResearchAreaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const area = getResearchItem(slug);

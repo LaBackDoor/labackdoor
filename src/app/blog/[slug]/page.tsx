@@ -7,6 +7,12 @@ export function generateStaticParams() {
   return getBlogPosts().map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
+  return { title: post?.frontmatter.title ?? 'Post', description: post?.frontmatter.summary };
+}
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getBlogPost(slug);

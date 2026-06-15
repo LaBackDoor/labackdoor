@@ -1,6 +1,8 @@
 import { getLab } from '@/content/loader';
 import { Mdx } from '@/components/Mdx';
 
+export const metadata = { title: 'Lab' };
+
 export default function LabPage() {
   const lab = getLab();
   const mission = lab?.frontmatter.mission ?? '';

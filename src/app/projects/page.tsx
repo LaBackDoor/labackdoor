@@ -8,6 +8,8 @@ function byOrg(repos: RepoProject[]): [string, RepoProject[]][] {
   return [...m.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
+export const metadata = { title: 'Projects' };
+
 export default function ProjectsPage() {
   const groups = byOrg(getProjects());
   return (

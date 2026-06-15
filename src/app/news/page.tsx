@@ -1,6 +1,8 @@
 import { getNews, getRecentActivity } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 
+export const metadata = { title: 'News' };
+
 export default function NewsPage() {
   const news = getNews();
   const activity = getRecentActivity(12);

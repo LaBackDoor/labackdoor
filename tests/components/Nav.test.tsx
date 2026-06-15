@@ -6,7 +6,7 @@ describe('Nav', () => {
   it('renders the recruiter escape-hatch links', () => {
     render(<Nav />);
     expect(screen.getByRole('navigation')).toBeInTheDocument();
-    for (const label of ['Lab', 'Research', 'Publications', 'Blog', 'Team', 'Contact']) {
+    for (const label of ['Lab', 'Research', 'Publications', 'Blog', 'Team', 'Contact', 'CV']) {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     }
   });

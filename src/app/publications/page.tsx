@@ -13,6 +13,8 @@ function groupByYear(pubs: Publication[]): [number, Publication[]][] {
   return [...map.entries()].sort((a, b) => b[0] - a[0]);
 }
 
+export const metadata = { title: 'Publications' };
+
 export default function PublicationsPage() {
   const groups = groupByYear(getPublications());
   return (

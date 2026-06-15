@@ -8,6 +8,7 @@ const LINKS: { href: string; label: string }[] = [
   { href: '/blog', label: 'Blog' },
   { href: '/team', label: 'Team' },
   { href: '/contact', label: 'Contact' },
+  { href: '/resume', label: 'CV' },
 ];
 
 export function Nav() {
