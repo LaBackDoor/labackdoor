@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getBlogPosts, getBlogPost, getTeamMembers } from '@/content/loader';
-import { getResearch, getResearchItem, getPublications, getNews, getRecentActivity } from '@/content/loader';
+import { getResearch, getResearchItem, getPublications, getNews, getRecentActivity, publicationsForArea } from '@/content/loader';
 
 describe('content loader', () => {
   it('lists blog posts sorted newest-first', () => {

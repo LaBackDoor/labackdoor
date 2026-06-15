@@ -82,11 +82,16 @@ export function getLab(): ContentRecord<LabFrontmatter> | null {
 export function getResearch(): ContentRecord<ResearchFrontmatter>[] {
   return readDir('research')
     .map((f) => readRecord<ResearchFrontmatter>(path.join(CONTENT_DIR, 'research', f), researchFrontmatterSchema))
-    .sort((a, b) => b.frontmatter.started.localeCompare(a.frontmatter.started));
+    .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
 }
 
 export function getResearchItem(slug: string): ContentRecord<ResearchFrontmatter> | null {
   return getResearch().find((r) => r.slug === slug) ?? null;
+}
+
+export function publicationsForArea(keywords: string[], pubs: Publication[]): Publication[] {
+  const kws = keywords.map((k) => k.toLowerCase());
+  return pubs.filter((p) => kws.some((k) => p.title.toLowerCase().includes(k)));
 }
 
 export function getNews(): ContentRecord<NewsFrontmatter>[] {
@@ -143,9 +148,6 @@ export function getRecentActivity(limit = 8): ActivityItem[] {
   const items: ActivityItem[] = [];
   for (const p of getBlogPosts()) {
     items.push({ kind: 'blog', title: p.frontmatter.title, date: p.frontmatter.date, route: `/blog/${p.slug}` });
-  }
-  for (const r of getResearch()) {
-    items.push({ kind: 'research', title: r.frontmatter.title, date: r.frontmatter.started, route: `/research/${r.slug}` });
   }
   for (const n of getNews()) {
     items.push({ kind: 'news', title: n.frontmatter.title, date: n.frontmatter.date, route: '/news' });
