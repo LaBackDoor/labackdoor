@@ -19,10 +19,7 @@ export default async function ResearchAreaPage({ params }: { params: Promise<{ s
   const area = getResearchItem(slug);
   if (!area) notFound();
   const matched = publicationsForArea(area.frontmatter.keywords, getPublications());
-  const kws = area.frontmatter.keywords.map((k) => k.toLowerCase());
-  const preprints = getPreprints().filter((pp) =>
-    kws.some((k) => pp.frontmatter.title.toLowerCase().includes(k)),
-  );
+  const preprints = getPreprints().filter((pp) => pp.frontmatter.area === slug);
   return (
     <PageShell title={area.frontmatter.title} subtitle={area.frontmatter.summary}>
       {Object.keys(area.frontmatter.links).length > 0 && (

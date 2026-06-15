@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getTeamMembers, getTeamMember, getPublications, publicationsByMember } from '@/content/loader';
+import { getTeamMembers, getTeamMember, getPublications, publicationsByMember, getPreprints, preprintsByMember } from '@/content/loader';
 import { PageShell } from '@/components/PageShell';
 import { Mdx } from '@/components/Mdx';
 import { Avatar } from '@/components/Avatar';
@@ -22,6 +22,7 @@ export default async function MemberPage({ params }: { params: Promise<{ member:
   if (!record) notFound();
   const { name, role, avatar, skills, links, cv } = record.frontmatter;
   const mine = publicationsByMember(name, getPublications());
+  const myPreprints = preprintsByMember(name, getPreprints());
   return (
     <main style={{ maxWidth: 760, margin: '0 auto', padding: '40px 20px' }}>
       <header style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
@@ -54,6 +55,22 @@ export default async function MemberPage({ params }: { params: Promise<{ member:
       <article style={{ lineHeight: 1.7, color: 'var(--fg)' }}>
         <Mdx source={record.body} />
       </article>
+      {myPreprints.length > 0 && (
+        <section style={{ marginTop: 28 }}>
+          <h2 style={{ fontSize: 16, color: 'var(--accent)', fontFamily: 'var(--font-mono), monospace' }}>Preprints</h2>
+          <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 12 }}>
+            {myPreprints.map((pp) => (
+              <li key={pp.slug} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 10 }}>
+                <div style={{ fontWeight: 600, color: 'var(--fg)' }}>{pp.frontmatter.title}</div>
+                <div style={{ color: 'var(--fg-muted)', fontSize: 14 }}><Authors authors={pp.frontmatter.authors} />{pp.frontmatter.authors.length ? ' · ' : ''}{pp.frontmatter.venue}</div>
+                <div style={{ display: 'flex', gap: 12, marginTop: 4, fontFamily: 'var(--font-mono), monospace', fontSize: 12 }}>
+                  {Object.entries(pp.frontmatter.links).map(([k, v]) => (<a key={k} href={v} style={{ color: 'var(--accent-2)' }}>{k}</a>))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {mine.length > 0 && (
         <section style={{ marginTop: 28 }}>
           <h2 style={{ fontSize: 16, color: 'var(--accent)', fontFamily: 'var(--font-mono), monospace' }}>Publications</h2>

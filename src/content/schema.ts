@@ -54,6 +54,7 @@ export const preprintFrontmatterSchema = z.object({
   venue: z.string().default('Preprint'),
   year: z.number().int().optional(),
   links: z.record(z.string(), z.string()).default({}),
+  area: z.string().optional(), // research-area slug this preprint belongs to
   order: z.number().optional(),
 });
 
