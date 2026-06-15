@@ -43,3 +43,5 @@ body {
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
+
+body[data-embed="1"] nav[aria-label="Primary"] { display: none; }
