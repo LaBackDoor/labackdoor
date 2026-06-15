@@ -167,6 +167,15 @@ export function publicationsByMember(name: string, pubs: Publication[]): Publica
   return pubs.filter((p) => p.authors.some((a) => a.toLowerCase().includes(surname)));
 }
 
+export function preprintsByMember(
+  name: string,
+  preprints: ContentRecord<PreprintFrontmatter>[],
+): ContentRecord<PreprintFrontmatter>[] {
+  const surname = name.trim().split(/\s+/).pop()?.toLowerCase() ?? '';
+  if (!surname) return [];
+  return preprints.filter((pp) => pp.frontmatter.authors.some((a) => a.toLowerCase().includes(surname)));
+}
+
 export function getRecentActivity(limit = 8): ActivityItem[] {
   const items: ActivityItem[] = [];
   for (const p of getBlogPosts()) {
