@@ -6,6 +6,9 @@ import {
   teamFrontmatterSchema,
   labFrontmatterSchema,
   projectFrontmatterSchema,
+  researchFrontmatterSchema,
+  publicationFrontmatterSchema,
+  newsFrontmatterSchema,
 } from './schema';
 import type {
   BlogFrontmatter,
@@ -13,6 +16,11 @@ import type {
   LabFrontmatter,
   ProjectFrontmatter,
   ContentRecord,
+  ResearchFrontmatter,
+  PublicationFrontmatter,
+  NewsFrontmatter,
+  Publication,
+  ActivityItem,
 } from './types';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
@@ -69,4 +77,81 @@ export function getLab(): ContentRecord<LabFrontmatter> | null {
   const file = path.join(CONTENT_DIR, 'lab.mdx');
   if (!fs.existsSync(file)) return null;
   return readRecord<LabFrontmatter>(file, labFrontmatterSchema);
+}
+
+export function getResearch(): ContentRecord<ResearchFrontmatter>[] {
+  return readDir('research')
+    .map((f) => readRecord<ResearchFrontmatter>(path.join(CONTENT_DIR, 'research', f), researchFrontmatterSchema))
+    .sort((a, b) => b.frontmatter.started.localeCompare(a.frontmatter.started));
+}
+
+export function getResearchItem(slug: string): ContentRecord<ResearchFrontmatter> | null {
+  return getResearch().find((r) => r.slug === slug) ?? null;
+}
+
+export function getNews(): ContentRecord<NewsFrontmatter>[] {
+  return readDir('news')
+    .map((f) => readRecord<NewsFrontmatter>(path.join(CONTENT_DIR, 'news', f), newsFrontmatterSchema))
+    .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+}
+
+function normalizeTitle(t: string): string {
+  return t.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+export function getPublications(): Publication[] {
+  const manual: Publication[] = readDir('publications')
+    .filter((f) => f.endsWith('.mdx'))
+    .map((f) => readRecord<PublicationFrontmatter>(path.join(CONTENT_DIR, 'publications', f), publicationFrontmatterSchema))
+    .map((rec) => ({
+      title: rec.frontmatter.title,
+      authors: rec.frontmatter.authors,
+      venue: rec.frontmatter.venue,
+      year: rec.frontmatter.year,
+      type: rec.frontmatter.type,
+      links: rec.frontmatter.links,
+      source: 'manual' as const,
+    }));
+
+  const scholarPath = path.join(CONTENT_DIR, 'publications', 'scholar.generated.json');
+  let scholar: Publication[] = [];
+  if (fs.existsSync(scholarPath)) {
+    const raw = JSON.parse(fs.readFileSync(scholarPath, 'utf8')) as Array<{
+      title: string;
+      authors?: string[];
+      venue?: string;
+      year: number;
+      link?: string;
+    }>;
+    scholar = raw.map((e) => ({
+      title: e.title,
+      authors: e.authors ?? [],
+      venue: e.venue ?? '',
+      year: e.year,
+      type: 'paper',
+      links: (e.link ? { scholar: e.link } : {}) as Record<string, string>,
+      source: 'scholar' as const,
+    }));
+  }
+
+  const seen = new Set(manual.map((p) => normalizeTitle(p.title)));
+  const merged = [...manual, ...scholar.filter((p) => !seen.has(normalizeTitle(p.title)))];
+  return merged.sort((a, b) => b.year - a.year);
+}
+
+export function getRecentActivity(limit = 8): ActivityItem[] {
+  const items: ActivityItem[] = [];
+  for (const p of getBlogPosts()) {
+    items.push({ kind: 'blog', title: p.frontmatter.title, date: p.frontmatter.date, route: `/blog/${p.slug}` });
+  }
+  for (const r of getResearch()) {
+    items.push({ kind: 'research', title: r.frontmatter.title, date: r.frontmatter.started, route: `/research/${r.slug}` });
+  }
+  for (const n of getNews()) {
+    items.push({ kind: 'news', title: n.frontmatter.title, date: n.frontmatter.date, route: '/news' });
+  }
+  for (const pub of getPublications()) {
+    items.push({ kind: 'publication', title: pub.title, date: `${pub.year}-01-01`, route: '/publications' });
+  }
+  return items.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)).slice(0, limit);
 }

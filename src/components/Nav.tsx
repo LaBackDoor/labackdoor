@@ -3,8 +3,10 @@ import { ThemeToggle } from '@/theme/ThemeToggle';
 
 const LINKS: { href: string; label: string }[] = [
   { href: '/lab', label: 'Lab' },
+  { href: '/research', label: 'Research' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/blog', label: 'Blog' },
   { href: '/team', label: 'Team' },
-  { href: '/blog', label: 'Research' },
   { href: '/contact', label: 'Contact' },
 ];
 

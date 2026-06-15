@@ -4,6 +4,9 @@ import type {
   teamFrontmatterSchema,
   labFrontmatterSchema,
   projectFrontmatterSchema,
+  researchFrontmatterSchema,
+  publicationFrontmatterSchema,
+  newsFrontmatterSchema,
 } from './schema';
 
 export type BlogFrontmatter = z.infer<typeof blogFrontmatterSchema>;
@@ -15,4 +18,25 @@ export interface ContentRecord<T> {
   slug: string;
   frontmatter: T;
   body: string;
+}
+
+export type ResearchFrontmatter = z.infer<typeof researchFrontmatterSchema>;
+export type PublicationFrontmatter = z.infer<typeof publicationFrontmatterSchema>;
+export type NewsFrontmatter = z.infer<typeof newsFrontmatterSchema>;
+
+export interface Publication {
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  type: string;
+  links: Record<string, string>;
+  source: 'manual' | 'scholar';
+}
+
+export interface ActivityItem {
+  kind: 'blog' | 'research' | 'publication' | 'news';
+  title: string;
+  date: string;
+  route: string;
 }
