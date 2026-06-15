@@ -134,3 +134,20 @@ describe('runCommand extra commands', () => {
     expect(s.lines.some((l) => l.text.includes('pwd'))).toBe(true);
   });
 });
+
+describe('terminal power-ups', () => {
+  it('grep finds nodes by name or preview', () => {
+    const { state } = runCommand(root, fresh(), 'grep lab');
+    expect(state.lines.some((l) => l.kind === 'output' && l.text.includes('/lab.md'))).toBe(true);
+  });
+
+  it('find is an alias for grep', () => {
+    const { state } = runCommand(root, fresh(), 'find blog');
+    expect(state.lines.some((l) => l.kind === 'output' && l.text.includes('/blog'))).toBe(true);
+  });
+
+  it('cv opens the resume in a window', () => {
+    const { effect } = runCommand(root, fresh(), 'cv');
+    expect(effect).toEqual({ type: 'open-window', route: '/resume', title: 'resume' });
+  });
+});

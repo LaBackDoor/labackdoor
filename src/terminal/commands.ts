@@ -92,6 +92,28 @@ const secret: Handler = () => ({
   output: [out('you found it. the best backdoor is a well-read README. `open blog`.')],
 });
 
+function walkVfs(node: VfsNode, acc: VfsNode[]): void {
+  acc.push(node);
+  if (node.type === 'dir') for (const c of node.children) walkVfs(c, acc);
+}
+
+const grep: Handler = (args, ctx) => {
+  const term = args.join(' ').trim().toLowerCase();
+  if (!term) return { output: [err('usage: grep <term>')] };
+  const all: VfsNode[] = [];
+  for (const c of ctx.root.children) walkVfs(c, all);
+  const hits = all.filter(
+    (n) => n.name.toLowerCase().includes(term) || (n.type === 'file' && n.preview.toLowerCase().includes(term)),
+  );
+  if (hits.length === 0) return { output: [out(`no matches for "${term}"`)] };
+  return { output: hits.slice(0, 25).map((n) => out(`${n.path}${n.type === 'dir' ? '/' : ''}`)) };
+};
+
+const cv: Handler = () => ({
+  output: [out('opening resume…')],
+  effect: { type: 'open-window', route: '/resume', title: 'resume' },
+});
+
 const help: Handler = () => {
   const rows: Array<[string, string]> = [
     ['ls [path]', 'list directory contents'],
@@ -99,6 +121,8 @@ const help: Handler = () => {
     ['pwd', 'print working directory'],
     ['cat <file>', 'show a file preview'],
     ['open <path>', 'open the real page for a file/section'],
+    ['grep <term>', 'search the filesystem (alias: find)'],
+    ['cv', 'open the resume / CV'],
     ['theme <light|dark|system>', 'switch color theme'],
     ['whoami', 'about the author'],
     ['history', 'show command history'],
@@ -113,12 +137,16 @@ export const COMMANDS: Record<string, Handler> = {
   cat,
   cd,
   clear,
+  cv,
+  find: grep,
+  grep,
   help,
   history,
   ls,
   neofetch,
   open,
   pwd,
+  resume: cv,
   secret,
   theme,
   whoami,

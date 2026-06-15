@@ -1,12 +1,14 @@
 'use client';
 
-import { useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import type { VfsDir } from '@/vfs/types';
 import type { ShellState } from './types';
 import { runCommand, welcomeLines, formatPrompt } from './commands';
 import { complete } from './complete';
 import { applyThemeChoice } from '@/theme/apply-theme';
+
+const HISTORY_KEY = 'labackdoor-history';
 
 export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: (route: string, title: string) => void }) {
   const router = useRouter();
@@ -16,11 +18,28 @@ export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: 
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Restore command history from previous visits.
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]');
+      if (Array.isArray(saved) && saved.length) {
+        setState((s) => ({ ...s, history: saved.filter((x) => typeof x === 'string') }));
+      }
+    } catch {
+      // ignore malformed history
+    }
+  }, []);
+
   function submit(raw: string) {
     const { state: next, effect } = runCommand(root, state, raw);
     setState(next);
     setInput('');
     setHistIndex(null);
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(next.history.slice(-100)));
+    } catch {
+      // ignore storage failures
+    }
     if (effect.type === 'open-window') {
       if (onOpenWindow) onOpenWindow(effect.route, effect.title);
       else router.push(effect.route);
