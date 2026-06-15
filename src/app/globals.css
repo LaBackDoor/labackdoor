@@ -58,3 +58,12 @@ body[data-embed="1"] nav[aria-label="Primary"] { display: none !important; }
   -webkit-mask: url(/logo-mark.png) center / contain no-repeat;
   mask: url(/logo-mark.png) center / contain no-repeat;
 }
+
+/* Skill chips */
+.chip { display: inline-block; font-family: var(--font-mono), monospace; font-size: 12px; color: var(--fg-muted); background: var(--bg-elev); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+
+/* Small lab door-mark badge (member pages) */
+.lab-mark { display: inline-block; width: 16px; height: 16px; vertical-align: -3px; background-color: var(--accent); -webkit-mask: url(/logo-mark.png) center / contain no-repeat; mask: url(/logo-mark.png) center / contain no-repeat; }
+
+/* Full logo hero (lab page) */
+.logo-hero { height: clamp(110px, 22vw, 200px); aspect-ratio: 678 / 595; margin: 8px auto 20px; background-color: var(--accent); -webkit-mask: url(/logo-full.png) center / contain no-repeat; mask: url(/logo-full.png) center / contain no-repeat; }
