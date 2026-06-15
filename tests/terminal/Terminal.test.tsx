@@ -36,7 +36,17 @@ describe('Terminal', () => {
     expect(screen.getByText(/blog\//)).toBeInTheDocument();
   });
 
-  it('navigates via router on `open`', () => {
+  it('calls onOpenWindow when provided instead of navigating', () => {
+    const onOpenWindow = vi.fn();
+    render(<Terminal root={root} onOpenWindow={onOpenWindow} />);
+    const input = screen.getByRole('textbox');
+    type(input, 'open blog');
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(onOpenWindow).toHaveBeenCalledWith('/blog', 'blog');
+    expect(push).not.toHaveBeenCalled();
+  });
+
+  it('falls back to router navigation when no onOpenWindow', () => {
     render(<Terminal root={root} />);
     const input = screen.getByRole('textbox');
     type(input, 'open blog');

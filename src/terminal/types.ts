@@ -8,6 +8,7 @@ export interface OutputLine {
 export type Effect =
   | { type: 'none' }
   | { type: 'navigate'; route: string }
+  | { type: 'open-window'; route: string; title: string }
   | { type: 'theme'; choice: 'light' | 'dark' | 'system' };
 
 export interface ShellState {

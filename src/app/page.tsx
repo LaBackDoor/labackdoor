@@ -1,7 +1,6 @@
 import { getLab, getBlogPosts, getTeamMembers, getProjects, getResearch, getPublications, getNews, getRecentActivity } from '@/content/loader';
 import { buildVfs } from '@/vfs/build-vfs';
-import { Terminal } from '@/terminal/Terminal';
-import { NewsPanel } from '@/components/NewsPanel';
+import { Desktop } from '@/desktop/Desktop';
 
 const NOSCRIPT_HTML = `
 <nav aria-label="Site sections" style="padding:20px">
@@ -31,9 +30,7 @@ export default function Home() {
 
   return (
     <>
-      <Terminal root={root} />
-      <NewsPanel news={getNews()} activity={getRecentActivity(8)} />
-      {/* eslint-disable-next-line react/no-danger */}
+      <Desktop root={root} news={getNews()} activity={getRecentActivity(8)} />
       <noscript dangerouslySetInnerHTML={{ __html: NOSCRIPT_HTML }} />
     </>
   );
