@@ -80,14 +80,6 @@
     "url": "https://github.com/LaBackDoor/iec_st_compiler"
   },
   {
-    "name": "lab-website",
-    "org": "LaBackDoor",
-    "description": "Source code for LaBackDoor website",
-    "language": "HTML",
-    "stars": 0,
-    "url": "https://github.com/LaBackDoor/lab-website"
-  },
-  {
     "name": "labackdoor",
     "org": "LaBackDoor",
     "description": "At La Backdoor, our mission is to advance the field of cybersecurity through innovative research, cutting-edge technology, and unparalleled expertise. We strive to protect and empower individuals, organizations, and societies by anticipating, identifying, and mitigating cyber threats, ensuring a secure digital future for all.",
