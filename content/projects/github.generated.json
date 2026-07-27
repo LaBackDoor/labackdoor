@@ -19,7 +19,7 @@
     "name": "packing_pipeline",
     "org": "BaylorSecurityLab",
     "description": "Automated pipeline for building a labeled corpus of benign and packed Windows executables for packer- and malware-detection research.",
-    "language": "YARA",
+    "language": "Python",
     "stars": 0,
     "url": "https://github.com/BaylorSecurityLab/packing_pipeline"
   },
