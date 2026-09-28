@@ -1,5 +1,17 @@
 [
   {
+    "title": "Autonomous system vulnerability remediation: A survey of agentic AI, reinforcement learning, benchmarks, and operational safety",
+    "authors": [
+      "A Orojo",
+      "W Elumelu",
+      "E El-Mahmoud",
+      "E Leal"
+    ],
+    "venue": "",
+    "year": 2026,
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=c2Ctag4AAAAJ&pagesize=100&citation_for_view=c2Ctag4AAAAJ:ULOm3_A8WrAC"
+  },
+  {
     "title": "Client-Side Video Analysis for Content Moderation with MoQ",
     "authors": [
       "A Freeman",
@@ -10,18 +22,6 @@
     "venue": "Proceedings of the 5th Mile-High Video Conference, 93-99, 2026",
     "year": 2026,
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=c2Ctag4AAAAJ&pagesize=100&citation_for_view=c2Ctag4AAAAJ:8k81kl-MbHgC"
-  },
-  {
-    "title": "Autonomous System Vulnerability Remediation: A Survey of Agentic AI, Reinforcement Learning, Benchmarks, and Operational Safety",
-    "authors": [
-      "A Orojo",
-      "W Elumelu",
-      "E El-Mahmoud",
-      "E Leal"
-    ],
-    "venue": "",
-    "year": 2026,
-    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=c2Ctag4AAAAJ&pagesize=100&citation_for_view=c2Ctag4AAAAJ:ULOm3_A8WrAC"
   },
   {
     "title": "An Evaluation of ABR Switching for Time-Shifted Clients in MoQ",
