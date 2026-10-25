@@ -64,3 +64,26 @@ export const newsFrontmatterSchema = z.object({
   summary: z.string().min(1),
   link: z.string().optional(),
 });
+
+export const awardFrontmatterSchema = z.object({
+  title: z.string().min(1),
+  place: z.string().optional(),
+  issuer: z.string().min(1),
+  year: z.number().int(),
+  summary: z.string().min(1),
+  link: z.string().optional(),
+  featured: z.boolean().default(false),
+  order: z.number().optional(),
+});
+
+export const talkFrontmatterSchema = z.object({
+  title: z.string().min(1),
+  event: z.string().min(1),
+  venue: z.string().min(1),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
+  kind: z.enum(['talk', 'invited', 'pitch', 'poster']).default('talk'),
+  summary: z.string().min(1),
+  links: z.record(z.string(), z.string()).default({}),
+  images: z.array(z.string()).default([]),
+  featured: z.boolean().default(false),
+});

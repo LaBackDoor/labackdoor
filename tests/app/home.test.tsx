@@ -6,11 +6,19 @@ vi.mock('next/navigation', () => ({ useRouter: () => ({ push: vi.fn() }) }));
 import Home from '@/app/page';
 
 describe('Home page', () => {
-  it('renders the terminal and news panel', () => {
+  it('leads with the recruiter hero: name, availability, CV and email', () => {
     render(Home());
+    expect(screen.getByRole('heading', { level: 1, name: /Abanisenioluwa Orojo/ })).toBeInTheDocument();
+    expect(screen.getByText(/Open to Summer 2027 internships/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Download CV/i })).toHaveAttribute('href', '/abanisenioluwa-orojo-cv.pdf');
+    expect(screen.getByRole('link', { name: /Email me/i })).toHaveAttribute('href', 'mailto:akorojo@labackdoor.com');
+  });
+
+  it('shows awards and presentations, and still embeds the terminal', () => {
+    render(Home());
+    expect(screen.getByRole('heading', { name: 'Awards' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Recent Presentations' })).toBeInTheDocument();
     expect(screen.getByRole('textbox')).toBeInTheDocument();
-    expect(screen.getByText(/security research lab/i)).toBeInTheDocument();
-    expect(screen.getByRole('complementary', { name: /news and recent activity/i })).toBeInTheDocument();
   });
 
   it('opens a window from the terminal', () => {

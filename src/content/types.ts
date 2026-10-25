@@ -8,6 +8,8 @@ import type {
   publicationFrontmatterSchema,
   preprintFrontmatterSchema,
   newsFrontmatterSchema,
+  awardFrontmatterSchema,
+  talkFrontmatterSchema,
 } from './schema';
 
 export type BlogFrontmatter = z.infer<typeof blogFrontmatterSchema>;
@@ -25,6 +27,8 @@ export type ResearchFrontmatter = z.infer<typeof researchFrontmatterSchema>;
 export type PublicationFrontmatter = z.infer<typeof publicationFrontmatterSchema>;
 export type PreprintFrontmatter = z.infer<typeof preprintFrontmatterSchema>;
 export type NewsFrontmatter = z.infer<typeof newsFrontmatterSchema>;
+export type AwardFrontmatter = z.infer<typeof awardFrontmatterSchema>;
+export type TalkFrontmatter = z.infer<typeof talkFrontmatterSchema>;
 
 export interface Publication {
   title: string;
@@ -37,7 +41,7 @@ export interface Publication {
 }
 
 export interface ActivityItem {
-  kind: 'blog' | 'research' | 'publication' | 'news';
+  kind: 'blog' | 'research' | 'publication' | 'news' | 'award' | 'talk';
   title: string;
   date: string;
   route: string;

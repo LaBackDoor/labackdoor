@@ -9,6 +9,8 @@ import {
   publicationFrontmatterSchema,
   preprintFrontmatterSchema,
   newsFrontmatterSchema,
+  awardFrontmatterSchema,
+  talkFrontmatterSchema,
 } from './schema';
 import type {
   BlogFrontmatter,
@@ -19,6 +21,8 @@ import type {
   PublicationFrontmatter,
   PreprintFrontmatter,
   NewsFrontmatter,
+  AwardFrontmatter,
+  TalkFrontmatter,
   Publication,
   ActivityItem,
   RepoProject,
@@ -117,6 +121,18 @@ export function getPreprints(): ContentRecord<PreprintFrontmatter>[] {
     .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
 }
 
+export function getAwards(): ContentRecord<AwardFrontmatter>[] {
+  return readDir('awards')
+    .map((f) => readRecord<AwardFrontmatter>(path.join(CONTENT_DIR, 'awards', f), awardFrontmatterSchema))
+    .sort((a, b) => b.frontmatter.year - a.frontmatter.year || (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
+}
+
+export function getTalks(): ContentRecord<TalkFrontmatter>[] {
+  return readDir('talks')
+    .map((f) => readRecord<TalkFrontmatter>(path.join(CONTENT_DIR, 'talks', f), talkFrontmatterSchema))
+    .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+}
+
 function normalizeTitle(t: string): string {
   return t.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
@@ -183,6 +199,12 @@ export function getRecentActivity(limit = 8): ActivityItem[] {
   }
   for (const n of getNews()) {
     items.push({ kind: 'news', title: n.frontmatter.title, date: n.frontmatter.date, route: '/news' });
+  }
+  for (const a of getAwards()) {
+    items.push({ kind: 'award', title: a.frontmatter.title, date: `${a.frontmatter.year}-01-01`, route: '/awards' });
+  }
+  for (const t of getTalks()) {
+    items.push({ kind: 'talk', title: t.frontmatter.title, date: t.frontmatter.date, route: '/presentations' });
   }
   for (const pub of getPublications()) {
     items.push({ kind: 'publication', title: pub.title, date: `${pub.year}-01-01`, route: '/publications' });
