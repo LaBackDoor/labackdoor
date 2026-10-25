@@ -1,5 +1,5 @@
 import { getProjects } from '@/content/loader';
-import { PageShell } from '@/components/PageShell';
+import { Badge, Card, PageHead, Section } from '@/components/ui';
 import type { RepoProject } from '@/content/types';
 
 function byOrg(repos: RepoProject[]): [string, RepoProject[]][] {
@@ -8,30 +8,52 @@ function byOrg(repos: RepoProject[]): [string, RepoProject[]][] {
   return [...m.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 }
 
-export const metadata = { title: 'Projects' };
+export const metadata = {
+  title: 'Projects',
+  description: 'Featured projects and open-source repositories: Kyerɛ (WaCode 2026, 2nd place), SysRepair-Bench and more.',
+};
 
 export default function ProjectsPage() {
   const groups = byOrg(getProjects());
   return (
-    <PageShell title="Projects" subtitle="$ ls ~/projects">
-      {groups.length === 0 && <p style={{ color: 'var(--fg-muted)' }}>No projects yet.</p>}
+    <>
+      <PageHead eyebrow="$ ls ~/projects" title="Projects" lede="Featured builds, then every repository from the lab organizations." />
+      <Section eyebrow="$ ls featured/" title="Featured">
+        <div className="grid-cards">
+          <Card
+            className="award"
+            title="Kyerɛ: Watching Isn’t Knowing"
+            href="/projects/kyere"
+            meta="WaCode 2026 · Baylor University"
+            badges={<Badge tone="gold">2nd Place</Badge>}
+            media="/img/kyere/06-radar.jpg"
+            body="A study app where watching fills at most half of each concept radar and the rest is earned by answering alone and by teaching an AI student."
+          />
+          <Card
+            title="SysRepair-Bench"
+            href="/research/autonomous-remediation"
+            meta="Benchmark · ICLR 2027 (Under Review)"
+            body="313 reproducible Docker and VM scenarios scored on closing the exploit and keeping the service up."
+            actions={[{ label: 'Code', href: 'https://github.com/BaylorSecurityLab/sysrepair-bench' }]}
+          />
+        </div>
+      </Section>
+      {groups.length === 0 && <p className="container card-body">No repositories yet.</p>}
       {groups.map(([org, repos]) => (
-        <section key={org} style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 16, color: 'var(--accent)', fontFamily: 'var(--font-mono), monospace' }}>{org}</h2>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 12 }}>
+        <Section key={org} eyebrow="$ gh repo list" title={org}>
+          <div className="grid-cards">
             {repos.map((r) => (
-              <li key={r.name} style={{ borderBottom: '1px solid var(--border)', paddingBottom: 12 }}>
-                <a href={r.url} target="_blank" rel="noreferrer" style={{ fontWeight: 600, color: 'var(--fg)' }}>{r.name}</a>
-                {r.description && <p style={{ color: 'var(--fg-muted)', margin: '4px 0 0' }}>{r.description}</p>}
-                <div style={{ display: 'flex', gap: 12, marginTop: 4, fontFamily: 'var(--font-mono), monospace', fontSize: 12, color: 'var(--fg-muted)' }}>
-                  {r.language && <span>{r.language}</span>}
-                  {r.stars > 0 && <span>★ {r.stars}</span>}
-                </div>
-              </li>
+              <Card
+                key={r.name}
+                title={r.name}
+                href={r.url}
+                meta={[r.language, r.stars > 0 ? `★ ${r.stars}` : ''].filter(Boolean).join(' · ')}
+                body={r.description || undefined}
+              />
             ))}
-          </ul>
-        </section>
+          </div>
+        </Section>
       ))}
-    </PageShell>
+    </>
   );
 }

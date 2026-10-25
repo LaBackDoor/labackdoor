@@ -198,7 +198,7 @@ export function TalkCard({
   links: Record<string, string>;
   images: string[];
 }) {
-  const labels: Record<string, string> = { slides: 'View Slides', event: 'Event Page', code: 'Code', video: 'Watch Video' };
+  const labels: Record<string, string> = { slides: 'View Slides', event: 'Event Page', code: 'Code', video: 'Watch Video', project: 'Project Page', live: 'Live App' };
   const actions = Object.entries(links).map(([k, href]) => ({ label: labels[k] ?? k, href }));
   return (
     <article className="card">
