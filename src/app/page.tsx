@@ -48,7 +48,7 @@ export default function Home() {
         stats={
           <>
             <Stat value="313" label="Scenarios in SysRepair-Bench" />
-            <Stat value="32 GPUs" label="Three-Site RL Self-Play Cluster" />
+            <Stat value="Multi-Site" label="GPU Training for RL Self-Play" />
             <Stat value="10+" label="Papers and Preprints" />
             <Stat value="2nd" label="WaCode 2026 · SWCCDC 2025" />
           </>
@@ -84,7 +84,7 @@ export default function Home() {
           <Card
             title="Red/Blue Self-Play RL"
             meta="2026 – Present"
-            body="Asynchronous attacker/defender training across NCSA Delta, local GPUs and Google Cloud over NCCL."
+            body="Asynchronous attacker/defender training on a multi-site GPU cluster."
             href="/research/ai-security"
           />
         </div>
