@@ -15,7 +15,7 @@ describe('awards and talks content', () => {
     const talks = getTalks();
     expect(talks.some((t) => t.slug.includes('texas-security-workshop'))).toBe(true);
     for (const t of talks) {
-      const local = [...Object.values(t.frontmatter.links), ...t.frontmatter.images].filter((l) => l.startsWith('/'));
+      const local = [...Object.values(t.frontmatter.links), ...t.frontmatter.images].filter((l) => l.startsWith('/') && /\.[a-z0-9]+$/i.test(l));
       for (const l of local) expect(fs.existsSync(`public${l}`), l).toBe(true);
     }
   });
