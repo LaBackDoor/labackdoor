@@ -28,8 +28,7 @@ export default function KyerePage() {
           <Badge>Team Barney and Friends</Badge>
         </div>
         <div className="cta-row">
-          <ButtonLink href="https://kyere-web-611962560954.us-south1.run.app" external>Try the Live App</ButtonLink>
-          <ButtonLink href="/talks/wacode-2026-kyere-pitch.pdf" variant="secondary">View Pitch Slides</ButtonLink>
+          <ButtonLink href="/talks/wacode-2026-kyere-pitch.pdf">View Pitch Slides</ButtonLink>
         </div>
         <div className="stats">
           <Stat value="4" label="Lesson Formats, One Script" />
