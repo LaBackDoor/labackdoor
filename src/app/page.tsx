@@ -67,7 +67,7 @@ export default function Home() {
             meta="Benchmark · ICLR 2027 (Under Review)"
             body="313 Dockerized and VM scenarios scored on two objectives: the exploit is closed and the service still serves. Six agent architectures evaluated."
             href="/research/autonomous-remediation"
-            actions={[{ label: 'Code', href: 'https://github.com/BaylorSecurityLab/sysrepair-bench' }]}
+            actions={[{ label: 'Code', href: 'https://github.com/CybearsecurityLab/sysrepair-bench' }]}
           />
           <Card
             title="NeuroPlan"

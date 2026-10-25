@@ -34,7 +34,7 @@ export default function ProjectsPage() {
             href="/research/autonomous-remediation"
             meta="Benchmark · ICLR 2027 (Under Review)"
             body="313 reproducible Docker and VM scenarios scored on closing the exploit and keeping the service up."
-            actions={[{ label: 'Code', href: 'https://github.com/BaylorSecurityLab/sysrepair-bench' }]}
+            actions={[{ label: 'Code', href: 'https://github.com/CybearsecurityLab/sysrepair-bench' }]}
           />
         </div>
       </Section>

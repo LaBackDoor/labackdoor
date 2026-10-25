@@ -1,75 +1,83 @@
 [
   {
-    "name": "neurosymbolic-sysrepair",
-    "org": "BaylorSecurityLab",
-    "description": "",
-    "language": "Python",
+    "name": "cross-processor-microarch-study",
+    "org": "CybearsecurityLab",
+    "description": "Measuring how processor-internal hardware behaviour varies across Intel and AMD CPU generations (Cybear Security Lab).",
+    "language": "",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/neurosymbolic-sysrepair"
+    "url": "https://github.com/CybearsecurityLab/cross-processor-microarch-study"
+  },
+  {
+    "name": "neurosymbolic-sysrepair",
+    "org": "CybearsecurityLab",
+    "description": "",
+    "language": "PDDL",
+    "stars": 0,
+    "url": "https://github.com/CybearsecurityLab/neurosymbolic-sysrepair"
   },
   {
     "name": "pa-xai",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "",
     "language": "Python",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/pa-xai"
+    "url": "https://github.com/CybearsecurityLab/pa-xai"
   },
   {
     "name": "packing_pipeline",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "Automated pipeline for building a labeled corpus of benign and packed Windows executables for packer- and malware-detection research.",
     "language": "Python",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/packing_pipeline"
+    "url": "https://github.com/CybearsecurityLab/packing_pipeline"
   },
   {
     "name": "panacea",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "Assessing the Impact of Access Control Policies on Data Accessibility in Distributed NoSQL Environments; PANACEA (Policy Analysis and NoSQL Access Control Evaluation Approach)",
     "language": "Python",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/panacea"
+    "url": "https://github.com/CybearsecurityLab/panacea"
   },
   {
     "name": "predicting-software-vulnerabilities",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "This repository contains the dataset for the paper \"Predicting Software Vulnerability Trends with Multi-Recurrent Neural Networks: A Time Series Forecasting Approach\", published in the Proceedings of the 1st International Conference on NLP & AI for Cyber Security (NLPAICS 2024).",
     "language": "",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/predicting-software-vulnerabilities"
+    "url": "https://github.com/CybearsecurityLab/predicting-software-vulnerabilities"
   },
   {
     "name": "secure-crowdsourcing",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "This repo supports the paper \"Leveraging Secure Social Media Crowdsourcing for Gathering Firsthand Accounts in Conflict Zones.\" We collected 250,000 Telegram messages on the Russo-Ukrainian conflict and developed a framework to identify contextual groupings, revealing 477 new insights from 13 news sources.",
     "language": "Python",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/secure-crowdsourcing"
+    "url": "https://github.com/CybearsecurityLab/secure-crowdsourcing"
   },
   {
     "name": "stateaware-ics-monitoring",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "",
     "language": "Python",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/stateaware-ics-monitoring"
+    "url": "https://github.com/CybearsecurityLab/stateaware-ics-monitoring"
   },
   {
     "name": "svae-based-dynamic-threat-detection",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "This repository presents research on a novel composite framework for enhancing cyber resilience in Cyber Physical Systems (CPS). The framework integrates Dynamic Access Control, utilizing Authorizing Workflow and Task-Role-Based Access Control (AW-TRBAC), with Intrusion Detection Systems (IDSs) powered by Semantic Variational Autoencoders (SVAEs).",
     "language": "Jupyter Notebook",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/svae-based-dynamic-threat-detection"
+    "url": "https://github.com/CybearsecurityLab/svae-based-dynamic-threat-detection"
   },
   {
     "name": "sysrepair-bench",
-    "org": "BaylorSecurityLab",
+    "org": "CybearsecurityLab",
     "description": "",
     "language": "Shell",
     "stars": 0,
-    "url": "https://github.com/BaylorSecurityLab/sysrepair-bench"
+    "url": "https://github.com/CybearsecurityLab/sysrepair-bench"
   },
   {
     "name": "fsm-extractor",

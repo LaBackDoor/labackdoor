@@ -2,7 +2,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ORGS = ['LaBackDoor', 'BaylorSecurityLab'];
+const ORGS = ['LaBackDoor', 'CybearsecurityLab'];
 const OUT = join(process.cwd(), 'content', 'projects', 'github.generated.json');
 
 interface Repo { name: string; org: string; description: string; language: string; stars: number; url: string; }
