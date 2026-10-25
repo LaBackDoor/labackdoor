@@ -53,4 +53,4 @@ docs/
 .claude/
 
 # Brainstorming companion (local-only mockups)
-.superpowers/
+.superpowers/.playwright-mcp/

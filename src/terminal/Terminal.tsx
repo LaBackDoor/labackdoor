@@ -102,7 +102,9 @@ export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: 
     kind === 'error' ? 'var(--accent-2)' : kind === 'input' ? 'var(--fg-muted)' : 'var(--term-fg)';
 
   return (
-    <main
+    <section
+      aria-label="Interactive terminal"
+      className="terminal-frame"
       onClick={() => inputRef.current?.focus()}
       style={{
         background: 'var(--term-bg)',
@@ -110,12 +112,12 @@ export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: 
         fontFamily: 'var(--font-mono), monospace',
         fontSize: 14,
         lineHeight: 1.5,
-        minHeight: 'calc(100vh - 49px)',
+        height: 'min(60vh, 340px)',
         padding: '16px',
         cursor: 'text',
       }}
     >
-      <div ref={scrollRef} style={{ maxHeight: 'calc(100vh - 110px)', overflowY: 'auto', whiteSpace: 'pre-wrap' }}>
+      <div ref={scrollRef} style={{ height: '100%', overflowY: 'auto', whiteSpace: 'pre-wrap' }}>
         {state.lines.map((l, i) => (
           <div key={i} style={{ color: lineColor(l.kind) }}>{l.text}</div>
         ))}
@@ -126,7 +128,6 @@ export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKeyDown}
-            autoFocus
             spellCheck={false}
             autoComplete="off"
             aria-label="terminal input"
@@ -142,6 +143,6 @@ export function Terminal({ root, onOpenWindow }: { root: VfsDir; onOpenWindow?: 
           />
         </div>
       </div>
-    </main>
+    </section>
   );
 }

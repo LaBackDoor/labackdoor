@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { ThemeToggle } from '@/theme/ThemeToggle';
 
 const LINKS: { href: string; label: string }[] = [
-  { href: '/lab', label: 'Lab' },
   { href: '/research', label: 'Research' },
   { href: '/publications', label: 'Publications' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/presentations', label: 'Presentations' },
+  { href: '/awards', label: 'Awards' },
   { href: '/blog', label: 'Blog' },
-  { href: '/team', label: 'Team' },
+  { href: '/lab', label: 'Lab' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -39,6 +41,7 @@ export function Nav() {
             {l.label}
           </Link>
         ))}
+        <a href="/abanisenioluwa-orojo-cv.pdf" className="btn btn-primary" style={{ minHeight: 32, padding: '0 var(--s-3)' }}>CV</a>
         <ThemeToggle />
       </div>
     </nav>
