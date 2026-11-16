@@ -58,7 +58,7 @@
   {
     "name": "stateaware-ics-monitoring",
     "org": "CybearsecurityLab",
-    "description": "",
+    "description": "State-aware ICS monitoring with reachable FSMs, topology-derived Signal Temporal Logic, invariants, QuantMiner and exact bitset acceleration. Includes reproducible Anytown, C-Town and L-Town evaluations.",
     "language": "Python",
     "stars": 0,
     "url": "https://github.com/CybearsecurityLab/stateaware-ics-monitoring"
